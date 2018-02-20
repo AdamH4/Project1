@@ -2,7 +2,6 @@
 
 @section('body')
 
-
     @if(isset($details))
 
         @foreach($details as $product)

@@ -38,6 +38,6 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with("success","Password changed successfully !");
+        return redirect()->home()->with("success","Password changed successfully !");
     }
 }

@@ -36,8 +36,20 @@
     @endforeach
     <br>
     <hr>
-    <form action="/cart/delete/items" method="GET">
-        <button type="submit" name="delete">Delete All</button>
-    </form>
-    {{$total}}
+    @if(! $total == 0)
+        <form action="/cart/delete/items" method="GET">
+            <button type="submit" name="delete">Delete All</button>
+        </form>
+        {{$total}}
+    @endif
+    <br>
+
+    <br>
+    @if(! $total == 0)
+        <form action="{{route('cart.card')}}" method="POST">
+            {{ csrf_field()}}
+            <button type="submit" name="pay" value="pay">Pay</button>
+        </form>
+    @endif
+
 @endsection

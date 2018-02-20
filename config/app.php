@@ -180,7 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Anam\Phpcart\CartServiceProvider::class,
-        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+
 
     ],
 
@@ -232,7 +232,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Anam\Phpcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
     ],
 
 ];

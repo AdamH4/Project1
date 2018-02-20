@@ -17,6 +17,7 @@ class CartController extends Controller
 
     }
 
+
     public function store($id){
         $cart = new Cart;
         $product = Product::find($id);
@@ -66,6 +67,8 @@ class CartController extends Controller
         $cart->updateQty($id,$product->quantity - 1);
         return redirect()->back();
     }
+
+
 
 
 

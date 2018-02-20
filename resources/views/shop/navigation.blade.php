@@ -29,3 +29,9 @@
             </div>
     </form>
 </div>
+
+
+
+@lang('message.welcome')
+
+

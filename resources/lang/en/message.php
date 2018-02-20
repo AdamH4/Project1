@@ -2,6 +2,6 @@
 
         return [
 
-            'welcome' => 'You are signed as Admin.',
+            'welcome' => 'You are sign up',
             'cart' => 'Add to cart',
         ];

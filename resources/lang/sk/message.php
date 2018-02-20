@@ -2,6 +2,6 @@
 
         return [
 
-            'welcome' => 'Si prihlaseny ako Admin.',
+            'welcome' => 'Si prihlaseny',
             'cart' => 'Pridat do kosika',
         ];
