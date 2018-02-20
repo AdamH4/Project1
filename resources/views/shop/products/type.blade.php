@@ -5,6 +5,8 @@
 
     @foreach($products as $product)
 
+        <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
+
         <a href="/product/{{ $product->id }}">
             <p>
                 {{ $product->name }}

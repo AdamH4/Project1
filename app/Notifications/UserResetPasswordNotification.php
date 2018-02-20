@@ -43,7 +43,7 @@ class UserResetPasswordNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Hi, you want new password click here:')
-                    ->action('Reset', url('/password/reset/{token}', $this->token))
+                    ->action('Reset', route('password.reset',$this->token))
                     ->line('Thank you for using our application!');
     }
 

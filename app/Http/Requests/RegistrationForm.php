@@ -28,7 +28,8 @@ class RegistrationForm extends FormRequest
         return [
             'name'=>'required|',
             'email'=>'required|email',
-            'password'=>'required|confirmed|min:5'
+            'password'=>'required|confirmed|min:5',
+            'check'=>'required',
         ];
     }
 

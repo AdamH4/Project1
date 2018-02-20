@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
-class HomerController extends Controller
+class HomeController extends Controller
 {
+
+    public function __construct(){
+
+
+    }
+
+
     public function index()
     {
 
@@ -15,10 +21,10 @@ class HomerController extends Controller
     }
 
 
-    public function find()
+    public function find(Request $request)
     {
-        $query = Input::get('search');
-        dd($query);
+        $query = $request->get('search');
+
 
         if (isset($query)) {
 

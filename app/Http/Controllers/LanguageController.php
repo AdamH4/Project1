@@ -10,6 +10,8 @@ class LanguageController extends Controller
     {
         \App::setLocale('sk');
 
+        session()->push('lang','sk');
+
         return redirect()->back();
     }
 
@@ -17,7 +19,10 @@ class LanguageController extends Controller
     {
         \App::setLocale('en');
 
+        session()->push('lang','en');
+
         return redirect()->back();
+
     }
 
 }

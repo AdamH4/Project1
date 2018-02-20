@@ -2,25 +2,26 @@
 
 @section('body')
 
+
     @if(isset($details))
 
-        @foreach($details as $result)
-            <a href="/product/{{ $result->id }}">
+        @foreach($details as $product)
+            <hr>
+            <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
+
+            <a href="/product/{{ $product->id }}">
                 <p>
-                    {{ $result->name }}
+                    {{ $product->name }}
 
                 </p>
             </a>
-
-            {{  $result->type }}
-
-            <hr>
-
+            <a href="/product/type/{{ $product->type }}">
+                {{  $product->type }}
+            </a>
         @endforeach
 
     @elseif(isset($message))
         {{$message}}
-
     @endif
 
 @endsection

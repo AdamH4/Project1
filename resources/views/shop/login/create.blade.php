@@ -3,7 +3,7 @@
 @section('body')
 
 
-    <form method="POST" action="/login">
+    <form method="POST" action="{{ route('login.create') }}">
 
         {{ csrf_field() }}
 
@@ -25,11 +25,10 @@
 
             <button type="submit" class="btn btn-primary">Sign in</button>
 
-
         </div>
 
     </form>
-    <form action="/password/reset" method="GET">
+    <form action="{{ route('password.request') }}" method="GET">
         <button type="submit" class="btn btn-primary">Forgot my password</button>
     </form>
 

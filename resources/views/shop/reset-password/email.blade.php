@@ -1,12 +1,38 @@
 @extends('master')
 
 @section('body')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">ADMIN Reset Password</div>
+                    <div class="panel-body">
 
 
-    <form action="/password/email" method="POST">
-        <label for="email">Put here your email for password resset</label>
-        <input type="email" name="email" placeholder="Your email here">
-        <button type="submit" name="submit">Send</button>
-    </form>
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
+                            {{ csrf_field() }}
 
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Send Password Reset Link
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

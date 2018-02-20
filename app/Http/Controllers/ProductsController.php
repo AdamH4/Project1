@@ -10,11 +10,8 @@ class ProductsController extends Controller
 {
     public function index(){
 
-
         $types = Product::typeofProducts();
-
         $products = Product::all();
-
         return view('shop.products.products',compact('types','products'));
     }
 
@@ -24,17 +21,14 @@ class ProductsController extends Controller
         return view('shop.products.show-product', compact('product') );
     }
 
-    public function filter(Product $type){
+    public function filter($type){
 
-        $products = Product::filterByType();
 
-        dd($products);
+        $products = Product::filterByType($type);
+
 
         return view('shop.products.type',compact('products'));
 
     }
-
-
-
 
 }

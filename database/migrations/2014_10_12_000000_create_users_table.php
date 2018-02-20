@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
         App\User::create([
             'name' => 'adam',
             'email' => 'adam@example.com',
-            'password' => bcrypt('adam'),
+            'password' => bcrypt('adamko'),
        ]);
     }
 

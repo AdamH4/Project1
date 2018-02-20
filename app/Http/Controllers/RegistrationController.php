@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegistrationForm;
 use Illuminate\Http\Request;
 use App\User;
+use GuzzleHttp\Client;
 
 class RegistrationController extends Controller
 {
@@ -15,8 +16,40 @@ class RegistrationController extends Controller
 
     public function store(RegistrationForm $form){
 
-        $form->persist();
+        $token = request('g-recaptcha-response');
 
-        return redirect()->home();
+        if ($token){
+
+            $client = new Client();
+
+            $response = $client->post('https://www.google.com/recaptcha/api/siteverify',[
+                'form_params' => array(
+                    'secret' => '6LcFekYUAAAAAAO_93u1w-YYNe34y6mXriP0KCtu',
+                    'response' => $token,
+                    )
+            ]);
+
+            $result = json_decode($response->GetBody()->getContents());
+
+
+            if ($result->success){
+
+
+                $form->persist();
+
+                return redirect()->home();
+
+            }
+            else{
+
+
+                return redirect('/registration');
+            }
+
+
+
+        }
+
+        return redirect('/registration');
     }
 }

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'name','type','text','picture','price',
+    ];
+
+
     public static function typeofProducts(){
 
         return static::selectRaw('type, count(*) howmany')
@@ -14,10 +19,10 @@ class Product extends Model
             ->get();
     }
 
-    public static function filterByType(){
+    public static function filterByType($type){
 
-        return static::selectRaw('name, type')
-            ->groupBy('type')
+        return static::selectRaw('id, name, type, picture')
+            ->where('type','LIKE', $type)
             ->orderByRaw('name asc')
             ->get();
     }
