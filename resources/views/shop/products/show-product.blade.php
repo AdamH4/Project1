@@ -13,7 +13,7 @@
 
 
     @if(auth()->check())
-        <form action="/cart/{{ $product->id }}" method="POST">
+        <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
             <button type="submit">@lang('message.cart')</button>
         </form>

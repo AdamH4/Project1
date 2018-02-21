@@ -11,7 +11,7 @@
             {{ $user->name }}
         </li>
         {{ $user->created_at }}
-        <form action="/admin/user/delete/{{$user->id}}" method="POST">
+        <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
             {{ csrf_field() }}
             <button type="submit" name="delete">X</button>
         </form>

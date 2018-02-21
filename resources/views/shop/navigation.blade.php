@@ -2,7 +2,7 @@
 
 
 @if(auth()->check())
-    <a href="/user/change">
+    <a href="{{route('change.password')}}">
         {{ ucfirst(\Auth::user()->name) }}
     </a>
 @endif
@@ -30,8 +30,14 @@
     </form>
 </div>
 
-
-
-@lang('message.welcome')
+<ul>
+    @foreach(\LaravelLocalization::getSupportedLocales() as $locale => $properties)
+        <li>
+            <a rel="alternate" hreflang="{{ $locale }}" href="{{ \LaravelLocalization::getLocalizedURL($locale, null, [], true) }}">
+                {{ $properties['name'] }}
+            </a>
+        </li>
+    @endforeach
+</ul>
 
 

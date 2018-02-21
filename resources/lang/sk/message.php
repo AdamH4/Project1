@@ -2,6 +2,7 @@
 
         return [
 
-            'welcome' => 'Si prihlaseny',
+            'welcome' => 'Vitajte',
             'cart' => 'Pridat do kosika',
+            'reset' => 'Reset hesla'
         ];

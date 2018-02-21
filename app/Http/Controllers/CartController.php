@@ -68,6 +68,18 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function card(){
+        $cart = new Cart;
+        $total = $cart->getTotal();
+        return view('shop.cart.card', compact('total'));
+    }
+
+    public function checkout(){
+
+
+        return view('shop.cart.pay');
+    }
+
 
 
 

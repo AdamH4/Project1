@@ -2,6 +2,7 @@
 
         return [
 
-            'welcome' => 'You are sign up',
+            'welcome' => 'Welcome',
             'cart' => 'Add to cart',
+            'reset' => 'Reset password'
         ];

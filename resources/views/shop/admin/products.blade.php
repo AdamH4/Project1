@@ -15,7 +15,7 @@
         </li>
 
         <img src="{{ asset('images/'. $product->picture) }}" height="100" width="100">
-        <form action="/admin/product/delete/{{$product->id}}" method="POST">
+        <form action="{{ route('admin.products.delete', $product->id) }}" method="POST">
             {{ csrf_field() }}
             <button type="submit" name="delete">X</button>
         </form>

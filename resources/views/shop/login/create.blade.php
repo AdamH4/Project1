@@ -31,7 +31,9 @@
     <form action="{{ route('password.request') }}" method="GET">
         <button type="submit" class="btn btn-primary">Forgot my password</button>
     </form>
-
+    <form action="{{ route('registration.index') }}" method="GET">
+        <button type="submit" class="btn btn-primary">Go and register</button>
+    </form>
     @include('shop.errors.errors')
 
 
