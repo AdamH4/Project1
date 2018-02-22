@@ -26,7 +26,7 @@
                     <div id="card-element">
                     </div>
                     <div id="card-errors" role="alert"></div>
-                    <button type="submit" class="btn btn-outline-success">Submit Payment</button>
+                    <button type="submit" class="btn btn-outline-success" id="payment">Submit Payment</button>
                 </div>
             </form>
             <div class="col-md-6">
@@ -82,6 +82,8 @@
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            document.getElementById('payment').disabled = true;
+
             var options = {
                 name: document.getElementById('name_on_card').value,
                 address_line1: document.getElementById('address').value,
@@ -93,6 +95,9 @@
                     // Inform the user if there was an error.
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
+
+                    document.getElementById('payment').enabled = true;
+
                 } else {
                     // Send the token to your server.
                     stripeTokenHandler(result.token);

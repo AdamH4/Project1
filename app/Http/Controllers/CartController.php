@@ -6,7 +6,6 @@ use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Cart;
-use Illuminate\Support\Facades\Request;
 
 class CartController extends Controller
 {
@@ -67,32 +66,34 @@ class CartController extends Controller
     }
 
     public function checkout(){
+        /*$this->validate(request(),[
+            'address'=>'required',
+            'postcode'=>'required',
+        ]);*/
 
-        $this->validate(request(),[
-           'address'=>'required',
-           'postcode'=>'required',
-        ]);
-
-        $r = request()->all();
+        $userId = auth()->user()->id;
         $cart = app(Cart::class);
-        $total = $cart->subtotal();
-        try {
-            Stripe::charges()->create([
-                'amount' => $total,
-                'currency' => 'EUR',
-                'source' => $r['stripeToken'],
-                'description' => 'Description goes here',
-                'receipt_email' => 'adam.harnusek@gmail.com',
-                'metadata' => [
-                    'data1' => 'metadata 1',
-                    'data2' => 'metadata 2',
-                    'data3' => 'metadata 3',
-                ],
-            ]);
-            return back()->with('success_message', 'Thanks for your money!');
-        }catch(CardErrorException $e){
-            return back()->withErrors('Error!'.$e->getMessage());
-        }
+        $total = $cart->instance($userId)->subtotal();
+        $r = request()->all();
+
+                try {
+                    Stripe::charges()->create([
+                        'amount' => $total,
+                        'currency' => 'EUR',
+                        'source' => $r['stripeToken'],
+                        'description' => 'Description goes here',
+                        'receipt_email' => 'adam.harnusek@gmail.com',
+                        'metadata' => [
+                            'data1' => 'metadata 1',
+                            'data2' => 'metadata 2',
+                            'data3' => 'metadata 3',
+                        ],
+                    ]);
+                    $cart->instance($userId)->destroy();
+                    return view('shop.cart.success', compact('total'));
+                } catch(CardErrorException $e){
+                    return view('shop.cart.unsuccess')->withErrors('error', $e->getMessage());
+                }
     }
 
 

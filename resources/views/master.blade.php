@@ -11,7 +11,9 @@
     </head>
     <body>
             @include('shop.navigation')
-            @yield('body')
+            <div class="container">
+                @yield('body')
+            </div>
             @include('shop.footer')
     </body>
 </html>
