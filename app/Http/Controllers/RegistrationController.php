@@ -9,6 +9,10 @@ use GuzzleHttp\Client;
 
 class RegistrationController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest');
+    }
+
     public function index(){
 
         return view('shop.registration.create');

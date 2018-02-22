@@ -6,8 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "anam/phpcart": "^1.0",
+        "cartalyst/stripe": "^2.1",
+        "cartalyst/stripe-laravel": "7.0.*",
         "fideloper/proxy": "~3.3",
+        "gloudemans/shoppingcart": "^2.5",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
         "laravel/framework": "5.5.*",

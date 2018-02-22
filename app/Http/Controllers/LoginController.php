@@ -23,8 +23,6 @@ class LoginController extends Controller
         {
             return redirect()->back()->withInput(request()->only('email','remember'));
         }
-
-
         return redirect()->home();
     }
 

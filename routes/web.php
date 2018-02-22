@@ -44,12 +44,12 @@ Route::group(
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');
-        Route::get('/cart/delete/item/{id}', 'CartController@deleteOne')->name('cart.delete');
-        Route::get('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
+        Route::post('/cart/delete/item/{id}', 'CartController@deleteOne')->name('cart.delete');
+        Route::post('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
         Route::post('/cart/quantity/plus/{id}', 'CartController@plus')->name('cart.plus');
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
-        Route::get('/cart/card', 'CartController@card')->name('cart.card');
-        Route::post('/checkout', 'CartController@checkout')->name('checkout');
+        Route::post('/cart/payment/{total}', 'CartController@card')->name('cart.card');
+        Route::post('/checkout', 'CartController@checkout')->name('cart.checkout');
 
         Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

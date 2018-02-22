@@ -3,81 +3,96 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Anam\Phpcart\Cart;
+use Cartalyst\Stripe\Exception\CardErrorException;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Gloudemans\Shoppingcart\Cart;
+use Illuminate\Support\Facades\Request;
 
 class CartController extends Controller
 {
+    public function store($id){
+        $userId= auth()->user()->id;
+        $p = Product::find($id);
+        $cart = app(Cart::class);
+        $cart->instance($userId)->add([
+            'id'=>$p->id,
+            'name'=>$p->name,
+            'qty'=>$p->quantity,
+            'price'=>$p->price,
+        ]);
+        return back();
+    }
 
     public function index(){
-
-        $cart = new Cart;
-        $products = $cart->items();
-        $total = $cart->getTotal();
-        return view('shop.cart.index', compact('products','total'));
-
-    }
-
-
-    public function store($id){
-        $cart = new Cart;
-        $product = Product::find($id);
-        $item = [
-            'id'=>$product->id,
-            'name'=>$product->name,
-            'quantity'=>$product->quantity,
-            'price'=>$product->price,
-            'text'=>$product->text,
-            'picture'=>$product->picture,
-            'type'=>$product->type,
-        ];
-        $cart->add($item);
-
-        session()->flash('success','Item was sent to the cart');
-        return redirect()->back();
-
-    }
-
-    public function deleteOne($id){
-        $cart = new Cart;
-        $cart->remove($id);
-        return redirect()->back();
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $products = $cart->instance($userId)->content();
+        $total = $cart->instance($userId)->subtotal();
+        return view('shop.cart.index',compact('products','total'));
     }
 
     public function deleteAll(){
-        $cart = new Cart;
-        $cart->clear();
-        session()->flash('empty','Cart is empty');
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $cart->instance($userId)->destroy();
+        return redirect()->back();
+    }
+
+    public function deleteOne($id){
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $cart->instance($userId)->remove($id);
         return redirect()->back();
     }
 
     public function plus($id){
-        $cart = new Cart;
-        $product = $cart->get($id);
-        $cart->updateQty($id,$product->quantity + 1);
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $item = $cart->instance($userId)->get($id);
+        $cart->instance($userId)->update($id,$item->qty + 1);
         return redirect()->back();
     }
 
     public function minus($id){
-        $cart = new Cart;
-        $product = $cart->get($id);
-        if ($product->quantity == 1){
-            //putt message here
-            return redirect()->back();
-        }
-        $cart->updateQty($id,$product->quantity - 1);
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $item = $cart->instance($userId)->get($id);
+        $cart->instance($userId)->update($id,$item->qty - 1);
         return redirect()->back();
     }
 
-    public function card(){
-        $cart = new Cart;
-        $total = $cart->getTotal();
-        return view('shop.cart.card', compact('total'));
+    public function card($total){
+
+        return view('shop.cart.card',compact('total'));
     }
 
     public function checkout(){
 
+        $this->validate(request(),[
+           'address'=>'required',
+           'postcode'=>'required',
+        ]);
 
-        return view('shop.cart.pay');
+        $r = request()->all();
+        $cart = app(Cart::class);
+        $total = $cart->subtotal();
+        try {
+            Stripe::charges()->create([
+                'amount' => $total,
+                'currency' => 'EUR',
+                'source' => $r['stripeToken'],
+                'description' => 'Description goes here',
+                'receipt_email' => 'adam.harnusek@gmail.com',
+                'metadata' => [
+                    'data1' => 'metadata 1',
+                    'data2' => 'metadata 2',
+                    'data3' => 'metadata 3',
+                ],
+            ]);
+            return back()->with('success_message', 'Thanks for your money!');
+        }catch(CardErrorException $e){
+            return back()->withErrors('Error!'.$e->getMessage());
+        }
     }
 
 

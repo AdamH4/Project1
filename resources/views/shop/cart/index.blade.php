@@ -1,55 +1,33 @@
 @extends('master')
-
-
 @section('body')
-
+    <div class="container">
     @foreach($products as $product)
         <hr>
-        <img src="{{ asset('images/'. $product->picture) }}" height="100" width="100">
-        <li>
-            {{$product->name}}
-        </li>
-        <li>
-            {{$product->type}}
-        </li>
-        <li>
-            {{$product->name}}
-        </li>
-        <li>
-            {{$product->price}}
-        </li>
-        <form action="{{ route('cart.minus', $product->id)}}" method="POST">
-           {{ csrf_field()}}
-            <button type="submit" name="minus">-</button>
+        {{$product->id}}
+        {{$product->name}}
+        {{$product->price}}
+        <form action="{{route('cart.minus',$product->rowId)}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit">-</button>
         </form>
-        <li>
-            {{$product->quantity}}
-        </li>
-        <form action="{{ route('cart.plus', $product->id)}}" method="POST">
-            {{ csrf_field()}}
-            <button type="submit" name="plus">+</button>
+        {{$product->qty}}
+        <form action="{{route('cart.plus',$product->rowId)}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit">+</button>
         </form>
-        <form action="{{ route('cart.delete', $product->id)}}" method="GET">
-            <button type="submit" name="delete">X</button>
+        <form action="{{route('cart.delete',$product->rowId)}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit">X</button>
         </form>
-
     @endforeach
-    <br>
-    <hr>
-    @if(! $total == 0)
-        <form action="{{ route('cart.delete.all') }}" method="GET">
-            <button type="submit" name="delete">Delete All</button>
-        </form>
-        {{$total}}
-    @endif
-    <br>
-
-    <br>
-    @if(!$total == 0)
-        <form action="{{route('cart.card')}}" method="GET">
-
-            <button type="submit">Pay online</button>
-        </form>
-    @endif
-
+    <form action="{{route('cart.delete.all')}}" method="POST">
+        {{ csrf_field() }}
+        <button type="submit">Delete ALL</button>
+    </form>
+    {{$total}}
+    <form action="{{route('cart.card', $total)}}" method="POST">
+        {{csrf_field()}}
+        <button type="submit" class="btn btn-outline-success">Pay by card</button>
+    </form>
+    </div>
 @endsection
