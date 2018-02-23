@@ -24,4 +24,16 @@
         <p>Prihlas sa aby si nakupil !</p>
 
     @endif
+    @if( auth()->check())
+        <div class="card=block">
+            <form method="POST" action="{{route('comment.create', $product->id)}}">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <textarea name="body" placeholder="Add Comment." class="form-control" required ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+
+    @endif
 @endsection

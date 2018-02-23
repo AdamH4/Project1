@@ -41,6 +41,7 @@ Route::group(
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
         Route::get('/product/type/{type}', 'ProductsController@filter')->name('product.type');
+        Route::post('/product/create/comment/{product}','CommentController@store')->name('comment.create');
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');

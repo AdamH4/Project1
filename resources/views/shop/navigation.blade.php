@@ -21,9 +21,10 @@
             <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="bla bla in here...">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                            <span style="height: 20px" class="glyphicon glyphicon-search">Find
-                            </span>
+                        <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search">
+                            @lang('message.find')
+                        </span>
                         </button>
                     </span>
             </div>

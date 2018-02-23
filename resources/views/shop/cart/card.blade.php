@@ -22,7 +22,7 @@
                     <input type="text" id="address" class="form-control" required>
                     <label for="postcode">Postcode</label>
                     <input type="text" id="postcode" class="form-control" required>
-                    <label for="card-element">Card informations</label>
+                    <label for="card-element">Card information</label>
                     <div id="card-element">
                     </div>
                     <div id="card-errors" role="alert"></div>

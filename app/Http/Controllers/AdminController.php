@@ -66,8 +66,11 @@ class AdminController extends Controller
     public function deleteUser(User $user)
     {
         //delete user here using wild card
-        $user->delete();
-        return redirect('/admin');
+        try{$user->delete();
+        return redirect()->back();
+        }catch (\Exception $e){
+            return redirect()->back()->withErrors('error'.$e->getMessage());
+        }
 
     }
 
@@ -77,11 +80,10 @@ class AdminController extends Controller
     }
 
     public function deleteProduct(Product $product){
-        $product->delete();
-        return redirect()->back();
+        try{$product->delete();
+            return redirect()->back();
+        }catch (\Exception $e){
+            return redirect()->back()->withErrors('error'.$e->getMessage());
+        }
     }
-
-
-
-
 }

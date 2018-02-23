@@ -16,18 +16,13 @@ class ProductsController extends Controller
 
 
     public function show(Product $product){
-
         return view('shop.products.show-product', compact('product') );
     }
 
     public function filter($type){
-
-
         $products = Product::filterByType($type);
-
-
         return view('shop.products.type',compact('products'));
-
     }
+
 
 }

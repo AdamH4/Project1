@@ -28,6 +28,10 @@
     <form action="{{route('cart.card', $total)}}" method="POST">
         {{csrf_field()}}
         <button type="submit" class="btn btn-outline-success">Pay by card</button>
+        <label for="dobierka">Dobierka</label>
+        <input type="" name="dobierka" id="dobierka">
+        <label for="card">Karta</label>
+        <input type="" name="card" id="card">
     </form>
     </div>
 @endsection

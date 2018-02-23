@@ -4,5 +4,6 @@
 
             'welcome' => 'Vitajte',
             'cart' => 'Pridat do kosika',
-            'reset' => 'Reset hesla'
+            'reset' => 'Reset hesla',
+            'find'=>'Nájsť',
         ];

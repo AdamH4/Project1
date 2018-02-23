@@ -10,6 +10,9 @@ class Product extends Model
         'name','type','text','picture','price',
     ];
 
+    public function comments(){
+        $this->hasMany(Comment::class);
+    }
 
     public static function typeofProducts(){
 
