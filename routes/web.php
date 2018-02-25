@@ -8,8 +8,11 @@ Route::group(
     function() {
         Route::get('/', 'HomeController@index')->name('home');
 
+        Route::get('contacts','Homecontroller@contacts')->name('contacts');
+
         Route::get('/admin/users', 'AdminController@index')->name('admin.users');
-        Route::post('/admin/create/{user}', 'AdminController@createAdmin')->name('admin.create');
+        Route::post('/admin/promote/{user}', 'AdminController@promote')->name('admin.promote');
+        Route::post('/admin/demote/{user}', 'AdminController@demote')->name('admin.demote');
         Route::post('/admin/user/delete/{user}', 'AdminController@deleteUser')->name('admin.users.delete');
         Route::get('/admin/products', 'AdminController@products')->name('admin.products');
         Route::post('/admin/product/delete/{product}', 'AdminController@deleteProduct')->name('admin.products.delete');

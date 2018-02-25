@@ -7,16 +7,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
     public function __construct(){
 
     }
 
-
     public function index(){
         return view('master');
     }
-
 
     public function find(Request $request){
         $query = $request->get('search');
@@ -34,5 +31,9 @@ class HomeController extends Controller
         return view('shop.index',[
             'unsuccess_message' => 'No results!',
         ]);
+    }
+
+    public function contacts(){
+        return view('shop.contacts.index');
     }
 }
