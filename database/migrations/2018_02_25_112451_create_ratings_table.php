@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->unsignedInteger('id')->primary();
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('ratings', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('product_id');
+            $table->integer('user_id');
+            $table->integer('rating');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('ratings');
     }
 }

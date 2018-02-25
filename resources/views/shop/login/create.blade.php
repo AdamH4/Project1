@@ -20,7 +20,7 @@
     <form action="{{ route('registration.index') }}" method="GET">
         <button type="submit" class="btn btn-primary">Go and register</button>
     </form>
-    @include('shop.errors.errors')
+    @include('shop.errors.error')
 
 
 @endsection()

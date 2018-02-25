@@ -35,6 +35,6 @@
             <button type="submit" name="submit">Register</button>
         </form>
 
-    @include('shop.errors.errors')
+    @include('shop.errors.error')
 
 @endsection()

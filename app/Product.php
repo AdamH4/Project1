@@ -11,7 +11,25 @@ class Product extends Model
     ];
 
     public function comments(){
-        $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
+    }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
+
+    public function addComment(){
+        return $this->comments()->create([
+            'body'=>request('body'),
+            'user_id'=>auth()->user()->id
+        ]);
+    }
+
+    public function addRating(){
+        return $this->ratings()->create([
+            'rating'=>request('rating'),
+            'user_id'=>auth()->user()->id,
+        ]);
     }
 
     public static function typeofProducts(){

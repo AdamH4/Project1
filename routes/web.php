@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::group(
     [
         'prefix' => \LaravelLocalization::setLocale(),
@@ -18,13 +8,15 @@ Route::group(
     function() {
         Route::get('/', 'HomeController@index')->name('home');
 
-        Route::get('/admin', 'AdminController@show')->name('admin');
         Route::get('/admin/users', 'AdminController@index')->name('admin.users');
+        Route::post('/admin/create/{user}', 'AdminController@createAdmin')->name('admin.create');
         Route::post('/admin/user/delete/{user}', 'AdminController@deleteUser')->name('admin.users.delete');
         Route::get('/admin/products', 'AdminController@products')->name('admin.products');
         Route::post('/admin/product/delete/{product}', 'AdminController@deleteProduct')->name('admin.products.delete');
-        Route::get('/admin/create', 'AdminController@create')->name('admin.create');
+        Route::get('/admin/product/{product}', 'AdminController@show')->name('admin.product.show');
+        Route::get('/admin/product/create', 'AdminController@createProduct')->name('admin.create.product');
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
+        Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
 
         Route::get('/user/change', 'UserController@index');
         Route::post('/user/change', 'UserController@reset')->name('change.password');
@@ -41,7 +33,11 @@ Route::group(
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
         Route::get('/product/type/{type}', 'ProductsController@filter')->name('product.type');
-        Route::post('/product/create/comment/{product}','CommentController@store')->name('comment.create');
+        Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
+        Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
+
+        Route::post('/rate/{id}','RatingController@store')->name('rating');
+        Route::post('/rate/delete','RatingController@delete')->name('rating.delete');//neni dorobene
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');

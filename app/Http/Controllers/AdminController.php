@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Product;
 use App\User;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -13,20 +14,14 @@ class AdminController extends Controller
         //make middleware
         $this->middleware('admin');
     }
-    public function show(){
-        return view('shop.admin.admin');
-    }
-
 
     public function index(){
         //select all users
-        $users = User::all();
+        $users = User::all()->sort();
         return view('shop.admin.users',compact('users'));
     }
 
-
-    public function create(){
-
+    public function createProduct(){
         return view('shop.admin.create');
     }
 
@@ -44,8 +39,8 @@ class AdminController extends Controller
         //take care of image
         $image = \request()->file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();
-        $fileLocation = public_path('images/'. $filename);
-        Image::make($image)->resize(400,400)->save($fileLocation);
+        $fileLocation = public_path('images/' . $filename);
+        Image::make($image)->resize(400, 400)->save($fileLocation);
 
 
         //create row in table Product
@@ -58,8 +53,9 @@ class AdminController extends Controller
         ]);
 
         //make here some flash message
+        session()->flash('success','You added new product');
 
-        return redirect('/admin/create');
+        return redirect()->back();
 
     }
 
@@ -75,7 +71,7 @@ class AdminController extends Controller
     }
 
     public function products(){
-        $products = Product::all();
+        $products = Product::paginate(10);
         return view('shop.admin.products', compact('products'));
     }
 
@@ -85,5 +81,23 @@ class AdminController extends Controller
         }catch (\Exception $e){
             return redirect()->back()->withErrors('error'.$e->getMessage());
         }
+    }
+
+    public function show(Product $product){
+        return view('shop.admin.show-product', compact('product') );
+    }
+
+    public function delete(Comment $id){
+        try{
+            $id->delete();
+            return back()->with('success_delete','Delete was successful');
+        }catch (\Exception $e){
+            return back()->withErrors('Error:'.$e->getMessage());
+        }
+    }
+
+    public function createAdmin(User $user){
+
+        return back()->with('success_upgrade','User succesfully promoted');
     }
 }

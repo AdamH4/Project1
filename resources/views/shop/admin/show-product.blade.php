@@ -1,48 +1,36 @@
 @extends('master')
-
 @section('body')
-    @if(session()->has('success_delete'))
-        <div class="alert alert-success">
-            {{ session()->get('success_delete') }}
-        </div>
+@if(session()->has('success_delete'))
+    <div class="alert alert-success">
+        {{ session()->get('success_delete') }}
+    </div>
     @endif
-    @if(session()->has('succss_delete'))
-        <div class="alert-success">
-            {{session()->get('sucess_delete')}}
-        </div>
-    @endif
-    <h3>{{ $product->name }}</h3>
+    <h3>{{ ucfirst($product->name) }}</h3>
     <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
     <p>{{ $product->text }}</p>
     <p>{{ $product->price  }} E</p>
 
-    @if(auth()->check())
-        <form action="{{route('cart.add', $product->id) }}" method="POST">
-            {{ csrf_field() }}
-            <button type="submit">@lang('message.cart')</button>
-        </form>
-    @endif
-
     @if(! auth()->check())
-
         <p>Prihlas sa aby si nakupil !</p>
-
     @endif
-    <h4>
-        Average rating for this product: {{number_format($rating,2)}}/5
-    </h4>
+    @foreach($product->ratings as $rating)
+        <li>
+            {{$rating->user->name}} rated:
+            {{$rating->rating}}
+        </li>
+    @endforeach
+
     @foreach($product->comments as $comment)
         <li class="list-group-item">
             <b>{{ $comment->user->name }} on </b>
             <b>{{ $comment->created_at }} :</b>
             {{ $comment->body }}
-        @if($comment->user_id == auth()->user()->id)
-                <form action="{{route('comment.delete',$comment->id)}}" method="POST">
-                    {{csrf_field()}}
-                    <button type="submit">X</button>
-                </form>
-            @endif
+            <form action="{{route('admin.comment.delete',$comment->id)}}" method="POST">
+                {{csrf_field()}}
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
         </li>
+
     @endforeach
 
     @if( auth()->check())
@@ -55,10 +43,9 @@
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>
-        @if($rated->isEmpty())
-            <div class="form-group">
-                <form action="{{route('rating', $product->id)}}" method="POST">
-                    {{csrf_field()}}
+        <div class="form-group">
+            <form action="{{route('rating', $product->id)}}" method="POST">
+                {{csrf_field()}}
                 <label for="rating">Rating:</label>
                 <select name="rating" id="rating">
                     <option value="1">1 - Bad</option>
@@ -68,14 +55,8 @@
                     <option value="5">5 - Awesome</option>
                 </select>
                 <button type="submit" class="btn btn-success">Rate</button>
-                </form>
-            </div>
-        @else
-            <p>You already rated this product</p>
-            <!--<form action="{{ route('rating.delete')}}" method="POST">
-                {{csrf_field()}}
-                <button type="submit" class="btn btn-danger">Reset my rating</button>
-            </form>-->
-        @endif
+            </form>
+        </div>
+
     @endif
 @endsection

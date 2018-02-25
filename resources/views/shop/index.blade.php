@@ -2,6 +2,11 @@
 
 @section('body')
 
+    @if(isset($unsuccess_message))
+        <div class="alert alert-danger">
+            {{$unsuccess_message}}
+        </div>
+    @endif
     @if(isset($details))
 
         @foreach($details as $product)

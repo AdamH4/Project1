@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://js.stripe.com/v3/"></script>
-
     </head>
     <body>
             @include('shop.navigation')

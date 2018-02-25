@@ -1,7 +1,13 @@
 @extends('master')
 
 @section('body')
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 
+    @include('shop.errors.error')
 
     <div class="container">
         <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">

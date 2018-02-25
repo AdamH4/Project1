@@ -12,7 +12,7 @@
                     {{ session()->get('error') }}
                 </div>
 
-                @endif
+            @endif
             <form action="{{ route('cart.checkout')}}" method="POST" id="payment-form">
                 {{csrf_field()}}
                 <div class="form-group">
