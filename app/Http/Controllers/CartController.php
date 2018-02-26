@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Order;
 use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -10,14 +11,18 @@ use Gloudemans\Shoppingcart\Cart;
 class CartController extends Controller
 {
     public function store($id){
+        $quantity = request('quantity');
         $userId= auth()->user()->id;
         $p = Product::find($id);
         $cart = app(Cart::class);
         $cart->instance($userId)->add([
             'id'=>$p->id,
             'name'=>$p->name,
-            'qty'=>$p->quantity,
+            'qty'=>$quantity,
             'price'=>$p->price,
+            'options'=>[
+               'picture'=>$p->picture,
+            ],
         ]);
         return back();
     }
@@ -66,16 +71,10 @@ class CartController extends Controller
     }
 
     public function checkout(){
-        /*$this->validate(request(),[
-            'address'=>'required',
-            'postcode'=>'required',
-        ]);*/
-
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();
         $r = request()->all();
-
                 try {
                     Stripe::charges()->create([
                         'amount' => $total,
@@ -92,13 +91,29 @@ class CartController extends Controller
                     $cart->instance($userId)->destroy();
                     return view('shop.cart.success', compact('total'));
                 } catch(CardErrorException $e){
-                    return view('shop.cart.unsuccess')->withErrors('error', $e->getMessage());
+                    return view('shop.cart.unsuccess')->with('error','Something went wrong try again');
                 }
     }
 
+    public function selectPayment($total){
+        return view('shop.cart.select-payment',compact('total'));
+    }
 
+    public function cashOnDelivery($total){
+        return view('shop.cart.cashOnDelivery',compact('total'));
+    }
 
-
-
-
+    public function cashOnDeliveryCheckout($total){
+        $this->validate(request(),[
+           'name'=>'required',
+           'address'=>'required',
+           'postcode'=>'required|numeric',
+           'phone'=>'required|numeric',
+        ]);
+        \Mail::to(auth()->user())->send(new Order());
+        $userId = auth()->user()->id;
+        $cart = app(Cart::class);
+        $cart->instance($userId)->destroy();
+        return view('shop.cart.success',compact('total'));
+    }
 }

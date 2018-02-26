@@ -27,41 +27,35 @@ class AdminController extends Controller
 
     public function store(){
         // validate request()
-
         $this->validate(request(),[
             'name'=>'required',
             'type'=>'required',
+            'description'=>'required',
             'text'=>'required',
             'price'=>'required',
             'image'=>'required|image',
         ]);
-
         //take care of image
         $image = \request()->file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $fileLocation = public_path('images/' . $filename);
         Image::make($image)->resize(400, 400)->save($fileLocation);
-
-
+        $desc = request('description');
         //create row in table Product
         Product::create([
             'name'=>request('name'),
             'type'=>request('type'),
+            'description'=>$desc,
             'text'=>request('text'),
             'picture'=>$filename,
             'price'=>request('price'),
         ]);
-
-        //make here some flash message
+        //flash message
         session()->flash('success','You added new product');
-
         return redirect()->back();
-
     }
 
-    public function deleteUser(User $user)
-    {
-        //delete user here using wild card
+    public function deleteUser(User $user){
         try{$user->delete();
         return redirect()->back();
         }catch (\Exception $e){

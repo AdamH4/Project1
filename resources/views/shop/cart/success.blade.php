@@ -4,7 +4,7 @@
         Thanks for your payment, we appreciate it!
     </h1>
     <h3>
-        You payed {{$total}}
+        {{$total}}
     </h3>
     <form action="{{route('home')}}" method="GET">
         <button type="submit" class="btn-outline-primary">OK</button>

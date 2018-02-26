@@ -3,9 +3,13 @@
     <div class="container">
     @foreach($products as $product)
         <hr>
-        {{$product->id}}
-        {{$product->name}}
-        {{$product->price}}
+        <a href="{{route('product.show',$product->id)}}">
+            <img src="{{ asset('images/'. $product->options->picture) }}" height="100" width="100">
+            <p>
+                {{$product->name}}
+                {{$product->price}}
+            </p>
+        </a>
         <form action="{{route('cart.minus',$product->rowId)}}" method="POST">
             {{csrf_field()}}
             <button type="submit">-</button>
@@ -20,18 +24,13 @@
             <button type="submit">X</button>
         </form>
     @endforeach
-    <form action="{{route('cart.delete.all')}}" method="POST">
-        {{ csrf_field() }}
-        <button type="submit">Delete ALL</button>
-    </form>
-    {{$total}}
-    <form action="{{route('cart.card', $total)}}" method="POST">
+    @if(! $products->isEmpty())
+    <form action="{{route('cart.select.payment',$total)}}" method="POST">
         {{csrf_field()}}
-        <button type="submit" class="btn btn-outline-success">Pay by card</button>
-        <label for="dobierka">Dobierka</label>
-        <input type="" name="dobierka" id="dobierka">
-        <label for="card">Karta</label>
-        <input type="" name="card" id="card">
+        <button type="submit" class="btn btn-success">Next</button>
     </form>
+    @else
+        <p>Nothing in cart go to a <a href="{{route('products')}}">shop</a></p>
+    @endif
     </div>
 @endsection

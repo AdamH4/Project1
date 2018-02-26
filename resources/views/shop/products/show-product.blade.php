@@ -6,31 +6,27 @@
             {{ session()->get('success_delete') }}
         </div>
     @endif
-    @if(session()->has('succss_delete'))
-        <div class="alert-success">
-            {{session()->get('sucess_delete')}}
-        </div>
-    @endif
     <h3>{{ $product->name }}</h3>
     <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
     <p>{{ $product->text }}</p>
     <p>{{ $product->price  }} E</p>
-
     @if(auth()->check())
         <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
+            <label for="quantity">Select quantity</label>
+            <input type="number" id="quantity" name="quantity" value="1">
             <button type="submit">@lang('message.cart')</button>
         </form>
+     @else
+        <p><a href="{{route('login')}}">Prihlas sa</a> aby si nakupil !</p>
     @endif
-
-    @if(! auth()->check())
-
-        <p>Prihlas sa aby si nakupil !</p>
-
+    @if(! $rating == 0)
+        <h4>
+            Average rating for this product: {{number_format($rating,2)}}/5
+        </h4>
+    @else
+        <h5>Nobody rate yet, be the first one.</h5>
     @endif
-    <h4>
-        Average rating for this product: {{number_format($rating,2)}}/5
-    </h4>
     @foreach($product->comments as $comment)
         <li class="list-group-item">
             <b>{{ $comment->user->name }} on </b>

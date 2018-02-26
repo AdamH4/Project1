@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function delete(Comment $id){
         try{
             $id->delete();
-            return back();
+            return back()->with('success_delete','Your comment was deleted');
         }catch(\Exception $e){
             return back()->withErrors('Error:'.$e->getMessage());
         }

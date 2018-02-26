@@ -17,7 +17,7 @@ Route::group(
         Route::get('/admin/products', 'AdminController@products')->name('admin.products');
         Route::post('/admin/product/delete/{product}', 'AdminController@deleteProduct')->name('admin.products.delete');
         Route::get('/admin/product/{product}', 'AdminController@show')->name('admin.product.show');
-        Route::get('/admin/product/create', 'AdminController@createProduct')->name('admin.create.product');
+        Route::get('/admin/create', 'AdminController@createProduct')->name('admin.product.create');
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
         Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
 
@@ -44,12 +44,15 @@ Route::group(
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');
+        Route::post('/cart/select/payment/{total}', 'CartController@selectPayment')->name('cart.select.payment');
         Route::post('/cart/delete/item/{id}', 'CartController@deleteOne')->name('cart.delete');
         Route::post('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
         Route::post('/cart/quantity/plus/{id}', 'CartController@plus')->name('cart.plus');
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
         Route::post('/cart/payment/{total}', 'CartController@card')->name('cart.card');
         Route::post('/checkout', 'CartController@checkout')->name('cart.checkout');
+        Route::post('/cart/dobierka/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
+        Route::post('/cart/checkout/dobierka/{total}', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
 
         Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

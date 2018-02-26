@@ -34,15 +34,12 @@ class RegistrationForm extends FormRequest
     }
 
     public function persist(){
-
         $user= User::create([
             'name'=>request('name'),
             'email'=>request('email'),
             'password'=>bcrypt(request('password'))
         ]);
-
-        //\Mail::to($user)->send(new welcome($user));
-
+        \Mail::to($user)->send(new welcome($user));
         \Auth::login($user);
     }
 }

@@ -16,6 +16,8 @@
             <input type="text" name="name" id="name">
             <label for="type">Type:</label>
             <input type="text" name="type" id="type">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" rows="10" cols="30"></textarea>
             <label for="text">Text:</label>
             <textarea name="text" id="text" rows="10" cols="30"></textarea>
             <label for="price">Price:</label>
