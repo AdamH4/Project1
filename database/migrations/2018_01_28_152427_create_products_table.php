@@ -17,10 +17,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->string('text');
-            $table->string('picture')->nullable();
+            $table->string('picture');
             $table->float('price');
+            $table->integer('visit')->default(0);
             $table->integer('quantity')->default(1);
             $table->timestamps();
         });

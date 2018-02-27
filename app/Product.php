@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'name','type','text','picture','price',
+        'name','type','text','picture','price','description','visit',
     ];
 
     public function comments(){
@@ -45,6 +45,6 @@ class Product extends Model
         return static::selectRaw('id, name, type, picture')
             ->where('type','LIKE', $type)
             ->orderByRaw('name asc')
-            ->get();
+            ->paginate(10);
     }
 }

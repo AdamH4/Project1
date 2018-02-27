@@ -20,10 +20,11 @@ class ProductsController extends Controller
         $id = auth()->user()->id;
         $rating = $product->ratings()->avg('rating');
         $rated = Rating::rateOnce($id,$product->id);
+        $product->increment('visit');
         return view('shop.products.show-product', compact('product','rated','rating'));
     }
 
-    public function filter($type){
+    public function filterByType($type){
         $products = Product::filterByType($type);
         return view('shop.products.type',compact('products'));
     }

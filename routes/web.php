@@ -35,7 +35,7 @@ Route::group(
 
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
-        Route::get('/product/type/{type}', 'ProductsController@filter')->name('product.type');
+        Route::get('/product/type/{type}', 'ProductsController@filterByType')->name('product.type');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 

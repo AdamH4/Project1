@@ -7,7 +7,7 @@
         </a>
     @endforeach
     <br>
-    <br>
+    <hr>
     @foreach($products as $product)
         <a href="{{route('product.show' ,$product->id) }}">
             <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
