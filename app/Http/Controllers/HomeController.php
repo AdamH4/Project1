@@ -14,10 +14,7 @@ class HomeController extends Controller
     public function find(Request $request){
         $query = $request->get('search');
         if (isset($query)) {
-            $tasks = Product::where('name', 'LIKE', '%' . $query . '%')
-                ->orwhere('type','LIKE','%'.$query.'%')
-                ->orderByRaw('name asc')
-                ->get();
+            $tasks = Product::search($query);
             if (! count($tasks) == 0) {
                 return view('shop.index')
                     ->withDetails($tasks)

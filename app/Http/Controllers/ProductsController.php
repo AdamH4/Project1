@@ -2,35 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Rating;
-use Illuminate\Http\Request;
 use App\Product;
-use Illuminate\Support\Facades\Session;
+use App\User;
 
 class ProductsController extends Controller
 {
     public function index(){
-        $types = Product::typeofProducts();
+        $categories = Product::typeofProducts();
         $products = Product::paginate(10);
-        return view('shop.products.products',compact('types','products'));
+        return view('shop.products.products',compact('categories','products'));
     }
 
     public function show(Product $product){
-        $id = auth()->user()->id;
+        if (auth()->check()){
+            $id = auth()->user()->id;
+            $rated = Rating::rateOnce($id,$product->id);
+            $user = new User();
+        }
         $rating = $product->ratings()->avg('rating');
-        $rated = Rating::rateOnce($id,$product->id);
         $product->increment('visit');
-        return view('shop.products.show-product', compact('product','rated','rating'));
+        return view('shop.products.show-product', compact('product','rated','rating','user'));
     }
 
-    public function filterByType($type){
-        $products = Product::filterByType($type);
-        return view('shop.products.type',compact('products'));
+    public function filterByType($category){
+        $categories = Product::typeofProducts();
+        $products = Product::filterByType($category);
+        return view('shop.products.products',compact('products','categories'));
     }
 
-    public function addComment()
-    {
+    public function filterByVisit(){
+        $categories = Product::typeofProducts();
+        $products = Product::filterByVisit();
+        return view('shop.products.products',compact('products','categories'));
+    }
+
+    public function addComment(){
         $this->comments()->create([
             'body'=>request('body'),
             'user_id'=>auth()->user()->id

@@ -28,6 +28,7 @@ Route::group(
 
         Route::get('/registration', 'RegistrationController@index')->name('registration.index');
         Route::post('/registration', 'RegistrationController@store')->name('registration.store');
+        Route::get('/registration/verify/{token}', 'RegistrationController@verify')->name('registration.verify');
 
         Route::get('/login', 'LoginController@index')->name('login');
         Route::post('/login', 'LoginController@create')->name('login.create');
@@ -35,12 +36,13 @@ Route::group(
 
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
-        Route::get('/product/type/{type}', 'ProductsController@filterByType')->name('product.type');
+        Route::get('/product/category/{category}', 'ProductsController@filterByType')->name('product.category');
+        Route::get('/product/favourite', 'ProductsController@filterByVisit')->name('product.favourite');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 
         Route::post('/rate/{id}','RatingController@store')->name('rating');
-        Route::post('/rate/delete','RatingController@delete')->name('rating.delete');//neni dorobene
+        Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');//neni dorobene
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');
@@ -58,9 +60,7 @@ Route::group(
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
         Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
         Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
-
-        Route::get('/language/{locale}', 'LanguageController@language')->name('language');
-    });
+});
 
 
 

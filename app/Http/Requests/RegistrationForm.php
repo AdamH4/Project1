@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Mail\welcome;
 use Illuminate\Foundation\Http\FormRequest;
 use App\User;
+use App\Notifications\Verify;
 
 class RegistrationForm extends FormRequest
 {
@@ -37,9 +37,10 @@ class RegistrationForm extends FormRequest
         $user= User::create([
             'name'=>request('name'),
             'email'=>request('email'),
-            'password'=>bcrypt(request('password'))
+            'password'=>bcrypt(request('password')),
+            'token'=> str_random(30),
         ]);
-        \Mail::to($user)->send(new welcome($user));
+
         \Auth::login($user);
     }
 }

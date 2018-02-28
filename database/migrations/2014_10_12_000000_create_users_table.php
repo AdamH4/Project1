@@ -18,15 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
 
-        App\User::create([
+        /*App\User::create([
             'name' => 'adam',
             'email' => 'adam@example.com',
             'password' => bcrypt('adamko'),
-       ]);
+       ]);*/
     }
 
     /**

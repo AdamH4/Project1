@@ -39,4 +39,12 @@ class RegistrationController extends Controller
         }
         return redirect('/registration');
     }
+
+    public function verify($token){
+        $user = User::where('verify',$token)->firstOrFail();
+        $user->update([
+            'token'=> null,
+        ]);
+        return redirect()->home();
+    }
 }

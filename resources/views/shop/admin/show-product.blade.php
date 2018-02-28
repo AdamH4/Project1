@@ -4,7 +4,7 @@
     <div class="alert alert-success">
         {{ session()->get('success_delete') }}
     </div>
-    @endif
+@endif
     <h3>{{ ucfirst($product->name) }}</h3>
     <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
     <p>{{ $product->text }}</p>

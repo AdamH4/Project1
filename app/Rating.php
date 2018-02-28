@@ -19,7 +19,7 @@ class Rating extends Model
     }
 
     public static function rateOnce($user_id,$product_id){
-        return static::selectRaw('user_id')
+        return static::selectRaw('id, user_id, product_id, rating')
             ->where([
                 ['user_id','=',$user_id],
                 ['product_id','=',$product_id],

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'name','type','text','picture','price','description','visit',
+        'name','category','text','picture','price','description','visit',
     ];
 
     public function comments(){
@@ -33,18 +33,30 @@ class Product extends Model
     }
 
     public static function typeofProducts(){
-
-        return static::selectRaw('type, count(*) howmany')
-            ->groupBy('type')
-            ->orderByRaw('(type)asc')
+        return static::selectRaw('category , count(*) howmany')
+            ->groupBy('category')
+            ->orderByRaw('category asc')
             ->get();
     }
 
-    public static function filterByType($type){
-
-        return static::selectRaw('id, name, type, picture')
-            ->where('type','LIKE', $type)
+    public static function filterByType($category){
+        return static::selectRaw('id, name, category, picture')
+            ->where('category','LIKE', $category)
             ->orderByRaw('name asc')
             ->paginate(10);
+    }
+
+    public static function filterByVisit(){
+        return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
+            ->orderByRaw('visit asc')
+            ->paginate(10);
+    }
+
+    public static function search($query){
+        return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
+            ->where('name', 'LIKE', '%' . $query . '%')
+            ->orwhere('category','LIKE','%'.$query.'%')
+            ->orderByRaw('name asc')
+            ->get();
     }
 }

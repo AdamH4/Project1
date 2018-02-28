@@ -29,7 +29,7 @@ class AdminController extends Controller
         // validate request()
         $this->validate(request(),[
             'name'=>'required',
-            'type'=>'required',
+            'category'=>'required',
             'description'=>'required',
             'text'=>'required',
             'price'=>'required',
@@ -44,7 +44,7 @@ class AdminController extends Controller
         //create row in table Product
         Product::create([
             'name'=>request('name'),
-            'type'=>request('type'),
+            'category'=>request('category'),
             'description'=>$desc,
             'text'=>request('text'),
             'picture'=>$filename,
@@ -56,12 +56,12 @@ class AdminController extends Controller
     }
 
     public function deleteUser(User $user){
-        try{$user->delete();
-        return redirect()->back();
+        try{
+            $user->delete();
+            return redirect()->back();
         }catch (\Exception $e){
             return redirect()->back()->withErrors('error'.$e->getMessage());
         }
-
     }
 
     public function products(){
@@ -70,7 +70,11 @@ class AdminController extends Controller
     }
 
     public function deleteProduct(Product $product){
-        try{$product->delete();
+        try{
+            $filename = $product->picture;
+            $product->ratings()->delete();
+            \File::delete(public_path('images/'.$filename));
+            $product->delete();
             return redirect()->back();
         }catch (\Exception $e){
             return redirect()->back()->withErrors('error'.$e->getMessage());

@@ -14,8 +14,8 @@
         {{ csrf_field() }}
             <label for="name">Name:</label>
             <input type="text" name="name" id="name">
-            <label for="type">Type:</label>
-            <input type="text" name="type" id="type">
+            <label for="category">Category:</label>
+            <input type="text" name="category" id="category">
             <label for="description">Description:</label>
             <textarea name="description" id="description" rows="10" cols="30"></textarea>
             <label for="text">Text:</label>

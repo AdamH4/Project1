@@ -9,7 +9,7 @@
             <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
             <h4>{{ ucfirst($product->name) }}</h4>
         </a>
-        <p>{{ ucfirst($product->type) }}</p>
+        <p>{{ ucfirst($product->category) }}</p>
         <form action="{{ route('admin.products.delete', $product->id) }}" method="POST">
             {{ csrf_field() }}
             <button type="submit" name="delete">

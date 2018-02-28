@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\UserResetPasswordNotification;
+use App\Notifications\Verify;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','token',
     ];
 
     /**
@@ -39,4 +40,15 @@ class User extends Authenticatable
         $this->notify(new UserResetPasswordNotification($token));
     }
 
+    public function verified(){
+        return $this->token == 0;
+    }
+
+    public function ratinges(){
+        return $this->hasMany(Rating::class);
+    }
+
+    public function verifyEmail(){
+        $this->notify(new Verify($this));
+    }
 }

@@ -5,7 +5,7 @@
             <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
             <p>{{ $product->name }}</p>
         </a>
-        {{  $product->type }}
+        {{  $product->category }}
         <hr>
     @endforeach
 @endsection

@@ -17,7 +17,7 @@
             <input type="number" id="quantity" name="quantity" value="1">
             <button type="submit">@lang('message.cart')</button>
         </form>
-     @else
+    @else
         <p><a href="{{route('login')}}">Prihlas sa</a> aby si nakupil !</p>
     @endif
     @if(! $rating == 0)
@@ -32,12 +32,13 @@
             <b>{{ $comment->user->name }} on </b>
             <b>{{ $comment->created_at }} :</b>
             {{ $comment->body }}
-        @if($comment->user_id == auth()->user()->id)
-                <form action="{{route('comment.delete',$comment->id)}}" method="POST">
-                    {{csrf_field()}}
-                    <button type="submit">X</button>
-                </form>
-            @endif
+    @if(! auth()->check())
+        @elseif($comment->user_id == auth()->user()->id)
+            <form action="{{route('comment.delete',$comment->id)}}" method="POST">
+                {{csrf_field()}}
+                <button type="submit">X</button>
+            </form>
+    @endif
         </li>
     @endforeach
 
@@ -68,10 +69,10 @@
             </div>
         @else
             <p>You already rated this product</p>
-            <!--<form action="{{ route('rating.delete')}}" method="POST">
+            <form action="{{ route('rating.delete',$product->id)}}" method="POST">
                 {{csrf_field()}}
                 <button type="submit" class="btn btn-danger">Reset my rating</button>
-            </form>-->
+            </form>
         @endif
     @endif
 @endsection
