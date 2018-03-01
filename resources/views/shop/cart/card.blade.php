@@ -17,15 +17,27 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <h5>You have to pay: {{$total}}</h5>
+                    <label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" required>
+                    <label for="second_name">Second name</label>
+                    <input type="text" id="second_name" name="second_name" class="form-control" required>
                     <input type="hidden"  id="name_on_card" name="name_on_card" value="{{auth()->user()->name}}" required>
-                    <label for="address">Address</label>
-                    <input type="text" id="address" class="form-control" required>
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" class="form-control" required>
+                    <label for="street">Street</label>
+                    <input type="text" id="street" name="street" class="form-control" required>
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="country" class="form-control" required>
+                    <label for="second_address">Delivery address</label>
+                    <input type="text" id="second_address" name="second_address" class="form-control" required>
                     <label for="postcode">Postcode</label>
-                    <input type="text" id="postcode" class="form-control" required>
+                    <input type="text" id="postcode" name="postcode" class="form-control" required>
+                    <label for="phone_number">Phone number</label>
+                    <input type="number" name="phone_number" id="phone_number" class="form-control" required>
                     <label for="card-element">Card information</label>
                     <div id="card-element">
                     </div>
-                    <div id="card-errors" role="alert"></div>
+                    <div id="card-errors" ></div>
                     <button type="submit" class="btn btn-outline-success" id="payment">Submit Payment</button>
                 </div>
             </form>
@@ -35,10 +47,8 @@
 
         <script>// Create a Stripe client.
         var stripe = Stripe('{{config('services.stripe.key')}}');
-
         // Create an instance of Elements.
         var elements = stripe.elements();
-
         // Custom styling can be passed to options when creating an Element.
         // (Note that this demo uses a wider set of styles than the guide below.)
         var style = {

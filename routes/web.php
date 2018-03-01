@@ -42,7 +42,7 @@ Route::group(
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 
         Route::post('/rate/{id}','RatingController@store')->name('rating');
-        Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');//neni dorobene
+        Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');

@@ -110,7 +110,7 @@ class CartController extends Controller
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);
-        \Mail::to(auth()->user())->send(new Order());
+        //\Mail::to(auth()->user())->send(new Order());
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
         $cart->instance($userId)->destroy();

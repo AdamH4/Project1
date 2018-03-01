@@ -7,9 +7,9 @@
             <img src="{{ asset('images/'. $product->options->picture) }}" height="100" width="100">
             <p>
                 {{$product->name}}
-                {{$product->price}}
             </p>
         </a>
+        <p>{{$product->price}}</p>
         <form action="{{route('cart.minus',$product->rowId)}}" method="POST">
             {{csrf_field()}}
             <button type="submit">-</button>
@@ -25,7 +25,8 @@
         </form>
     @endforeach
     @if(! $products->isEmpty())
-    <form action="{{route('cart.select.payment',$total)}}" method="POST">
+        {{$total}}
+        <form action="{{route('cart.select.payment',$total)}}" method="POST">
         {{csrf_field()}}
         <button type="submit" class="btn btn-success">Next</button>
     </form>
