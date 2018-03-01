@@ -41,10 +41,10 @@ class User extends Authenticatable
     }
 
     public static function verified($id){
-        return static::selectRaw('id, name')
+        return static::selectRaw('id, name, token')
             ->where([
                 ['id','=',$id],
-                ['token','=',0]
+                ['token','=',null]
             ])
             ->get();
     }

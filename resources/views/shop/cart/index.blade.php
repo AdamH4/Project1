@@ -25,11 +25,19 @@
         </form>
     @endforeach
     @if(! $products->isEmpty())
+        <form action="{{route('cart.delete.all')}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit" class="btn btn-outline-danger">Delete all</button>
+        </form>
         {{$total}}
+        @if(! $u->isEmpty())
         <form action="{{route('cart.select.payment',$total)}}" method="POST">
         {{csrf_field()}}
         <button type="submit" class="btn btn-success">Next</button>
-    </form>
+        </form>
+        @else
+            <p>Please verify your email</p>
+        @endif
     @else
         <p>Nothing in cart go to a <a href="{{route('products')}}">shop</a></p>
     @endif

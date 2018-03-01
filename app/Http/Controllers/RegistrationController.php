@@ -40,10 +40,12 @@ class RegistrationController extends Controller
     }
 
     public function verify($token){
-        $user = User::where('verify',$token)->firstOrFail();
+        dd($token);
+        $user = User::where('token',$token)->firstOrFail();
+        dd($user);
         $user->update([
-            'token'=> 0,
+            'token'=> null,
         ]);
-        return redirect()->home();
+        return redirect()->home()->with('success_verify','You have successfully verified your email! ');
     }
 }

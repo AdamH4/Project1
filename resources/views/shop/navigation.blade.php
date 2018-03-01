@@ -1,21 +1,14 @@
-
-
-
 @if(auth()->check())
-    <a href="{{route('change.password')}}">
-        {{ ucfirst(\Auth::user()->name) }}
+    <form action="{{route('user.change')}}" method="POST">
+        {{csrf_field()}}
+        <button type="submit" class="btn-link">{{ ucfirst(\Auth::user()->name) }}</button>
+    </form>
+@endif
+@if(auth()->check())
+    <a href="{{ route('logout') }}">
+        Logout
     </a>
 @endif
-
-
-@if(auth()->check())
-
-        <a href="{{ route('logout') }}">
-            Logout
-        </a>
-
-@endif
-
 <div class="dashboard-tab">
     <form class="container" action="{{ route('search') }}" method="GET">
             <div class="input-group">
@@ -30,7 +23,6 @@
             </div>
     </form>
 </div>
-
 <ul>
     @foreach(\LaravelLocalization::getSupportedLocales() as $locale => $properties)
         <li>

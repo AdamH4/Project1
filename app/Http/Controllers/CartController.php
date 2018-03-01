@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Order;
 use App\Product;
+use App\User;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Cart;
@@ -28,11 +29,15 @@ class CartController extends Controller
     }
 
     public function index(){
-        $userId = auth()->user()->id;
-        $cart = app(Cart::class);
-        $products = $cart->instance($userId)->content();
-        $total = $cart->instance($userId)->subtotal();
-        return view('shop.cart.index',compact('products','total'));
+        if (auth()->check()){
+            $userId = auth()->user()->id;
+            $user = new User();
+            $u = $user->verified($userId);
+            $cart = app(Cart::class);
+            $products = $cart->instance($userId)->content();
+            $total = $cart->instance($userId)->subtotal();
+        }
+        return view('shop.cart.index',compact('products','total','u'));
     }
 
     public function deleteAll(){
@@ -105,8 +110,12 @@ class CartController extends Controller
 
     public function cashOnDeliveryCheckout($total){
         $this->validate(request(),[
-           'name'=>'required',
+           'first_name'=>'required',
+           'second_name'=>'required',
+           'city'=>'required',
+           'street'=>'required',
            'address'=>'required',
+           'second_address'=>'required',
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);

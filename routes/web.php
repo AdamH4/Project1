@@ -21,8 +21,8 @@ Route::group(
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
         Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
 
-        Route::get('/user/change', 'UserController@index');
-        Route::post('/user/change', 'UserController@reset')->name('change.password');
+        Route::post('/user/change', 'UserController@index')->name('user.change');
+        Route::post('/user/change/password', 'UserController@reset')->name('user.change.password');
 
         Route::get('/search', 'HomeController@find')->name('search');
 
@@ -37,7 +37,7 @@ Route::group(
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
         Route::get('/product/category/{category}', 'ProductsController@filterByType')->name('product.category');
-        Route::get('/product/favourite', 'ProductsController@filterByVisit')->name('product.favourite');
+        Route::get('/product/favourite','ProductsController@filterByVisite')->name('product.byVisit');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 

@@ -19,7 +19,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="POST" action="{{ route('change.password') }}">
+                        <form class="form-horizontal" action="{{ route('user.change.password') }}" method="POST">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">

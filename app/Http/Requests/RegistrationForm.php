@@ -38,7 +38,7 @@ class RegistrationForm extends FormRequest
             'name'=>request('name'),
             'email'=>request('email'),
             'password'=>bcrypt(request('password')),
-            'token'=> str_random(30),
+            'token'=> str_random(40),
         ]);
         //$user->notify(new Verify($user));
         \Auth::login($user);
