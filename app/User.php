@@ -40,15 +40,16 @@ class User extends Authenticatable
         $this->notify(new UserResetPasswordNotification($token));
     }
 
-    public function verified(){
-        return $this->token == 0;
+    public static function verified($id){
+        return static::selectRaw('id, name')
+            ->where([
+                ['id','=',$id],
+                ['token','=',0]
+            ])
+            ->get();
     }
 
-    public function ratinges(){
+    public function ratings(){
         return $this->hasMany(Rating::class);
-    }
-
-    public function verifyEmail(){
-        $this->notify(new Verify($this));
     }
 }

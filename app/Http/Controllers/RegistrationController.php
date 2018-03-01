@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationForm;
-use Illuminate\Http\Request;
 use App\User;
 use GuzzleHttp\Client;
 
@@ -43,7 +42,7 @@ class RegistrationController extends Controller
     public function verify($token){
         $user = User::where('verify',$token)->firstOrFail();
         $user->update([
-            'token'=> null,
+            'token'=> 0,
         ]);
         return redirect()->home();
     }
