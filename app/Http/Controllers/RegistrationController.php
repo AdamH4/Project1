@@ -9,11 +9,10 @@ use GuzzleHttp\Client;
 class RegistrationController extends Controller
 {
     public function __construct(){
-        $this->middleware('guest');
+        $this->middleware('guest')->except('verify');
     }
 
     public function index(){
-
         return view('shop.registration.create');
     }
 
@@ -40,9 +39,7 @@ class RegistrationController extends Controller
     }
 
     public function verify($token){
-        dd($token);
         $user = User::where('token',$token)->firstOrFail();
-        dd($user);
         $user->update([
             'token'=> null,
         ]);
