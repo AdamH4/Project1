@@ -1,36 +1,52 @@
-@if(auth()->check())
-    <form action="{{route('user.change')}}" method="POST">
-        {{csrf_field()}}
-        <button type="submit" class="btn-link">{{ ucfirst(\Auth::user()->name) }}</button>
-    </form>
-@endif
-@if(auth()->check())
-    <a href="{{ route('logout') }}">
-        Logout
-    </a>
-@endif
-<div class="dashboard-tab">
-    <form class="container" action="{{ route('search') }}" method="GET">
-            <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="bla bla in here...">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-success">
-                        <span class="glyphicon glyphicon-search">
-                            @lang('message.find')
-                        </span>
-                        </button>
-                    </span>
-            </div>
-    </form>
-</div>
-<ul>
+<div class="container">
+<nav class="navbar navbar-expand-sm">
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('home')}}">Home</a>
+    </li>
+    @if(auth()->check())
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('user.change')}}">{{ ucfirst(\Auth::user()->name) }}</a>
+        </li>
+    @endif
+    @if(auth()->check())
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+        </li>
+    @endif
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('contacts')}}">Contact</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('products')}}">Products</a>
+    </li>
+    @if(! auth()->check())
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('login')}}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('registration.index')}}">Registration</a>
+        </li>
+    @endif
+    <li class="nav-item">
+        <nav class="navbar navbar-expand-sm">
+            <form class="form-inline" action="{{route('search')}}" method="GET">
+                <input class="form-control" type="text" placeholder="Search">
+                <button class="btn btn-success" type="submit">@lang('message.find')</button>
+            </form>
+        </nav>
+    </li>
     @foreach(\LaravelLocalization::getSupportedLocales() as $locale => $properties)
-        <li>
-            <a rel="alternate" hreflang="{{ $locale }}" href="{{ \LaravelLocalization::getLocalizedURL($locale, null, [], true) }}">
+        <li class="nav-item">
+            <a class="nav-link" rel="alternate" hreflang="{{ $locale }}" href="{{ \LaravelLocalization::getLocalizedURL($locale, null, [], true) }}">
                 {{ $properties['name'] }}
             </a>
         </li>
     @endforeach
 </ul>
+</nav>
+</div>
+
+
 
 

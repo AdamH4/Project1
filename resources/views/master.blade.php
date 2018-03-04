@@ -8,9 +8,9 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://js.stripe.com/v3/"></script>
     </head>
-    <body>
+    <body id="body">
             @include('shop.navigation')
-            <div class="container">
+            <div class="container" id="body">
                 @yield('body')
             </div>
             @include('shop.footer')

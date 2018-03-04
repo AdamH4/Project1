@@ -14,6 +14,8 @@
     <br>
     <hr>
     @foreach($products as $product)
+    <div class="row">
+        <div class="col-sm-2">
         <a href="{{route('product.show' ,$product->id) }}">
             <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
             <h4>{{ ucfirst($product->name) }}</h4>
@@ -21,7 +23,8 @@
         <a href="{{ route('product.category', $product->category) }}">
             <p>{{ ucfirst($product->category) }}</p>
         </a>
-        <hr>
+        </div>
+    </div>
     @endforeach
     {{ $products->links() }}
 @endsection()

@@ -1,7 +1,7 @@
 /**
-           * The CSS shown here will not be introduced in the Quickstart guide, but shows
-           * how you can use CSS to style your Element's container.
-           */
+* The CSS shown here will not be introduced in the Quickstart guide, but shows
+* how you can use CSS to style your Element's container.
+*/
 
 .StripeElement {
   background-color: white;
@@ -35,7 +35,7 @@
   color: #fa755a;
 }
 
-body {
-  color: #74787E;
+#body {
+  background-color: #D3D3D3;
 }
 

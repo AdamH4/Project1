@@ -11,6 +11,7 @@ Route::group(
         Route::get('contacts','Homecontroller@contacts')->name('contacts');
 
         Route::get('/admin/users', 'AdminController@index')->name('admin.users');
+        Route::post('/admin/user/transactions/{user}','AdminController@transactions')->name('admin.user.transactions');
         Route::post('/admin/promote/{user}', 'AdminController@promote')->name('admin.promote');
         Route::post('/admin/demote/{user}', 'AdminController@demote')->name('admin.demote');
         Route::post('/admin/user/delete/{user}', 'AdminController@deleteUser')->name('admin.users.delete');
@@ -21,7 +22,7 @@ Route::group(
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
         Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
 
-        Route::post('/user/change', 'UserController@index')->name('user.change');
+        Route::get('/user/change', 'UserController@index')->name('user.change');
         Route::post('/user/change/password', 'UserController@reset')->name('user.change.password');
 
         Route::get('/search', 'HomeController@find')->name('search');
@@ -37,7 +38,7 @@ Route::group(
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
         Route::get('/product/category/{category}', 'ProductsController@filterByType')->name('product.category');
-        Route::get('/product/favourite','ProductsController@filterByVisite')->name('product.byVisit');
+        Route::get('/product/favourite','ProductsController@filterByVisit')->name('product.byVisit');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 

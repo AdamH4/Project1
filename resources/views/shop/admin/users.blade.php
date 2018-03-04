@@ -15,9 +15,10 @@
     </p>
     @foreach($users as $user)
         <hr>
-        <li>
-            {{ $user->name }}
-        </li>
+        <form action="{{route('admin.user.transactions',$user)}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit" class="btn btn-link">{{$user->name}}</button>
+        </form>
         {{ $user->created_at }}
         <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
             {{ csrf_field() }}

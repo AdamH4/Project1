@@ -96,11 +96,15 @@ class AdminController extends Controller
 
     public function promote(User $user){
         \DB::table('admins')->insert(['id'=>$user->id]);
-        return back()->with('success_upgrade','User succesfully promoted');
+        return back()->with('success_upgrade','User successfully promoted');
     }
 
     public function demote(User $user){
         \DB::table('admins')->where('id','=',$user->id)->delete();
         return back()->with('success_demote','Admin successfully demoted');
+    }
+
+    public function transactions(User $user){
+
     }
 }
