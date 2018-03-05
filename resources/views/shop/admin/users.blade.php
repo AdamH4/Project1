@@ -1,12 +1,12 @@
 @extends('master')
 @section('body')
     @if(session()->has('success_upgrade'))
-        <div class="alert-success">
+        <div class="alert alert-success">
             {{session()->get('success_upgrade')}}
         </div>
     @endif
     @if(session()->has('success_demote'))
-        <div class="alert-success">
+        <div class="alert alert-danger">
             {{session()->get('success_demote')}}
         </div>
     @endif
@@ -29,7 +29,7 @@
             <p>User</p>
             <form action="{{route('admin.promote',$user->id)}}" method="POST">
                 {{csrf_field()}}
-                <button type="submit" class="btn-success">Make Admin</button>
+                <button type="submit" class="btn-success">Promote</button>
             </form>
         @else
         <p>Admin</p>

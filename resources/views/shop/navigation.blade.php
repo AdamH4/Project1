@@ -1,25 +1,29 @@
-<div id="navbar">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container">
-    <ul class="navbar-nav">
+        <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="{{route('home')}}">Home</a>
         </li>
         @if(auth()->check())
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('user.change')}}">{{ucfirst(auth()->user()->name)}}</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
+                    {{ucfirst(auth()->user()->name)}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown">
+                    <a class="dropdown-item" href="{{route('user.change')}}">Change password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-link" href="{{route('logout')}}">Logout</a>
+                </div>
             </li>
         @else
             <li class="nav-item">
-                <a class="nav-link" href="{{route('registration.index')}}">Registration</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('registration.index')}}">Registration</a>
+            </li>
         @endif
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('logout')}}">Logout</a>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{route('products')}}">Products</a>
         </li>
@@ -40,11 +44,12 @@
                     {{ $properties['name'] }}
                 </a>
             </li>
-        @endforeach
-    </ul>
+    @endforeach
+        </ul>
     </div>
 </nav>
-</div>
+
+
 
 
 

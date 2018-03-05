@@ -6,7 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\UserResetPasswordNotification;
-use App\Notifications\Verify;
 
 class User extends Authenticatable
 {
@@ -35,12 +34,13 @@ class User extends Authenticatable
         return !is_null(DB::table('admins')->find($this->id));
     }
 
-    public function transactions(){
-        return $this->hasMany(Transaction::class);
-    }
-
-    public function orders(){
-        return $this->hasManyThrough(\DB::table('transaction_products'), \DB::table('transactions'));
+    public function transactions($id){
+        return \DB::table('transactions')
+            ->where('transactions.id','=',$id)
+            ->join('transaction_products','transactions.id','=','transaction_products.transaction_id')
+            ->join('products','transaction_products.product_id','=','products.id')
+            ->selectRaw('transaction_products.product_id, transaction_products.quantity , transactions.user_id, products.name, products.picture, products.price, products.category')
+            ->get();
     }
 
     public function ratings(){

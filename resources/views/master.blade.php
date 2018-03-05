@@ -9,7 +9,9 @@
         <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body id="main-body">
-            @include('shop.navigation')
+            <div class="container" id="navigation-bar">
+                @include('shop.navigation')
+            </div>
             <div class="container" id="body">
                 @yield('body')
             </div>

@@ -6,6 +6,7 @@ use App\Comment;
 use App\Product;
 use App\User;
 use Intervention\Image\ImageManagerStatic as Image;
+use Gloudemans\Shoppingcart\Cart;
 
 class AdminController extends Controller
 {
@@ -106,7 +107,7 @@ class AdminController extends Controller
     }
 
     public function transactions(User $user){
-        $transactions = $user->transactions();
-        return view('shop.admin.user.transactions',compact('transactions'));
+        $transactions = $u->transactions($user->id);
+        return view('shop.admin.user-transactions',compact('transactions','total'));
     }
 }
