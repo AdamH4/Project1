@@ -38,7 +38,7 @@ Route::group(
         Route::get('/products', 'ProductsController@index')->name('products');
         Route::get('/product/{product}', 'ProductsController@show')->name('product.show');
         Route::get('/product/category/{category}', 'ProductsController@filterByType')->name('product.category');
-        Route::get('/product/favourite','ProductsController@filterByVisit')->name('product.byVisit');
+        Route::get('/products/favourite', 'ProductsController@filterByVisit')->name('product.favourite');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
 
@@ -52,7 +52,7 @@ Route::group(
         Route::post('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
         Route::post('/cart/quantity/plus/{id}', 'CartController@plus')->name('cart.plus');
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
-        Route::post('/cart/payment/{total}', 'CartController@card')->name('cart.card');
+        Route::post('/cart/card/payment/{total}', 'CartController@card')->name('cart.card');
         Route::post('/checkout', 'CartController@checkout')->name('cart.checkout');
         Route::post('/cart/dobierka/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
         Route::post('/cart/checkout/dobierka/{total}', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');

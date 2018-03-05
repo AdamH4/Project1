@@ -11,6 +11,18 @@ use Gloudemans\Shoppingcart\Cart;
 
 class CartController extends Controller
 {
+    public function index(){
+        if (auth()->check()){
+            $userId = auth()->user()->id;
+            $user = new User();
+            $u = $user->verified($userId);
+            $cart = app(Cart::class);
+            $products = $cart->instance($userId)->content();
+            $total = $cart->instance($userId)->subtotal();
+        }
+        return view('shop.cart.index',compact('products','total','u'));
+    }
+
     public function store($id){
         $quantity = request('quantity');
         $userId= auth()->user()->id;
@@ -28,17 +40,6 @@ class CartController extends Controller
         return back();
     }
 
-    public function index(){
-        if (auth()->check()){
-            $userId = auth()->user()->id;
-            $user = new User();
-            $u = $user->verified($userId);
-            $cart = app(Cart::class);
-            $products = $cart->instance($userId)->content();
-            $total = $cart->instance($userId)->subtotal();
-        }
-        return view('shop.cart.index',compact('products','total','u'));
-    }
 
     public function deleteAll(){
         $userId = auth()->user()->id;
@@ -71,7 +72,6 @@ class CartController extends Controller
     }
 
     public function card($total){
-
         return view('shop.cart.card',compact('total'));
     }
 
@@ -80,24 +80,24 @@ class CartController extends Controller
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();
         $r = request()->all();
-                try {
-                    Stripe::charges()->create([
-                        'amount' => $total,
-                        'currency' => 'EUR',
-                        'source' => $r['stripeToken'],
-                        'description' => 'Description goes here',
-                        'receipt_email' => 'adam.harnusek@gmail.com',
-                        'metadata' => [
-                            'data1' => 'metadata 1',
-                            'data2' => 'metadata 2',
-                            'data3' => 'metadata 3',
-                        ],
-                    ]);
-                    $cart->instance($userId)->destroy();
-                    return view('shop.cart.success', compact('total'));
-                } catch(CardErrorException $e){
-                    return view('shop.cart.unsuccess')->with('error','Something went wrong try again');
-                }
+            try {
+            Stripe::charges()->create([
+                'amount' => $total,
+                'currency' => 'EUR',
+                'source' => $r['stripeToken'],
+                'description' => 'Description goes here',
+                'receipt_email' => 'adam.harnusek@gmail.com',
+                'metadata' => [
+                    'data1' => 'metadata 1',
+                    'data2' => 'metadata 2',
+                    'data3' => 'metadata 3',
+                ],
+            ]);
+            $cart->instance($userId)->destroy();
+            return view('shop.cart.success', compact('total'));
+            } catch(\CardErrorException $e){
+                return view('shop.cart.unsuccess')->with('error','Something went wrong try again');
+            }
     }
 
     public function selectPayment($total){

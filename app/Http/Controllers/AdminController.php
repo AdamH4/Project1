@@ -82,7 +82,8 @@ class AdminController extends Controller
     }
 
     public function show(Product $product){
-        return view('shop.admin.show-product', compact('product') );
+        $rate = $product->ratings()->avg('rating');
+        return view('shop.admin.show-product', compact('product','rate') );
     }
 
     public function delete(Comment $id){
@@ -105,6 +106,7 @@ class AdminController extends Controller
     }
 
     public function transactions(User $user){
-
+        $transactions = $user->transactions();
+        return view('shop.admin.user.transactions',compact('transactions'));
     }
 }

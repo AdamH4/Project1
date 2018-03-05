@@ -8,8 +8,8 @@
             <p>{{ ucfirst($category->category) }}</p>
         </a>
     @endforeach
-    <a href="{{route('product.byVisit')}}">
-        <p>Visiting</p>
+    <a href="{{route('product.favourite')}}">
+        <p>Visit</p>
     </a>
     <br>
     <hr>

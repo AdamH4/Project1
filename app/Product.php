@@ -48,7 +48,7 @@ class Product extends Model
 
     public static function filterByVisit(){
         return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
-            ->orderByRaw('visit asc')
+            ->orderByRaw('visit desc')
             ->paginate(10);
     }
 

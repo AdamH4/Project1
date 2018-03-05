@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','token',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -27,12 +27,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'token',
     ];
 
     public function isAdmin()
     {
         return !is_null(DB::table('admins')->find($this->id));
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function orders(){
+        return $this->hasManyThrough(\DB::table('transaction_products'), \DB::table('transactions'));
+    }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class);
     }
 
     public function sendPasswordResetNotification($token)
@@ -49,11 +61,4 @@ class User extends Authenticatable
             ->get();
     }
 
-    public function ratings(){
-        return $this->hasMany(Rating::class);
-    }
-
-    public function transactions(){
-        return $this->hasMany(Transaction::class);
-    }
 }

@@ -8,7 +8,7 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="https://js.stripe.com/v3/"></script>
     </head>
-    <body id="body">
+    <body id="main-body">
             @include('shop.navigation')
             <div class="container" id="body">
                 @yield('body')
