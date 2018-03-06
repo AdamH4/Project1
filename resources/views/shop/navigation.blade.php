@@ -23,9 +23,11 @@
                 <a class="nav-link" href="{{route('registration.index')}}">Registration</a>
             </li>
         @endif
-
         <li class="nav-item">
             <a class="nav-link" href="{{route('products')}}">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('cart')}}">Cart</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('contacts')}}">Contacts</a>

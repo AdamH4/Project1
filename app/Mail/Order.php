@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class reset extends Mailable
+class Order extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,11 @@ class reset extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $cart;
+
+    public function __construct($cart)
     {
-        //
+        $this->cart = $cart;
     }
 
     /**
@@ -28,6 +30,6 @@ class reset extends Mailable
      */
     public function build()
     {
-        return $this->markdown('shop.emails.reset');
+        return $this->markdown('shop.emails.order');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CardOrder;
 use App\Mail\Order;
 use App\Product;
 use App\User;
@@ -77,6 +78,7 @@ class CartController extends Controller
 
     public function checkout(){
         $userId = auth()->user()->id;
+        $user = auth()->user();
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();
         $r = request()->all();
@@ -93,6 +95,7 @@ class CartController extends Controller
                     'data3' => 'metadata 3',
                 ],
             ]);
+            \Mail::to($user)->send(new CardOrder($cart));
             $cart->instance($userId)->destroy();
             return view('shop.cart.success', compact('total'));
             } catch(\CardErrorException $e){
@@ -119,9 +122,9 @@ class CartController extends Controller
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);
-        //\Mail::to(auth()->user())->send(new Order());
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
+        \Mail::to(auth()->user())->send(new Order($cart));
         $cart->instance($userId)->destroy();
         return view('shop.cart.success',compact('total'));
     }

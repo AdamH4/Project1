@@ -17,8 +17,8 @@ class Verify extends Notification
      *
      * @return void
      */
-
     protected $user;
+
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -44,7 +44,7 @@ class Verify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Please verify your account')
+                    ->line('Welcome in our application please verify your email address')
                     ->action('Verify account', route('registration.verify',$this->user->token))
                     ->line('Thank you for using our application!');
     }
