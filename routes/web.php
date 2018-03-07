@@ -52,10 +52,10 @@ Route::group(
         Route::post('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
         Route::post('/cart/quantity/plus/{id}', 'CartController@plus')->name('cart.plus');
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
-        Route::post('/cart/card/payment/{total}', 'CartController@card')->name('cart.card');
-        Route::post('/checkout', 'CartController@checkout')->name('cart.checkout');
+        Route::post('/cart/card/{total}', 'CartController@card')->name('cart.card');
+        Route::post('/checkout/card', 'CartController@checkout')->name('card.checkout');
         Route::post('/cart/dobierka/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
-        Route::post('/cart/checkout/dobierka/{total}', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
+        Route::post('/checkout/dobierka', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
 
         Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

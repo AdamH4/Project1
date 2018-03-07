@@ -15,6 +15,9 @@
                     <a class="nav-link" href="{{route('logout')}}">Logout</a>
                 </div>
             </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('cart')}}">Cart</a>
+                </li>
         @else
             <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">Login</a>
@@ -25,9 +28,6 @@
         @endif
         <li class="nav-item">
             <a class="nav-link" href="{{route('products')}}">Products</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('cart')}}">Cart</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('contacts')}}">Contacts</a>

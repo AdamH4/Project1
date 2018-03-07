@@ -51,6 +51,20 @@
             </form>
         @endif
     @endif
+    @foreach($product->comments as $comment)
+        <li class="list-group-item">
+            <b>{{ $comment->user->name }} on </b>
+            <b>{{ $comment->created_at }} :</b>
+            {{ $comment->body }}
+            @if(! auth()->check())
+            @elseif($comment->user_id == auth()->user()->id)
+                <form action="{{route('comment.delete',$comment->id)}}" method="POST">
+                    {{csrf_field()}}
+                    <button type="submit">X</button>
+                </form>
+            @endif
+        </li>
+    @endforeach
     <div class="card=block">
         <form method="POST" action="{{route('comment.create', $product->id)}}">
             {{ csrf_field() }}
@@ -60,20 +74,4 @@
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
-    @foreach($product->comments as $comment)
-        <li class="list-group-item">
-            <b>{{ $comment->user->name }} on </b>
-            <b>{{ $comment->created_at }} :</b>
-            {{ $comment->body }}
-    @if(! auth()->check())
-        @elseif($comment->user_id == auth()->user()->id)
-            <form action="{{route('comment.delete',$comment->id)}}" method="POST">
-                {{csrf_field()}}
-                <button type="submit">X</button>
-            </form>
-    @endif
-        </li>
-    @endforeach
-
-
 @endsection

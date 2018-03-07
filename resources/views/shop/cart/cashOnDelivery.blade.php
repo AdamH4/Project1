@@ -1,7 +1,7 @@
 @extends('master')
 @section('body')
     <h2>Your order {{$total}}</h2>
-    <form action="{{route('cart.dobierka.checkout',$total)}}" method="POST">
+    <form action="{{route('cart.dobierka.checkout')}}" method="POST">
     {{csrf_field()}}
     <div class="form-group">
         <label for="first_name">First name</label>
@@ -20,7 +20,7 @@
         <label for="postcode">Postcode</label>
         <input type="text" id="postcode" name="postcode" class="form-control" required>
         <label for="phone_number">Phone number</label>
-        <input type="number" name="phone_number" id="phone_number" class="form-control" required>
+        <input type="text" name="phone_number" id="phone_number" class="form-control" required>
         <button type="submit" class="btn btn-outline-success" id="payment">Submit Payment</button>
     </div>
     </form>

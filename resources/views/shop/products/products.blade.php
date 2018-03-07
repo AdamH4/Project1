@@ -9,7 +9,7 @@
         </a>
     @endforeach
     <a href="{{route('product.favourite')}}">
-        <p>Visit</p>
+        <p>Most viewed products</p>
     </a>
     <br>
     <hr>

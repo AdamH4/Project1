@@ -34,15 +34,6 @@ class User extends Authenticatable
         return !is_null(DB::table('admins')->find($this->id));
     }
 
-    public function transactions($id){
-        return \DB::table('transactions')
-            ->where('transactions.id','=',$id)
-            ->join('transaction_products','transactions.id','=','transaction_products.transaction_id')
-            ->join('products','transaction_products.product_id','=','products.id')
-            ->selectRaw('transaction_products.product_id, transaction_products.quantity , transactions.user_id, products.name, products.picture, products.price, products.category')
-            ->get();
-    }
-
     public function ratings(){
         return $this->hasMany(Rating::class);
     }
@@ -60,5 +51,16 @@ class User extends Authenticatable
             ])
             ->get();
     }
+
+    public function transactions($id){
+        return \DB::table('transactions')
+            ->selectRaw('products.picture as picture, products.name as name, transaction_products.quantity as quantity, products.category as category, transactions.id as transactionid')
+            ->where('user_id','=',$id)
+            ->join('transaction_products','transactions.id','=','transaction_products.transaction_id')
+            ->join('products','transaction_products.product_id','=','products.id')
+            ->groupBy('transactionid')
+            ->get();
+    }
+
 
 }

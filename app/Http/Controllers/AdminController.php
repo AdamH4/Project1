@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Product;
+use App\Transaction;
 use App\User;
 use Intervention\Image\ImageManagerStatic as Image;
 use Gloudemans\Shoppingcart\Cart;
@@ -107,7 +108,7 @@ class AdminController extends Controller
     }
 
     public function transactions(User $user){
-        $transactions = $u->transactions($user->id);
-        return view('shop.admin.user-transactions',compact('transactions','total'));
+        $transactions = $user->transactions($user->id);
+        return view('shop.admin.user-transactions',compact('transactions','user'));
     }
 }

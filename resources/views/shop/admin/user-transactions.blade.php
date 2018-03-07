@@ -1,11 +1,13 @@
 @extends('master')
 @section('body')
-    @foreach($transactions as $transaction)
-        <img src="{{ asset('images/'. $transaction->picture) }}" height="100" width="100">
-        <h4>{{$transaction->name}}</h4>
-        <p>{{$transaction->category}}</p>
-        <p>{{$transaction->quantity}}</p>
-        <p>{{$transaction->price * $transaction->quantity}}</p>
+    <h3>All {{$user->name}}'s transactions:</h3>
+    <hr>
+    @foreach($transactions as $product)
+        <img src="{{ asset('images/'. $product->picture) }}" height="50" width="50">
+        <h4>Product name: {{$product->name}}</h4>
+        <p>Category: {{$product->category}}</p>
+        <p>Quantity: {{$product->quantity}}</p>
+        <p>Transaction ID {{$product->transactionid}}</p>
+        <hr>
     @endforeach
-    <h5>{{$total}}</h5>
 @endsection

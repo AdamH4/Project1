@@ -12,6 +12,11 @@
             <div class="container" id="navigation-bar">
                 @include('shop.navigation')
             </div>
+            @if(session()->has('success_verify'))
+                <div class="alert alert-success">
+                    {{session()->get('success_verify')}}
+                </div>
+            @endif
             <div class="container" id="body">
                 @yield('body')
             </div>
