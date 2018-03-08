@@ -14,7 +14,7 @@ class HomeController extends Controller
             $user = new User();
             $u = $user->verified($id);
         }
-        return view('master',compact('u'));
+        return view('shop.index',compact('u'));
     }
 
     public function find(Request $request){

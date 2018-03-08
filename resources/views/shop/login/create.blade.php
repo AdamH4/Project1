@@ -1,11 +1,14 @@
 @extends('master')
 
 @section('body')
+    <div class="container col-4" id="login-form">
     @if(session()->has('unsuccess_message'))
         <div class="alert alert-danger">
         {{session()->get('unsuccess_message')}}
         </div>
     @endif
+    <h3>Prihlasenie</h3>
+    <hr>
     <form method="POST" action="{{ route('login.create') }}">
         {{ csrf_field() }}
         <div class="form-group">
@@ -16,16 +19,15 @@
             <label for="password">Your password:</label>
             <input class="form-control" type="password" name="password" id="password" required>
             <br>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-dark">Sign in</button>
         </div>
     </form>
     <form action="{{ route('password.request') }}" method="GET">
-        <button type="submit" class="btn btn-primary">Forgot my password</button>
+        <button type="submit" class="btn btn-dark">Forgot my password</button>
     </form>
     <form action="{{ route('registration.index') }}" method="GET">
-        <button type="submit" class="btn btn-primary">Go and register</button>
+        <button type="submit" class="btn btn-dark">Go and register</button>
     </form>
     @include('shop.errors.error')
-
-
+    </div>
 @endsection()

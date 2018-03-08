@@ -58,7 +58,6 @@ class User extends Authenticatable
             ->where('user_id','=',$id)
             ->join('transaction_products','transactions.id','=','transaction_products.transaction_id')
             ->join('products','transaction_products.product_id','=','products.id')
-            ->groupBy('transactionid')
             ->get();
     }
 

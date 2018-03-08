@@ -1,9 +1,9 @@
 @extends('master')
-
 @section('body')
-    <h5>{{$products->count()}} Vysledky</h5>
-    <br>
-    @foreach($products as $product)
+    <div class="container">
+        <h5>{{$products->count()}} Vysledky</h5>
+        <br>
+        @foreach($products as $product)
 
         <a href="{{route('admin.product.show' ,$product->id) }}">
             <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
@@ -17,6 +17,7 @@
             </button>
         </form>
         <hr>
-    @endforeach
-    {{ $products->links() }}
+        @endforeach
+        {{ $products->links() }}
+    </div>
 @endsection

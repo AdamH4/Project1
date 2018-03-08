@@ -38,9 +38,10 @@ class Product extends Model
 
     public static function typeofProducts(){
         return static::selectRaw('category , count(*) howmany')
-            ->groupBy('category')
             ->orderByRaw('category asc')
+            ->groupBy('category')
             ->get();
+
     }
 
     public static function filterByType($category){

@@ -1,13 +1,14 @@
 @extends('master')
 
 @section('body')
+<div class="container">
     @if(session()->has('success_delete'))
         <div class="alert alert-success">
             {{ session()->get('success_delete') }}
         </div>
     @endif
     <h3>{{ $product->name }}</h3>
-    <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
+    <img class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
     <p>{{ $product->text }}</p>
     <p>{{ $product->price  }} E</p>
     @if(auth()->check())
@@ -74,4 +75,6 @@
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
+</div>
+
 @endsection
