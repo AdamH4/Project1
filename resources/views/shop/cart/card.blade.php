@@ -12,7 +12,7 @@
                     {{ session()->get('error') }}
                 </div>
             @endif
-            <div class="col-md-7">
+            <div class="container col-6" id="card-payment">
                 <form action="{{route('card.checkout')}}" method="POST" id="payment-form">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -39,7 +39,7 @@
                     </div>
                     <div id="card-errors" role="alert"></div>
                     </div>
-                    <button>Submit Payment</button>
+                    <button class="btn btn-dark">Submit Payment</button>
                 </form>
             </div>
         </div>

@@ -8,7 +8,7 @@
   height: 40px;
   padding: 10px 12px;
   border-radius: 4px;
-  border: 1px solid transparent;
+  border: 1px solid #D3D3D3;
   -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
           box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
@@ -77,5 +77,13 @@
 
 #footer {
   bottom: 0;
+}
+
+#card-payment {
+  margin-top: 120px;
+}
+
+#cart-table {
+  margin-top: 120px;
 }
 

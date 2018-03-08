@@ -10,6 +10,7 @@ use App\User;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Cart;
+use function GuzzleHttp\Psr7\_parse_request_uri;
 
 class CartController extends Controller
 {
@@ -73,8 +74,15 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function selectPayment($total){
+        return view('shop.cart.select-payment',compact('total'));
+    }
+
     public function card($total){
-        return view('shop.cart.card',compact('total'));
+        $user = auth()->user();
+        $cart = app(Cart::class);
+        $products = $cart->instance($user->id)->content();
+        return view('shop.cart.card',compact('total','products'));
     }
 
     public function checkout(){
@@ -82,12 +90,12 @@ class CartController extends Controller
         $cart = app(Cart::class);
         $total = $cart->instance($user->id)->subtotal();
         $products = $cart->instance($user->id)->content();
-        $r = request()->all();
+        $information = request()->all();
         try {
             Stripe::charges()->create([
                 'amount' => $total,
                 'currency' => 'EUR',
-                'source' => $r['stripeToken'],
+                'source' => $information['stripeToken'],
                 'description' => 'Description goes here',
                 'receipt_email' => 'adam.harnusek@gmail.com',
                 'metadata' => [
@@ -96,7 +104,7 @@ class CartController extends Controller
                     'data3' => 'metadata 3',
                 ],
             ]);
-            //\Mail::to($user)->send(new CardOrder($products));
+            \Mail::to($user)->send(new CardOrder($products,$r));
             $transaction = new Transaction();
             $transaction->addProduct($products, $user->id, $total,'card');
             $cart->instance($user->id)->destroy();
@@ -106,12 +114,11 @@ class CartController extends Controller
             }
     }
 
-    public function selectPayment($total){
-        return view('shop.cart.select-payment',compact('total'));
-    }
-
     public function cashOnDelivery($total){
-        return view('shop.cart.cashOnDelivery',compact('total'));
+        $user = auth()->user();
+        $cart = app(Cart::class);
+        $products = $cart->instance($user->id)->content();
+        return view('shop.cart.cashOnDelivery',compact('total','products'));
     }
 
     public function cashOnDeliveryCheckout(){
@@ -125,11 +132,12 @@ class CartController extends Controller
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);*/
+        $information = request()->all;
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();
         $products = $cart->instance($userId)->content();
-        //\Mail::to(auth()->user())->send(new Order($products));
+        \Mail::to(auth()->user())->send(new Order($products,$information));
         $transaction = new Transaction();
         $transaction->addProduct($products, $userId, $total,'payondelivery');
         $cart->instance($userId)->destroy();

@@ -1,5 +1,6 @@
 @extends('master')
 @section('body')
+    <div class="container col-4">
     <h2>Your order {{$total}}</h2>
     <form action="{{route('cart.dobierka.checkout')}}" method="POST">
     {{csrf_field()}}
@@ -13,15 +14,16 @@
         <input type="text" id="city" name="city" class="form-control" required>
         <label for="street">Street</label>
         <input type="text" id="street" name="street" class="form-control" required>
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country" class="form-control" required>
-        <label for="second_address">Delivery address</label>
-        <input type="text" id="second_address" name="second_address" class="form-control" required>
         <label for="postcode">Postcode</label>
         <input type="text" id="postcode" name="postcode" class="form-control" required>
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" class="form-control" required>
         <label for="phone_number">Phone number</label>
         <input type="text" name="phone_number" id="phone_number" class="form-control" required>
-        <button type="submit" class="btn btn-outline-success" id="payment">Submit Payment</button>
+        <br>
+        <button type="submit" class="btn btn-dark" id="payment">Submit Payment</button>
     </div>
     </form>
+
+    </div>
 @endsection
