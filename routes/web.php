@@ -21,6 +21,7 @@ Route::group(
         Route::get('/admin/create', 'AdminController@createProduct')->name('admin.product.create');
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
         Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
+        Route::post('/admin/user/transaction/complete/{id}','AdminController@completeTransaction')->name('admin.transaction.complete');
 
         Route::get('/user/change', 'UserController@index')->name('user.change');
         Route::post('/user/change/password', 'UserController@reset')->name('user.change.password');

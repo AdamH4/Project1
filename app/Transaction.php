@@ -37,6 +37,7 @@ class Transaction extends Model
             'user_id'=>$userId,
             'total'=>$total,
             'payment_type'=>$payment,
+            'status'=>0,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);

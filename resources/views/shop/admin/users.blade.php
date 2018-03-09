@@ -1,5 +1,11 @@
 @extends('master')
 @section('body')
+    <div class="container col-7">
+        @if(session()->has('transaction_success'))
+            <div class="alert alert-success">
+                {{session()->get('transaction_success')}}
+            </div>
+        @endif
     @if(session()->has('success_upgrade'))
         <div class="alert alert-success">
             {{session()->get('success_upgrade')}}
@@ -40,4 +46,5 @@
         @endif
     @endforeach
     <hr>
+    </div>
 @endsection

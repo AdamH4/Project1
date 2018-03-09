@@ -104,7 +104,7 @@ class CartController extends Controller
                     'data3' => 'metadata 3',
                 ],
             ]);
-            \Mail::to($user)->send(new CardOrder($products,$r));
+            \Mail::to($user)->send(new CardOrder($products,$information));
             $transaction = new Transaction();
             $transaction->addProduct($products, $user->id, $total,'card');
             $cart->instance($user->id)->destroy();

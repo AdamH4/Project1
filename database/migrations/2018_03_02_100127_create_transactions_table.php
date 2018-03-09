@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('total');
             $table->string('payment_type');
+            $table->boolean('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -40,7 +40,7 @@
             <nav class="navbar navbar-expand-sm">
                 <form class="form-inline" action="{{route('search')}}" method="GET">
                     <input class="form-control" type="text" placeholder="Search" id="search-bar">
-                    <button class="btn btn-dark" type="submit">@lang('message.find')</button>
+                    <button class="btn btn-dark" type="submit" id="search-button">@lang('message.find')</button>
                 </form>
             </nav>
         </li>

@@ -111,4 +111,14 @@ class AdminController extends Controller
         $transactions = $user->transactions($user->id)->groupBy('transactionid');
         return view('shop.admin.user-transactions',compact('transactions','user'));
     }
+
+    public function completeTransaction($id){
+        \DB::table('transactions')
+            ->where('id', $id)
+            ->update([
+                'status'=> 1,
+            ]);
+        $users = User::all()->sort();
+        return view('shop.admin.users',compact('users'))->with('transaction_success','Transaction was posted');
+    }
 }

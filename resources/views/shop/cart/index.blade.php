@@ -16,24 +16,30 @@
             <tr>
                 <td>
                     <a href="{{route('product.show',$product->id)}}">
-                        {{$product->name}}
                         <img src="{{ asset('images/'. $product->options->picture) }}" height="100" width="100">
+                        {{$product->name}}
                     </a>
                 </td>
                 <td>
-                    <form action="{{route('cart.minus',$product->rowId)}}" method="POST">
+                    <form action="{{route('cart.minus',$product->rowId)}}" method="POST" id="quantity-minus">
                         {{csrf_field()}}
                         <button type="submit">-</button>
                     </form>
-                    {{$product->qty}}
-                    <form action="{{route('cart.plus',$product->rowId)}}" method="POST">
+                    <div class="quantity col-2">
+                        {{$product->qty}}
+                    </div>
+                    <form action="{{route('cart.plus',$product->rowId)}}" method="POST" id="quantity-plus">
                         {{csrf_field()}}
                         <button type="submit">+</button>
                     </form>
                 </td>
-                <td>{{$product->price}}</td>
                 <td>
-                    <form action="{{route('cart.delete',$product->rowId)}}" method="POST">
+                    <div class="price">
+                        {{$product->price}}
+                    </div>
+                </td>
+                <td>
+                    <form action="{{route('cart.delete',$product->rowId)}}" method="POST" id="delete-item">
                         {{csrf_field()}}
                         <button type="submit">X</button>
                     </form>
@@ -44,11 +50,11 @@
                 <td>
                     <form action="{{route('cart.delete.all')}}" method="POST">
                         {{csrf_field()}}
-                        <button type="submit" class="btn btn-outline-danger">Delete all</button>
+                        <button type="submit" class="btn btn-danger">Delete all</button>
                     </form>
                 </td>
                 <td></td>
-                <td>Total price:{{$total}}</td>
+                <td>Total: {{$total}}</td>
                 <td></td>
             </tr>
             </tbody>

@@ -1,21 +1,20 @@
 @extends('master')
 @section('body')
-    <div class="container col-8">
+    <div class="container">
         <div class="nav-products">
         <h5>{{$products->count()}} Vysledky</h5>
         <h6>Order By:</h6>
+        <a href="{{route('product.favourite')}}">
+            <p>Most viewed products</p>
+        </a>
         <p>Categories:</p>
         @foreach($categories as $category)
             <a href="{{ route('product.category', $category->category) }}">
                 <p>{{ ucfirst($category->category) }}</p>
             </a>
         @endforeach
-        <a href="{{route('product.favourite')}}">
-            <p>Most viewed products</p>
-        </a>
         </div>
-        <span id="products">
-        <div class="row">
+        <div class="row" >
         @foreach($products as $product)
             <div class="col-3">
             <a href="{{route('product.show' ,$product->id) }}">
@@ -28,7 +27,6 @@
             </div>
         @endforeach
         </div>
-        </span>
         <div class="pagination">
         {{$products->links()}}
         </div>
