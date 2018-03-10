@@ -27,13 +27,13 @@ class ProductsController extends Controller
 
     public function filterByType($category){
         $categories = Product::typeofProducts();
-        $products = Product::filterByType($category);
+        $products = Product::filterByType($category)->paginate(10);
         return view('shop.products.products',compact('products','categories'));
     }
 
     public function filterByVisit(){
         $categories = Product::typeofProducts();
-        $products = Product::filterByVisit();
+        $products = Product::filterByVisit()->paginate(10);
         return view('shop.products.products',compact('products','categories'));
     }
 
@@ -42,5 +42,15 @@ class ProductsController extends Controller
             'body'=>request('body'),
             'user_id'=>auth()->user()->id
         ]);
+    }
+
+    public function priceUp(){
+        $products = Product::priceUp();
+        return view('shop.products.products',compact('products'));
+    }
+
+    public function priceDown(){
+        $products = Product::priceDown();
+        return view('shop.products.products',compact('products'));
     }
 }

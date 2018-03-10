@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class RatingController extends Controller
 {
     public function store(Product $id){
+        dd(request());
         $this->validate(request(),[
            'rating'=>'required'
         ]);

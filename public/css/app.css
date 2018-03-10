@@ -134,3 +134,67 @@
   float: left;
 }
 
+#black-tag {
+  color: #000000;
+}
+
+#purple-tag {
+  color: #ff80b3;
+}
+
+#card-button {
+  width: 150px;
+  height: 50px;
+}
+
+#cashondelivery-form {
+  float: left;
+  width: 45%;
+}
+
+#cashondelivery-table {
+  float: right;
+  width: 50%;
+}
+
+#payment-form {
+  float: left;
+  width: 45%;
+}
+
+.star-box {
+  direction: rtl;
+}
+
+.star-box a {
+  font-size: 20px;
+  color: #000000;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.star-box a:hover {
+  text-underline: #e6e6e6 !important;
+  color: #ff80b3;
+}
+
+#star1:hover ~ a {
+  color: #ff80b3;
+}
+
+#star2:hover ~ a {
+  color: #ff80b3;
+}
+
+#star3:hover ~ a {
+  color: #ff80b3;
+}
+
+#star4:hover ~ a {
+  color: #ff80b3;
+}
+
+#star5:hover ~ a {
+  color: #ff80b3;
+}
+

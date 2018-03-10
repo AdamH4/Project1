@@ -27,27 +27,22 @@
     @endif
     @if(! $rating == 0)
         <h4>
-            Average rating for this product: {{number_format($rating,2)}}/5
+            Average rating for this product: {{number_format($rating,2)/0.05 }}%
         </h4>
     @else
         <h5>Nobody rate yet, be the first one.</h5>
     @endif
     @if( auth()->check())
         @if($rated->isEmpty())
-            <div class="form-group">
-                <form action="{{route('rating', $product->id)}}" method="POST">
-                    {{csrf_field()}}
-                    <label for="rating">Rating:</label>
-                    <select name="rating" id="rating">
-                        <option value="1">1 - Bad</option>
-                        <option value="2">2 - Not good</option>
-                        <option value="3">3 - Good</option>
-                        <option value="4">4 - Very good</option>
-                        <option value="5">5 - Awesome</option>
-                    </select>
-                    <button type="submit" class="btn btn-dark">Rate</button>
-                </form>
-            </div>
+            <form>
+                <div class="star-box">
+                    <a class="fas fa-star"></a>
+                    <a href="{{route('rating',$product->id)}}" name="2" id="star2" class="fas fa-star"></a>
+                    <a href="{{route('rating',$product->id)}}" name="3" id="star3" class="fas fa-star"></a>
+                    <a href="{{route('rating',$product->id)}}" name="4" id="star4" class="fas fa-star"></a>
+                    <a href="{{route('rating',$product->id)}}" name="5" id="star5" class="fas fa-star"></a>
+                </div>
+            </form>
         @else
             <p>You already rated this product</p>
             <form action="{{ route('rating.delete',$product->id)}}" method="POST">

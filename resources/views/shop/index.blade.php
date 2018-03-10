@@ -1,10 +1,17 @@
 @extends('master')
 @section('body')
-    @if(session()->has('success_verify'))
-    <div class="alert alert-success">
-        {{session()->get('success_verify')}}
+    <div class="container">
+        @if(session()->has('success_verify'))
+        <div class="alert alert-success">
+            {{session()->get('success_verify')}}
+        </div>
+        @endif
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{session()->get('success')}}
+            </div>
+        @endif
     </div>
-    @endif
     <div class="text-center">
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">

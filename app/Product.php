@@ -31,7 +31,7 @@ class Product extends Model
 
     public function addRating(){
         return $this->ratings()->create([
-            'rating'=>request('rating'),
+            'rating'=>request()->name,
             'user_id'=>auth()->user()->id,
         ]);
     }
@@ -45,7 +45,7 @@ class Product extends Model
     }
 
     public static function filterByType($category){
-        return static::selectRaw('id, name, category, picture')
+        return static::selectRaw('id, name, category, picture, price')
             ->where('category','LIKE', $category)
             ->orderByRaw('name asc')
             ->paginate(10);
@@ -63,5 +63,17 @@ class Product extends Model
             ->orwhere('category','LIKE','%'.$query.'%')
             ->orderByRaw('name asc')
             ->get();
+    }
+
+    public static function priceUp(){
+        return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
+            ->orderByRaw('price asc')
+            ->paginate(10);
+    }
+
+    public static function priceDown(){
+        return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
+            ->orderByRaw('price desc')
+            ->paginate(10);
     }
 }

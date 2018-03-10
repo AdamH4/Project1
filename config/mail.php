@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'kozmetika@kozmetika-trstin.sk'),
-        'name' => env('MAIL_FROM_NAME', 'E-shop'),
+        'name' => env('MAIL_FROM_NAME', 'Kozmetika-trstín'),
     ],
 
     /*

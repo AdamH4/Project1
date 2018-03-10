@@ -104,7 +104,7 @@ class CartController extends Controller
                     'data3' => 'metadata 3',
                 ],
             ]);
-            \Mail::to($user)->send(new CardOrder($products,$information));
+            \Mail::to($user)->send(new CardOrder($products,$information,$total));
             $transaction = new Transaction();
             $transaction->addProduct($products, $user->id, $total,'card');
             $cart->instance($user->id)->destroy();
@@ -132,12 +132,12 @@ class CartController extends Controller
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);*/
-        $information = request()->all;
+        $information = request(['first_name','second_name','city','street','postcode','country','phone_number']);
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();
         $products = $cart->instance($userId)->content();
-        \Mail::to(auth()->user())->send(new Order($products,$information));
+        \Mail::to(auth()->user())->send(new Order($products,$information,$total));
         $transaction = new Transaction();
         $transaction->addProduct($products, $userId, $total,'payondelivery');
         $cart->instance($userId)->destroy();

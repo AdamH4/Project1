@@ -18,10 +18,13 @@ class CardOrder extends Mailable
      */
     public $cart;
     public $information;
-    public function __construct($cart,$information)
+    public $total;
+
+    public function __construct($cart,$information,$total)
     {
         $this->cart = $cart;
         $this->information = $information;
+        $this->total = $total;
     }
 
     /**

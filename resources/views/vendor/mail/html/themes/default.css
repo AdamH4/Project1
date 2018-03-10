@@ -6,7 +6,7 @@ body, body *:not(html):not(style):not(br):not(tr):not(code) {
 }
 
 body {
-    background-color: #f5f8fa;
+    background-color: #D3D3D3;
     color: #74787E;
     height: 100%;
     hyphens: auto;
@@ -105,10 +105,11 @@ img {
 .header {
     padding: 25px 0;
     text-align: center;
+    background-color: #ff80b3;
 }
 
 .header a {
-    color: #bbbfc3;
+    color: #000000;
     font-size: 19px;
     font-weight: bold;
     text-decoration: none;
@@ -154,17 +155,18 @@ img {
 /* Footer */
 
 .footer {
+    background-color: #ff80b3;
     margin: 0 auto;
     padding: 0;
     text-align: center;
-    width: 570px;
+    width: 100%;
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 570px;
 }
 
 .footer p {
-    color: #AEAEAE;
+    color: #000000;
     font-size: 12px;
     text-align: center;
 }

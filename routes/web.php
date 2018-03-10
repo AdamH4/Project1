@@ -42,8 +42,10 @@ Route::group(
         Route::get('/products/favourite', 'ProductsController@filterByVisit')->name('product.favourite');
         Route::post('/product/create/comment/{id}','CommentController@store')->name('comment.create');
         Route::post('/product/comment/delete/{id}','CommentController@delete')->name('comment.delete');
+        Route::post('/products/price-up','ProductsController@priceUp')->name('product.price.up');
+        Route::post('/products/price-down','ProductsController@priceDown')->name('product.price.down');
 
-        Route::post('/rate/{id}','RatingController@store')->name('rating');
+        Route::get('/rate/{id}','RatingController@store')->name('rating');
         Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');
 
         Route::get('/cart', 'CartController@index')->name('cart');
@@ -55,8 +57,8 @@ Route::group(
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
         Route::post('/cart/card/{total}', 'CartController@card')->name('cart.card');
         Route::post('/checkout/card', 'CartController@checkout')->name('card.checkout');
-        Route::post('/cart/dobierka/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
-        Route::post('/checkout/dobierka', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
+        Route::post('/cart/cashondelivery/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
+        Route::post('/checkout/cashondelivery', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
 
         Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
