@@ -1,10 +1,10 @@
 @extends('master')
 @section('body')
     <div class="container col-9" id="cart-table">
-        <form action="{{route('products')}}" method="GET">
-            <button class="btn btn-dark"><i class="fas fa-long-arrow-alt-left">  @lang('message.to_products')</i></button>
-        </form>
         @if(! $products->isEmpty())
+        <form action="{{route('products')}}" method="GET">
+            <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left">  @lang('message.to_products')</i></button>
+        </form>
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>

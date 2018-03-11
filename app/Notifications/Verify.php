@@ -44,9 +44,10 @@ class Verify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Welcome in our application please verify your email address')
-                    ->action('Verify account', route('registration.verify',$this->user->token))
-                    ->line('Thank you for using our application!');
+                    ->line('Dobrý deň')
+                    ->line('Posielame Vám link na potvrdenie Vášho emailu, ak je to len chyba tento email ignorujete.')
+                    ->action('Verifikovať', route('registration.verify',$this->user->token))
+                    ->line('Ďakujem že používate našu webstránku.');
     }
 
     /**

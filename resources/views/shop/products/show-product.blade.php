@@ -13,8 +13,13 @@
     </ul>
     <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="300" width="300">
     <h3>{{ ucfirst($product->name) }}</h3>
+    <p>@lang('message.category'){{$product->category}}</p>
+    <p>@lang('message.product_price'){{ $product->price }} €</p>
     <p>{{ $product->text }}</p>
-    <p>{{ $product->price }} €</p>
+    <h5>@lang('message.description'):</h5>
+    <p>{{$product->description}}</p>
+    <br>
+    <br>
     @if(auth()->check())
         <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
@@ -34,7 +39,7 @@
     @endif
     @if( auth()->check())
         @if($rated->isEmpty())
-            <form>
+            <!--<form>
                 <div class="star-box">
                     <a class="fas fa-star"></a>
                     <a href="{{route('rating',$product->id)}}" name="2" id="star2" class="fas fa-star"></a>
@@ -42,7 +47,21 @@
                     <a href="{{route('rating',$product->id)}}" name="4" id="star4" class="fas fa-star"></a>
                     <a href="{{route('rating',$product->id)}}" name="5" id="star5" class="fas fa-star"></a>
                 </div>
-            </form>
+            </form>-->
+                <div class="form-group">
+                    <form action="{{route('rating', $product->id)}}" method="POST">
+                        {{csrf_field()}}
+                        <label for="rating">Rating:</label>
+                        <select name="rating" id="rating">
+                            <option value="1">1 - Bad</option>
+                            <option value="2">2 - Not good</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very good</option>
+                            <option value="5">5 - Awesome</option>
+                        </select>
+                        <button type="submit" class="btn btn-dark">Rate</button>
+                    </form>
+                </div>
         @else
             <p>@lang('message.already_rated')</p>
             <form action="{{ route('rating.delete',$product->id)}}" method="POST">

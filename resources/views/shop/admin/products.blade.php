@@ -11,7 +11,7 @@
                     </a>
                     <form action="{{route('admin.products.delete', $product->id)}}" method="POST">
                         {{csrf_field()}}
-                        <button type="submit"><i class="far fa-trash-alt"></i></button>
+                        <button type="submit"><i class="far fa-trash-alt btn btn-dark"></i></button>
                     </form>
                     <p>{{ ucfirst($product->category) }}</p>
                 </div>

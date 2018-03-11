@@ -45,7 +45,7 @@ Route::group(
         Route::post('/products/price-up','ProductsController@priceUp')->name('product.price.up');
         Route::post('/products/price-down','ProductsController@priceDown')->name('product.price.down');
 
-        Route::get('/rate/{id}','RatingController@store')->name('rating');
+        Route::post('/rate/{id}','RatingController@store')->name('rating');
         Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');
 
         Route::get('/cart', 'CartController@index')->name('cart');

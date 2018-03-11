@@ -42,9 +42,9 @@ class UserResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Hi, you want new password click here:')
+                    ->line('Posielame Vám tento link na reset hesla ak ste oň nežiadali tak si tento email nevšímajte.')
                     ->action('Reset', route('password.reset',$this->token))
-                    ->line('Thank you for using our application!');
+                    ->line('Ďakujeme, že používate našu webstránku.');
     }
 
     /**

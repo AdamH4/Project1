@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Kozmetika:D</title>
+    <title>Kozmetika-trstín</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

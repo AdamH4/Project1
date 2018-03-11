@@ -3,7 +3,7 @@
     <div class="container col-9">
     <form action="{{route('cart.select.payment',$total)}}" method="POST">
         {{csrf_field()}}
-        <button class="btn btn-dark"><i class="fas fa-long-arrow-alt-left"></i></button>
+        <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left"></i></button>
     </form>
     <h2>@lang('message.informations')</h2>
     <hr>

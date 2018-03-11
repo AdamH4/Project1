@@ -36,7 +36,7 @@
 }
 
 .body {
-  margin-top: 96px;
+  margin-top: 110px;
 }
 
 .breadcrumb {
@@ -54,7 +54,7 @@
 }
 
 #search-bar {
-  width: 400px;
+  width: 350px;
   height: 40px;
 }
 
@@ -200,5 +200,37 @@
 
 .select-payment {
   float: left;
+}
+
+.pagination {
+  float: right;
+}
+
+.pagination ul li:first-child,
+.pagination ul li:last-child {
+  display: none;
+}
+
+.pagination ul li a,
+.pagination ul li span {
+  color: white;
+  display: block;
+  line-height: 30px;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pagination ul li.active span {
+  background-color: #000000;
+}
+
+.pagination ul li a {
+  background-color: #fcc4e4;
+}
+
+.pagination ul li a:hover {
+  text-decoration: none;
+  background-color: #ff80b3;
 }
 
