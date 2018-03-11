@@ -75,7 +75,10 @@ class CartController extends Controller
     }
 
     public function selectPayment($total){
-        return view('shop.cart.select-payment',compact('total'));
+        $user = auth()->user();
+        $cart = app(Cart::class);
+        $products = $cart->instance($user->id)->content();
+        return view('shop.cart.select-payment',compact('total','products'));
     }
 
     public function card($total){

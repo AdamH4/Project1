@@ -2,18 +2,16 @@
 @section('body')
     <div class="container">
         <div class="nav-products">
-        <h5>{{$products->count()}} Vysledky</h5>
-        <h6>Order By:</h6>
         <a href="{{route('product.favourite')}}" id="purple-tag">
-            <p >Most viewed products</p>
+            <p>@lang('message.favourite_products')</p>
         </a>
-        <p>Categories:</p>
+        <p>@lang('message.categories'):</p>
         @foreach($categories as $category)
             <a href="{{ route('product.category', $category->category) }}" id="purple-tag">
                 <p>{{ ucfirst($category->category) }}</p>
             </a>
         @endforeach
-        <p>Order by price:</p>
+        <p>@lang('message.products_price'):</p>
         <form action="{{route('product.price.up',$products->all())}}" method="POST">
             {{csrf_field()}}
             <button type="submit" class="btn btn-dark"><i class="fas fa-caret-up"></i></button>

@@ -27,13 +27,13 @@ class ProductsController extends Controller
 
     public function filterByType($category){
         $categories = Product::typeofProducts();
-        $products = Product::filterByType($category)->paginate(10);
+        $products = Product::filterByType($category);
         return view('shop.products.products',compact('products','categories'));
     }
 
     public function filterByVisit(){
         $categories = Product::typeofProducts();
-        $products = Product::filterByVisit()->paginate(10);
+        $products = Product::filterByVisit();
         return view('shop.products.products',compact('products','categories'));
     }
 

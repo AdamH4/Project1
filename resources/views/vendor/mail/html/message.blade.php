@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+            <h4>Kozmetika-Trstín</h4>
         @endcomponent
     @endslot
 

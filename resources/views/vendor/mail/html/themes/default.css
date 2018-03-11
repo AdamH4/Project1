@@ -287,3 +287,11 @@ img {
     font-size: 15px;
     text-align: center;
 }
+
+#cashondelivery-table{
+    width: 300px;
+}
+
+.table-payment{
+    width: 200px;
+}

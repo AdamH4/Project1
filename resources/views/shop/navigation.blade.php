@@ -6,7 +6,7 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('home')}}">Home</a>
+                <a class="nav-link" href="{{route('home')}}">@lang('navigation.home')</a>
             </li>
         @if(auth()->check())
             <li class="nav-item dropdown">
@@ -14,33 +14,33 @@
                     {{ucfirst(auth()->user()->name)}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav-dropdown">
-                    <a class="dropdown-item" href="{{route('user.change')}}">Change password</a>
+                    <a class="dropdown-item" href="{{route('user.change')}}">@lang('navigation.change_password')</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    <a class="dropdown-item" href="{{route('logout')}}">@lang('navigation.logout')</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('cart')}}">Cart</a>
+                <a class="nav-link" href="{{route('cart')}}">@lang('navigation.cart')</a>
             </li>
         @else
             <li class="nav-item">
-                <a class="nav-link" href="{{route('login')}}">Login</a>
+                <a class="nav-link" href="{{route('login')}}">@lang('navigation.login')</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('registration.index')}}">Registration</a>
+                <a class="nav-link" href="{{route('registration.index')}}">@lang('navigation.registration')</a>
             </li>
         @endif
         <li class="nav-item">
-            <a class="nav-link" href="{{route('products')}}">Products</a>
+            <a class="nav-link" href="{{route('products')}}">@lang('navigation.products')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('contacts')}}">Contacts</a>
+            <a class="nav-link" href="{{route('contacts')}}">@lang('navigation.contacts')</a>
         </li>
         <li class="nav-item">
             <nav class="navbar navbar-expand-sm">
                 <form class="form-inline" action="{{route('search')}}" method="GET">
-                    <input class="form-control" type="text" placeholder="Search" id="search-bar">
-                    <button class="btn btn-dark" type="submit" id="search-button">@lang('message.find')</button>
+                    <input class="form-control" type="text" placeholder="@lang('navigation.search')" id="search-bar">
+                    <button class="btn btn-dark" type="submit" id="search-button">@lang('navigation.find')</button>
                 </form>
             </nav>
         </li>

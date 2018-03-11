@@ -1,14 +1,17 @@
 @extends('master')
 @section('body')
     <div class="container col-9" id="cart-table">
+        <form action="{{route('products')}}" method="GET">
+            <button class="btn btn-dark"><i class="fas fa-long-arrow-alt-left">  @lang('message.to_products')</i></button>
+        </form>
         @if(! $products->isEmpty())
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Delete</th>
+                <th>@lang('message.product')</th>
+                <th>@lang('message.quantity')</th>
+                <th>@lang('message.price')</th>
+                <th>@lang('message.delete')</th>
             </tr>
             </thead>
             <tbody>
@@ -23,14 +26,14 @@
                 <td>
                     <form action="{{route('cart.minus',$product->rowId)}}" method="POST" id="quantity-minus">
                         {{csrf_field()}}
-                        <button type="submit">-</button>
+                        <button type="submit" class="btn btn-dark"><i class="fas fa-minus"></i></button>
                     </form>
                     <div class="quantity col-2">
                         {{$product->qty}}
                     </div>
                     <form action="{{route('cart.plus',$product->rowId)}}" method="POST" id="quantity-plus">
                         {{csrf_field()}}
-                        <button type="submit">+</button>
+                        <button type="submit" class="btn btn-dark"><i class="fas fa-plus"></i></button>
                     </form>
                 </td>
                 <td>
@@ -41,7 +44,7 @@
                 <td>
                     <form action="{{route('cart.delete',$product->rowId)}}" method="POST" id="delete-item">
                         {{csrf_field()}}
-                        <button type="submit">X</button>
+                        <button type="submit" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>
@@ -50,11 +53,11 @@
                 <td>
                     <form action="{{route('cart.delete.all')}}" method="POST">
                         {{csrf_field()}}
-                        <button type="submit" class="btn btn-danger">Delete all</button>
+                        <button type="submit" class="btn btn-danger">@lang('message.delete_all')</button>
                     </form>
                 </td>
                 <td></td>
-                <td>Total: {{$total}}</td>
+                <td>@lang('message.total') {{$total}}</td>
                 <td></td>
             </tr>
             </tbody>
@@ -62,13 +65,13 @@
             @if(! $u->isEmpty())
             <form action="{{route('cart.select.payment',$total)}}" method="POST">
                 {{csrf_field()}}
-                <button type="submit" class="btn btn-dark">Next</button>
+                <button type="submit" class="btn btn-dark">@lang('message.next')</button>
             </form>
             @else
-                <h5>Please verify your email for making transaction</h5>
+                <h5>@lang('message.notverified_email')</h5>
             @endif
             @else
-                <h5>Nothing in cart go to a <a href="{{route('products')}}">shop</a></h5>
+                <h5>@lang('message.empty_cart')<a href="{{route('products')}}">@lang('message.empty_cart_shop')</a></h5>
         @endif
     </div>
 @endsection

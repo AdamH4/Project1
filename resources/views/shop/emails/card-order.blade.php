@@ -1,7 +1,7 @@
 @component('mail::message')
 # Dobry den posielave Vam tento email ako fakturu k Vasej objednavke ku ktorej platbu evidujeme
 
-Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas.
+Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a href="{{route('contacts')}}">nasej adrese</a>.
 
 #Dorucovacia a fakturacna adresa:
 <li>{{$information['first_name']}}</li>
@@ -13,9 +13,8 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas.
 <li>{{$information['phone_number']}}</li>
 
 #Vas objednany tovar
-<hr>
-<div id="cashondelivery-table">
-    <table class="table table-striped">
+@component('mail::table')
+    <table class="table">
         <thead class="thead-dark">
         <tr>
             <th>Item</th>
@@ -46,9 +45,9 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas.
         @endforeach
         </tbody>
     </table>
-</div>
-
-<h4>Suma k zaplateniu: {{$total}}</h4>
+@endcomponent
+<hr>
+<h4>Suma celkom: {{$total}}</h4>
 
 <h4>Dakujeme Vam za nakup.</h4>
 @endcomponent

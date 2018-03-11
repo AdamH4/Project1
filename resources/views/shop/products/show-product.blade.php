@@ -8,7 +8,7 @@
         </div>
     @endif
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('products')}}">Products</a></li>
+        <li class="breadcrumb-item"><a href="{{route('products')}}">@lang('navigation.products')</a></li>
         <li class="breadcrumb-item active">{{ucfirst($product->name)}}</li>
     </ul>
     <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="300" width="300">
@@ -18,19 +18,19 @@
     @if(auth()->check())
         <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
-            <label for="quantity" id="quantity">Select quantity: </label>
+            <label for="quantity" id="quantity">@lang('message.select_quantity'): </label>
             <input type="number" id="quantity" name="quantity" value="1" class="form-control col-1">
             <button type="submit" class="btn btn-dark">@lang('message.cart')</button>
         </form>
     @else
-        <p><a href="{{route('login')}}">Prihlas sa</a> aby si nakupil !</p>
+        <p><a href="{{route('login')}}">@lang('message.product_sign_in') </a>@lang('message.product_sign_in_for_payment')</p>
     @endif
     @if(! $rating == 0)
         <h4>
-            Average rating for this product: {{number_format($rating,2)/0.05 }}%
+            @lang('message.average_rating'){{number_format($rating,2)/0.05 }}%
         </h4>
     @else
-        <h5>Nobody rate yet, be the first one.</h5>
+        <h5>@lang('message.nobody_rated')</h5>
     @endif
     @if( auth()->check())
         @if($rated->isEmpty())
@@ -44,13 +44,15 @@
                 </div>
             </form>
         @else
-            <p>You already rated this product</p>
+            <p>@lang('message.already_rated')</p>
             <form action="{{ route('rating.delete',$product->id)}}" method="POST">
                 {{csrf_field()}}
-                <button type="submit" class="btn btn-dark">Reset my rating</button>
+                <button type="submit" class="btn btn-dark">@lang('message.reset_rating')</button>
             </form>
         @endif
     @endif
+    <h4>@lang('message.comments')</h4>
+    <hr>
     @foreach($product->comments as $comment)
         <div class="comments">
             <li class="list-group-item">
@@ -61,7 +63,7 @@
                 @elseif($comment->user_id == auth()->user()->id)
                     <form id="comment-delete" action="{{route('comment.delete',$comment->id)}}" method="POST">
                         {{csrf_field()}}
-                        <button type="submit">X</button>
+                        <button type="submit" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
                     </form>
                 @endif
             </li>
@@ -73,7 +75,7 @@
             <div class="form-group">
                 <textarea name="body" placeholder="Add Comment." class="form-control" required ></textarea>
             </div>
-            <button type="submit" class="btn btn-dark">Add</button>
+            <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>
     </div>
 </div>
