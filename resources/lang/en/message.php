@@ -17,7 +17,7 @@
             'reset_rating'=>'Reset my rating',
             'comments'=>'Comments:',
             'add_comment'=>'Add comment',
-            'empty_cart'=>'Nothing in cart go back to ',
+            'empty_cart'=>'Nothing in cart, go back to ',
             'empty_cart_shop'=>'shop',
             'notverified_email'=>'Please verify your e-mail before make a transaction',
             'next'=>'Next',
@@ -53,4 +53,5 @@
             'category'=>'Product category: ',
             'product_price'=>'Product price: ',
             'description'=>'Product description: ',
+            'note'=>'Note',
         ];

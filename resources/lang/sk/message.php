@@ -53,4 +53,5 @@
             'description'=>'Popis produktu',
             'category'=>'Kategória: ',
             'product_price'=>'Cena produktu: ',
+            'note'=>'Poznámka',
         ];

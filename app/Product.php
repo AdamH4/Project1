@@ -45,9 +45,9 @@ class Product extends Model
     }
 
     public static function filterByType($category){
-        return static::selectRaw('id, name, category, picture, price')
+        return static::select(['id', 'name', 'category', 'picture', 'price'])
             ->where('category','LIKE', $category)
-            ->orderByRaw('name asc')
+            ->orderBy('name')
             ->paginate(12);
     }
 

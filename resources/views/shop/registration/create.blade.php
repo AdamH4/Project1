@@ -19,7 +19,7 @@
             <label for="check"><a href="#">@lang('message.licence')</a></label>
             <input type="checkbox" name="check" id="check">
             <br>
-            <button class="btn btn-dark" type="submit" name="submit">@lang('message.registration')</button>
+            <button class="btn btn-dark form-control" type="submit" name="submit">@lang('message.registration')</button>
         </form>
     @include('shop.errors.error')
     </div>

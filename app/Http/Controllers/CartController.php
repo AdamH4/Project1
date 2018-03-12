@@ -135,7 +135,7 @@ class CartController extends Controller
            'postcode'=>'required|numeric',
            'phone'=>'required|numeric',
         ]);*/
-        $information = request(['first_name','second_name','city','street','postcode','country','phone_number']);
+        $information = request()->all();
         $userId = auth()->user()->id;
         $cart = app(Cart::class);
         $total = $cart->instance($userId)->subtotal();

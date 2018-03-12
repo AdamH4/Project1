@@ -25,6 +25,8 @@
             <input type="text" id="country" name="country" class="form-control" required>
             <label for="phone_number">@lang('message.phone_number')</label>
             <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+            <label for="note">@lang('message.note')</label>
+            <textarea name="note" id="note" class="form-control"></textarea>
             <br>
             <button type="submit" class="btn btn-dark" id="payment">@lang('message.submit_payment')</button>
         </div>

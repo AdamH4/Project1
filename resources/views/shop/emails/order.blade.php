@@ -1,5 +1,5 @@
 @component('mail::message')
-# Dobry den posielave Vam tento email ako fakturu k Vasej objednavke.
+# Dobry den posielame Vam tento email ako fakturu k Vasej objednavke.
 
 Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a href="{{route('contacts')}}">nasej adrese</a>.
 
@@ -11,6 +11,10 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a
 <li>{{$information['postcode']}}</li>
 <li>{{$information['country']}}</li>
 <li>{{$information['phone_number']}}</li>
+@if($information['note'])
+    <p>Poznamka:</p>
+    <p>{{$information['note']}}</p>
+@endif
 
 #Vas objednany tovar:
 

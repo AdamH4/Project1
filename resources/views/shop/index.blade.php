@@ -49,8 +49,5 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
-        <div class="text-center">
-            <h4>Welcome on Kozmetika-Trstin website :D</h4>
-        </div>
     </div>
 @endsection
