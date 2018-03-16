@@ -44,10 +44,11 @@ class Verify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Dobrý deň')
+                    ->line("We send you email for email verification, if you didn't ask for it just ignore this")
                     ->line('Posielame Vám link na potvrdenie Vášho emailu, ak je to len chyba tento email ignorujete.')
                     ->action('Verifikovať', route('registration.verify',$this->user->token))
-                    ->line('Ďakujem že používate našu webstránku.');
+                    ->line('Ďakujem že používate našu webstránku.')
+                    ->line('Thank you, for using our website');
     }
 
     /**

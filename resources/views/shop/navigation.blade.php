@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" id="navigation-bar">
-    <div class="container">
+    <div class="col-8 container">
         <ul class="navbar-nav">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -8,21 +8,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('home')}}">@lang('navigation.home')</a>
             </li>
-        @if(auth()->check())
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
-                    {{ucfirst(auth()->user()->name)}}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="nav-dropdown">
-                    <a class="dropdown-item" href="{{route('user.change')}}">@lang('navigation.change_password')</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{route('logout')}}">@lang('navigation.logout')</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('cart')}}">@lang('navigation.cart')</a>
-            </li>
-        @else
+        @if(! auth()->check())
             <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">@lang('navigation.login')</a>
             </li>
@@ -39,7 +25,7 @@
         <li class="nav-item">
             <nav class="navbar navbar-expand-sm">
                 <form class="form-inline" action="{{route('search')}}" method="GET">
-                    <input class="form-control" type="text" placeholder="@lang('navigation.search')" id="search-bar">
+                    <input class="form-control" type="text" placeholder="@lang('navigation.search')" id="search-bar" name="search">
                     <button class="btn btn-dark" type="submit" id="search-button">@lang('navigation.find')</button>
                 </form>
             </nav>
@@ -51,6 +37,22 @@
                 </a>
             </li>
     @endforeach
+        @if(auth()->check())
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
+                    {{ucfirst(auth()->user()->name)}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown">
+                    <a class="dropdown-item" href="{{route('user.change')}}">@lang('navigation.change_password')</a>
+                    <a class="dropdown-item" href="{{route('user.add.information')}}">@lang('message.add_information')</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{route('logout')}}">@lang('navigation.logout')</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('cart')}}">@lang('navigation.cart')</a>
+            </li>
+        @endif
             </div>
         </ul>
     </div>

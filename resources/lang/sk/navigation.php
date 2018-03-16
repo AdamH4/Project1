@@ -3,7 +3,7 @@
 return [
     'home'=>'Domov',
     'change_password'=>'Zmena hesla',
-    'logout'=>'Odhlásenie',
+    'logout'=>'Odhlásiť',
     'cart'=>'Košík',
     'login'=>'Prihlásenie',
     'registration'=>'Registrácia',

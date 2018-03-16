@@ -1,6 +1,6 @@
 @extends('master')
 @section('body')
-    <div class="container">
+    <div class="container col-7">
         @if(session()->has('success_verify'))
         <div class="alert alert-success">
             {{session()->get('success_verify')}}
@@ -9,6 +9,11 @@
         @if(session()->has('success'))
             <div class="alert alert-success">
                 {{session()->get('success')}}
+            </div>
+        @endif
+        @if(session()->has('added_information'))
+            <div class="alert alert-success">
+                @lang('errors.added_information')
             </div>
         @endif
     </div>

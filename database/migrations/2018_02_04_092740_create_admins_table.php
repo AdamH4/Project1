@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

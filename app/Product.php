@@ -62,18 +62,18 @@ class Product extends Model
             ->where('name', 'LIKE', '%' . $query . '%')
             ->orwhere('category','LIKE','%'.$query.'%')
             ->orderByRaw('name asc')
-            ->get();
+            ->paginate(12);
     }
 
     public static function priceUp(){
         return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
             ->orderByRaw('price asc')
-            ->paginate(10);
+            ->paginate(12);
     }
 
     public static function priceDown(){
         return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
             ->orderByRaw('price desc')
-            ->paginate(10);
+            ->paginate(12);
     }
 }

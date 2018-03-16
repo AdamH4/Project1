@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
-
+use App\User;
 class UserController extends Controller
 {
     public function index(){
@@ -28,5 +28,26 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
         return redirect()->home()->with("success","Password changed successfully !");
+    }
+
+    public function indexInformation(){
+        $id = auth()->user()->id;
+        $add = User::hasInformation($id);
+        return view('shop.user.information',compact('add'));
+    }
+
+    public function update(){
+        $id = auth()->user()->id;
+        $this->validate(request(),[
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'city'=>'required',
+            'street'=>'required',
+            'postcode'=>'required|numeric',
+            'country'=>'required',
+            'phone_number'=>'required|numeric',
+        ]);
+        User::addInformation($id);
+        return redirect()->home()->with('added_information');
     }
 }

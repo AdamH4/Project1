@@ -1,17 +1,18 @@
 @extends('master')
 @section('body')
 <div class="container col-9">
-    <form action="{{route('cart')}}" method="GET">
+    <form action="{{route('cart.select.delivery')}}" method="POST">
+        {{csrf_field()}}
         <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left"></i></button>
     </form>
     <h2>@lang('message.select_payment')</h2>
     <hr>
-    <div class="select-payment">
-        <form action="{{route('cart.card', $total)}}" method="POST">
+    <div class="select-payment col-6">
+        <form action="{{route('cart.card', $type)}}" method="POST">
             {{csrf_field()}}
-            <button type="submit" class="btn btn-dark" id="card-button">@lang('message.card') <i class="far fa-credit-card"></i></button>
+            <button type="submit" class="btn btn-dark" id="card-button">@lang('message.card')  <i class="fab fa-cc-stripe"></i></button>
         </form>
-        <form action="{{route('cart.dobierka', $total)}}" method="POST">
+        <form action="{{route('cart.dobierka', $type)}}" method="POST">
             {{csrf_field()}}
             <button type="submit" class="btn btn-dark" id="card-button">@lang('message.cash') <i class="far fa-money-bill-alt"></i></button>
         </form>
@@ -29,7 +30,7 @@
             @foreach($products as $product)
                 <tr>
                     <td>
-                        <a href="{{route('product.show',$product->id)}}">
+                        <a href="{{route('product.show',$product->id)}}" id="purple-tag">
                             <img src="{{ asset('images/'. $product->options->picture) }}" height="100" width="100">
                             {{$product->name}}
                         </a>

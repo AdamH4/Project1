@@ -61,5 +61,30 @@ class User extends Authenticatable
             ->get();
     }
 
+    public static function addInformation($id){
+        return static::where('id',$id)
+            ->update([
+                'first_name'=>request('first_name'),
+                'last_name'=>request('last_name'),
+                'city'=>request('city'),
+                'street'=>request('street'),
+                'postcode'=>request('postcode'),
+                'country'=>request('country'),
+                'phone_number'=>request('phone_number'),
+            ]);
+    }
 
+    public static function hasInformation($id){
+        return static::where('id',$id)
+            ->where([
+                ['last_name','!=', null],
+                ['first_name','!=', null],
+                ['city','!=', null],
+                ['street','!=', null],
+                ['country','!=', null],
+                ['postcode','!=', null],
+                ['phone_number','!=', null],
+            ])
+            ->get();
+    }
 }

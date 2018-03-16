@@ -18,7 +18,7 @@
             @foreach($products as $product)
             <tr>
                 <td>
-                    <a href="{{route('product.show',$product->id)}}">
+                    <a href="{{route('product.show',$product->id)}}" id="purple-tag">
                         <img src="{{ asset('images/'. $product->options->picture) }}" height="100" width="100">
                         {{$product->name}}
                     </a>
@@ -63,7 +63,7 @@
             </tbody>
         </table>
             @if(! $u->isEmpty())
-            <form action="{{route('cart.select.payment',$total)}}" method="POST">
+            <form action="{{route('cart.select.delivery')}}" method="POST">
                 {{csrf_field()}}
                 <button type="submit" class="btn btn-dark">@lang('message.next')</button>
             </form>

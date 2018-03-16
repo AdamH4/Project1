@@ -19,17 +19,15 @@ class HomeController extends Controller
 
     public function find(Request $request){
         $query = $request->get('search');
+        $categories = Product::typeofProducts();
         if (isset($query)) {
-            $tasks = Product::search($query);
-            if (! count($tasks) == 0) {
-                return view('shop.index')
-                    ->withDetails($tasks)
-                    ->withQuery($query);
+            $products = Product::search($query);
+            if (! count($products) == 0) {
+                return view('shop.products.products',compact('categories','products'));
             }
+            return view('shop.products.no-products',compact('categories','query'));
         }
-        return view('shop.index',[
-            'unsuccess_message' => 'No results!',
-        ]);
+        return redirect()->back();
     }
 
     public function contacts(){

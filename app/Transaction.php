@@ -31,13 +31,13 @@ class Transaction extends Model
             ->get();
     }
 
-    public function addProduct($products, $userId, $total, $payment)
-    {
+    public function addProduct($products, $userId, $total, $payment,$type){
         $id = DB::table('transactions')->insertGetId([
             'user_id'=>$userId,
             'total'=>$total,
             'payment_type'=>$payment,
             'status'=>0,
+            'delivery_type'=>$type,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);

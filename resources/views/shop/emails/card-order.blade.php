@@ -12,18 +12,20 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a
 <li>{{$information['country']}}</li>
 <li>{{$information['phone_number']}}</li>
 @if($information['note'])
-    <p>Poznamka:</p>
-    <p>{{$information['note']}}</p>
+    #Poznamka:
+    <li>{{$information['note']}}</li>
 @endif
+
+#Vasa objednávka vám bude odoslaná službou akú ste si vybrali({{$type}})
 
 #Vas objednany tovar
 @component('mail::table')
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th>Produkt</th>
+            <th>Množstvo</th>
+            <th>Cena</th>
         </tr>
         </thead>
         <tbody>

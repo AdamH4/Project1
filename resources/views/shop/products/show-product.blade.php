@@ -8,7 +8,7 @@
         </div>
     @endif
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('products')}}">@lang('navigation.products')</a></li>
+        <li class="breadcrumb-item"><a href="{{route('products')}}" id="purple-tag">@lang('navigation.products')</a></li>
         <li class="breadcrumb-item active">{{ucfirst($product->name)}}</li>
     </ul>
     <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="300" width="300">

@@ -55,12 +55,13 @@
 
 #search-bar {
   margin-top: 20px;
-  width: 350px;
+  width: 72%;
   height: 40px;
 }
 
 #search-button {
   height: 40px;
+  width: 25%;
   margin-top: 20px;
 }
 
@@ -234,5 +235,9 @@
 .pagination ul li a:hover {
   text-decoration: none;
   background-color: #ff80b3;
+}
+
+#no_results {
+  margin-left: 25%;
 }
 

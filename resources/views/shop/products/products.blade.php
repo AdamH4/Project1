@@ -11,15 +11,6 @@
                 <p>{{ ucfirst($category->category) }}</p>
             </a>
         @endforeach
-        <!--<p>@lang('message.products_price'):</p>
-        <form action="{{route('product.price.up',$products->all())}}" method="POST">
-            {{csrf_field()}}
-            <button type="submit" class="btn btn-dark"><i class="fas fa-caret-up"></i></button>
-        </form>
-        <form action="{{route('product.price.down',$products->all())}}" method="POST">
-            {{csrf_field()}}
-            <button type="submit" class="btn btn-dark"><i class="fas fa-caret-down"></i></button>
-        </form>-->
         </div>
         <div class="row" >
         @foreach($products as $product)

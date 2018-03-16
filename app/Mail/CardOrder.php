@@ -16,15 +16,17 @@ class CardOrder extends Mailable
      *
      * @return void
      */
-    public $cart;
+    public $products;
     public $information;
     public $total;
+    public $type;
 
-    public function __construct($cart,$information,$total)
+    public function __construct($products,$information,$total,$type)
     {
-        $this->cart = $cart;
+        $this->products = $products;
         $this->information = $information;
         $this->total = $total;
+        $this->type = $type;
     }
 
     /**

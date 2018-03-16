@@ -25,6 +25,8 @@ Route::group(
 
         Route::get('/user/change', 'UserController@index')->name('user.change');
         Route::post('/user/change/password', 'UserController@reset')->name('user.change.password');
+        Route::get('/user/information', 'UserController@indexInformation')->name('user.add.information');
+        Route::post('/user/information', 'UserController@update')->name('user.update.information');
 
         Route::get('/search', 'HomeController@find')->name('search');
 
@@ -50,15 +52,16 @@ Route::group(
 
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::post('/cart/{id}', 'CartController@store')->name('cart.add');
-        Route::post('/cart/select/payment/{total}', 'CartController@selectPayment')->name('cart.select.payment');
+        Route::post('/cart/select/payment/{type}', 'CartController@selectPayment')->name('cart.select.payment');
+        Route::post('cart/select/delivery','CartController@selectDelivery')->name('cart.select.delivery');
         Route::post('/cart/delete/item/{id}', 'CartController@deleteOne')->name('cart.delete');
         Route::post('/cart/delete/items', 'CartController@deleteAll')->name('cart.delete.all');
         Route::post('/cart/quantity/plus/{id}', 'CartController@plus')->name('cart.plus');
         Route::post('/cart/quantity/minus/{id}', 'CartController@minus')->name('cart.minus');
-        Route::post('/cart/card/{total}', 'CartController@card')->name('cart.card');
-        Route::post('/checkout/card', 'CartController@checkout')->name('card.checkout');
-        Route::post('/cart/cashondelivery/{total}', 'CartController@cashOnDelivery')->name('cart.dobierka');
-        Route::post('/checkout/cashondelivery', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
+        Route::post('/cart/card/{type}', 'CartController@card')->name('cart.card');
+        Route::post('/checkout/card/{type}', 'CartController@checkout')->name('card.checkout');
+        Route::post('/cart/cashondelivery/{type}', 'CartController@cashOnDelivery')->name('cart.dobierka');
+        Route::post('/checkout/cashondelivery/{type}', 'CartController@cashOnDeliveryCheckout')->name('cart.dobierka.checkout');
 
         Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
