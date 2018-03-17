@@ -7,7 +7,7 @@
   background-color: white;
   height: 40px;
   padding: 10px 12px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid #D3D3D3;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
@@ -165,13 +165,16 @@
 }
 
 .star-box a{
+  text-decoration: none !important;
+  border: none;
+  background: none;
+  width: 20px;
   font-size: 20px;
   color: #000000;
-  transition: 0.3s all;
+  transition: 0.5s all;
 }
 
 .star-box a:hover{
-  text-underline: #e6e6e6 !important;
   color: #ff80b3;
 }
 
@@ -234,5 +237,6 @@
 #no_results{
   margin-left: 25%;
 }
+
 
 

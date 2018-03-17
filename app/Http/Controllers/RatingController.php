@@ -9,12 +9,9 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    public function store(Product $id){
-        $this->validate(request(),[
-           'rating'=>'required'
-        ]);
-        $id->addRating();
-        return back();
+    public function store(Product $id,$rating){
+        $id->addRating($rating);
+        return back()->with('success_rate');
     }
 
     public function delete(Product $product){

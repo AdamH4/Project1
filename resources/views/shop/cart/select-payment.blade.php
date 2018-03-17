@@ -24,6 +24,7 @@
                 <th>@lang('message.product')</th>
                 <th>@lang('message.quantity')</th>
                 <th>@lang('message.price')</th>
+                <th>@lang('message.price_dph')</th>
             </tr>
             </thead>
             <tbody>
@@ -42,7 +43,12 @@
                     </td>
                     <td>
                         <div class="price">
-                            {{$product->price}}
+                            {{$product->price * 0.8}} €
+                        </div>
+                    </td>
+                    <td>
+                        <div class="price">
+                            {{$product->price}} €
                         </div>
                     </td>
                 </tr>
@@ -50,7 +56,8 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td>@lang('message.total') {{$total}}</td>
+                <td></td>
+                <td>@lang('message.total') {{$total}} €</td>
             </tr>
             </tbody>
         </table>

@@ -29,9 +29,9 @@ class Product extends Model
         return $this->hasMany(TransactionProducts::class);
     }
 
-    public function addRating(){
+    public function addRating($rating){
         return $this->ratings()->create([
-            'rating'=>request()->rating,
+            'rating'=>$rating,
             'user_id'=>auth()->user()->id,
         ]);
     }

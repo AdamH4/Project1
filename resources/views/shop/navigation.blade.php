@@ -45,12 +45,13 @@
                 <div class="dropdown-menu" aria-labelledby="nav-dropdown">
                     <a class="dropdown-item" href="{{route('user.change')}}">@lang('navigation.change_password')</a>
                     <a class="dropdown-item" href="{{route('user.add.information')}}">@lang('message.add_information')</a>
+                    <a class="dropdown-item" href="{{route('user.delete.information')}}">@lang('message.delete_information')</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{route('logout')}}">@lang('navigation.logout')</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('cart')}}">@lang('navigation.cart')</a>
+                <a class="nav-link" href="{{route('cart')}}">@lang('navigation.cart') <span class="badge badge-dark">{{\Cart::instance(auth()->user()->id)->content()->count()}}</span></a>
             </li>
         @endif
             </div>

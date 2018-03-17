@@ -121,4 +121,9 @@ class AdminController extends Controller
         $users = User::all()->sort();
         return view('shop.admin.users',compact('users'))->with('transaction_success','Transaction was posted');
     }
+
+    public function transactionOrder(User $user){
+        $transactions = $user->transactions($user->id)->groupBy('transactionid')->sortBy('created_at');
+        return view('shop.admin.user-transactions',compact('transactions','user'));
+    }
 }

@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('body')
 <div class="container">
     @if(session()->has('success_delete'))
@@ -7,11 +6,18 @@
             {{ session()->get('success_delete') }}
         </div>
     @endif
+    @if(session()->has('success_rate'))
+        <div class="alert alert-success">
+
+        </div>
+    @endif
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('products')}}" id="purple-tag">@lang('navigation.products')</a></li>
         <li class="breadcrumb-item active">{{ucfirst($product->name)}}</li>
     </ul>
-    <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="300" width="300">
+    <hr>
+    <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="400" width="400">
+    <div class="select-payment col-7">
     <h3>{{ ucfirst($product->name) }}</h3>
     <p>@lang('message.category'){{$product->category}}</p>
     <p>@lang('message.product_price'){{ $product->price }} €</p>
@@ -32,36 +38,21 @@
     @endif
     @if(! $rating == 0)
         <h4>
-            @lang('message.average_rating'){{number_format($rating,2)/0.05 }}%
+            @lang('message.average_rating'){{number_format($rating,2)/0.04 }}%
         </h4>
     @else
         <h5>@lang('message.nobody_rated')</h5>
     @endif
     @if( auth()->check())
         @if($rated->isEmpty())
-            <!--<form>
-                <div class="star-box">
-                    <a class="fas fa-star"></a>
-                    <a href="{{route('rating',$product->id)}}" name="2" id="star2" class="fas fa-star"></a>
-                    <a href="{{route('rating',$product->id)}}" name="3" id="star3" class="fas fa-star"></a>
-                    <a href="{{route('rating',$product->id)}}" name="4" id="star4" class="fas fa-star"></a>
-                    <a href="{{route('rating',$product->id)}}" name="5" id="star5" class="fas fa-star"></a>
-                </div>
-            </form>-->
-                <div class="form-group">
-                    <form action="{{route('rating', $product->id)}}" method="POST">
-                        {{csrf_field()}}
-                        <label for="rating">Rating:</label>
-                        <select name="rating" id="rating">
-                            <option value="1">1 - Bad</option>
-                            <option value="2">2 - Not good</option>
-                            <option value="3">3 - Good</option>
-                            <option value="4">4 - Very good</option>
-                            <option value="5">5 - Awesome</option>
-                        </select>
-                        <button type="submit" class="btn btn-dark">Rate</button>
-                    </form>
-                </div>
+            <div class="star-box">
+                <a href="{{route('rating',['id'=>$product->id,'rating'=>'4'])}}" id="star1" class="fas fa-star"></a>
+                <a href="{{route('rating',['id'=>$product->id,'rating'=>'3'])}}" id="star2" class="fas fa-star"></a>
+                <a href="{{route('rating',['id'=>$product->id,'rating'=>'2'])}}" id="star3" class="fas fa-star"></a>
+                <a href="{{route('rating',['id'=>$product->id,'rating'=>'1'])}}" id="star4" class="fas fa-star"></a>
+                <a href="{{route('rating',['id'=>$product->id,'rating'=>'0'])}}" id="star5" class="fas fa-star"></a>
+            </div>
+            <br>
         @else
             <p>@lang('message.already_rated')</p>
             <form action="{{ route('rating.delete',$product->id)}}" method="POST">
@@ -76,7 +67,7 @@
         <div class="comments">
             <li class="list-group-item">
                 <b>{{ $comment->user->name }} on </b>
-                <b>{{ $comment->created_at }} :</b>
+                <b>{{ $comment->created_at->toDayDateTimeString() }} :</b>
                 {{ $comment->body }}
                 @if(! auth()->check())
                 @elseif($comment->user_id == auth()->user()->id)
@@ -88,7 +79,6 @@
             </li>
         </div>
     @endforeach
-    <div class="card=block">
         <form method="POST" action="{{route('comment.create', $product->id)}}">
             {{ csrf_field() }}
             <div class="form-group">

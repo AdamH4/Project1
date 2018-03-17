@@ -50,4 +50,10 @@ class UserController extends Controller
         User::addInformation($id);
         return redirect()->home()->with('added_information');
     }
+
+    public function delete(){
+        $id = auth()->user()->id;
+        User::deleteInformation($id);
+        return redirect()->home();
+    }
 }

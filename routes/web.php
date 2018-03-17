@@ -22,11 +22,13 @@ Route::group(
         Route::post('/admin/store', 'AdminController@store')->name('admin.store');
         Route::post('/admin/product/comment/delete/{id}','AdminController@delete')->name('admin.comment.delete');
         Route::post('/admin/user/transaction/complete/{id}','AdminController@completeTransaction')->name('admin.transaction.complete');
+        Route::post('/admin/user/transaction/order/{user}','AdminController@transactionOrder')->name('admin.user.transactions.order');
 
         Route::get('/user/change', 'UserController@index')->name('user.change');
         Route::post('/user/change/password', 'UserController@reset')->name('user.change.password');
         Route::get('/user/information', 'UserController@indexInformation')->name('user.add.information');
         Route::post('/user/information', 'UserController@update')->name('user.update.information');
+        Route::get('user/delete/information','UserController@delete')->name('user.delete.information');
 
         Route::get('/search', 'HomeController@find')->name('search');
 
@@ -47,7 +49,7 @@ Route::group(
         Route::post('/products/price-up','ProductsController@priceUp')->name('product.price.up');
         Route::post('/products/price-down','ProductsController@priceDown')->name('product.price.down');
 
-        Route::post('/rate/{id}','RatingController@store')->name('rating');
+        Route::get('/rate/{id}/{rating}','RatingController@store')->name('rating');
         Route::post('/rate/delete/{product}','RatingController@delete')->name('rating.delete');
 
         Route::get('/cart', 'CartController@index')->name('cart');

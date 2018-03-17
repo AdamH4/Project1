@@ -16,32 +16,30 @@
             {{session()->get('success_demote')}}
         </div>
     @endif
-    <p>
-        @lang('message.welcome')
-    </p>
+    <h2>All users:</h2>
+    <hr>
     @foreach($users as $user)
-        <hr>
         <form action="{{route('admin.user.transactions',$user)}}" method="POST">
             {{csrf_field()}}
-            <button type="submit" class="btn btn-link">{{$user->name}}</button>
+            <button type="submit" id="purple-tag" class="btn btn-link">{{$user->name}}</button>
         </form>
         {{ $user->created_at }}
         <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
             {{ csrf_field() }}
-            <button type="submit" name="delete">X</button>
+            <button type="submit" class="btn btn-dark" name="delete"><i class="far fa-trash-alt"></i></button>
         </form>
 
         @if(! $user->isAdmin())
-            <p>User</p>
-            <form action="{{route('admin.promote',$user->id)}}" method="POST">
-                {{csrf_field()}}
-                <button type="submit" class="btn-success">Promote</button>
-            </form>
+        <h5>User</h5>
+        <form action="{{route('admin.promote',$user->id)}}" method="POST">
+            {{csrf_field()}}
+            <button type="submit" class="btn btn-success">Promote</button>
+        </form>
         @else
-        <p>Admin</p>
+        <h5>Admin</h5>
         <form action="{{route('admin.demote',$user->id)}}" method="POST">
             {{csrf_field()}}
-            <button type="submit" class="btn-danger">Demote</button>
+            <button type="submit" class="btn btn-danger">Demote</button>
         </form>
         @endif
     @endforeach

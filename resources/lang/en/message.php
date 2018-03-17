@@ -21,12 +21,14 @@
             'empty_cart_shop'=>'shop',
             'notverified_email'=>'Please verify your e-mail before make a transaction',
             'next'=>'Next',
+            'total_without'=>'Price without VAT:',
             'total'=>'Total: ',
             'delete_all'=>'Delete all products',
             'product'=>'Product',
             'quantity'=>'Quantity',
             'delete'=>'Delete',
-            'price'=>'Price',
+            'price'=>'Price without VAT',
+            'price_dph'=>'Price with VAT',
             'card'=>'Card',
             'cash'=>'Cash',
             'select_payment'=>'Please select type of payment',
@@ -70,5 +72,5 @@
             'use_information'=>'We are using information which you gave us you can change',
             'it'=>'it',
             'free_delivery'=>'Each delivery type is for free so it is up to you which you will chose',
-
+            'delete_information'=>'Delele my information',
         ];

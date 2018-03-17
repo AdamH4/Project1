@@ -11,6 +11,7 @@
                 <th>@lang('message.product')</th>
                 <th>@lang('message.quantity')</th>
                 <th>@lang('message.price')</th>
+                <th>@lang('message.price_dph')</th>
                 <th>@lang('message.delete')</th>
             </tr>
             </thead>
@@ -28,7 +29,7 @@
                         {{csrf_field()}}
                         <button type="submit" class="btn btn-dark"><i class="fas fa-minus"></i></button>
                     </form>
-                    <div class="quantity col-2">
+                    <div class="quantity col-3">
                         {{$product->qty}}
                     </div>
                     <form action="{{route('cart.plus',$product->rowId)}}" method="POST" id="quantity-plus">
@@ -38,7 +39,12 @@
                 </td>
                 <td>
                     <div class="price">
-                        {{$product->price}}
+                        {{$product->price * 0.8}} €
+                    </div>
+                </td>
+                <td>
+                    <div class="price">
+                        {{$product->price}} €
                     </div>
                 </td>
                 <td>
@@ -57,7 +63,8 @@
                     </form>
                 </td>
                 <td></td>
-                <td>@lang('message.total') {{$total}}</td>
+                <td>@lang('message.total_without') {{$total * 0.8}} €</td>
+                <td>@lang('message.total') {{$total}} €</td>
                 <td></td>
             </tr>
             </tbody>
@@ -71,7 +78,7 @@
                 <h5>@lang('message.notverified_email')</h5>
             @endif
             @else
-                <h5>@lang('message.empty_cart')<a href="{{route('products')}}">@lang('message.empty_cart_shop')</a></h5>
+                <h5>@lang('message.empty_cart')<a href="{{route('products')}}" id="purple-tag">@lang('message.empty_cart_shop')</a></h5>
         @endif
     </div>
 @endsection
