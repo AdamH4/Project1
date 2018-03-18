@@ -29,12 +29,12 @@
     @if(auth()->check())
         <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
-            <label for="quantity" id="quantity">@lang('message.select_quantity'): </label>
-            <input type="number" id="quantity" name="quantity" value="1" class="form-control col-1">
-            <button type="submit" class="btn btn-dark">@lang('message.cart')</button>
+            <label for="quantity" class="add-text" id="quantity">@lang('message.select_quantity'): </label>
+            <input type="number" id="quantity" name="quantity" value="1" class="form-control col-1 add-button">
+            <button type="submit" id="add-button" class="btn btn-dark"><i class="fas fa-cart-plus"></i></button>
         </form>
     @else
-        <p><a href="{{route('login')}}">@lang('message.product_sign_in') </a>@lang('message.product_sign_in_for_payment')</p>
+        <p><a href="{{route('login')}}">@lang('message.product_sign_in')</a>@lang('message.product_sign_in_for_payment')</p>
     @endif
     @if(! $rating == 0)
         <h4>
@@ -54,7 +54,6 @@
             </div>
             <br>
         @else
-            <p>@lang('message.already_rated')</p>
             <form action="{{ route('rating.delete',$product->id)}}" method="POST">
                 {{csrf_field()}}
                 <button type="submit" class="btn btn-dark">@lang('message.reset_rating')</button>

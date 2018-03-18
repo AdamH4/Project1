@@ -4,11 +4,8 @@
         <form action="{{route('admin.users')}}" method="GET">
             <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left"></i></button>
         </form>
-        <h3>All {{$user->name}}'s transactions:</h3>
-        <form action="{{route('admin.user.transactions.order',$user)}}" method="POST">
-            {{csrf_field()}}
-            <button type="submit" class="btn btn-dark">Desc</button>
-        </form>
+        <h3>All {{$user->name}}'s transactions</h3>
+        <h5>Uncompleted transactions: {{$completed->count()}}</h5>
         <hr>
         @foreach($transactions as $transaction)
             <div class="row">
@@ -21,6 +18,7 @@
                     <p>Type: {{$product->payment_type}}</p>
                     <p>Delivery type: {{$product->delivery_type}}</p>
                     <p>Transaction ID {{$product->transactionid}}</p>
+                    <p>Note: {{$product->note}}</p>
                 </div>
                 @endforeach
             </div>

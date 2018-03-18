@@ -9,7 +9,7 @@
         <div class="select-payment col-6">
             <h5>@lang('message.free_delivery')</h5>
             <br>
-            <form action="{{route('cart.select.payment','slovenska_posta')}}" method="POST">
+            <form action="{{route('cart.select.payment','slovenska posta')}}" method="POST">
                 {{csrf_field()}}
                 <button class="btn btn-dark" id="card-button">@lang('message.slovak_post')</button>
             </form>
@@ -61,8 +61,8 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <td>@lang('message.total') {{$total}} €</td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

@@ -56,8 +56,8 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>@lang('message.total') {{$total}} €</td>
+                <td></td>
             </tr>
             </tbody>
         </table>

@@ -1,9 +1,8 @@
 @extends('master')
-
 @section('body')
     <div class="container col-6">
         @if (session()->has('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" id="flash-message">
             {{ session()->get('success') }}
             </div>
         @endif

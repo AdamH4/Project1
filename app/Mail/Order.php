@@ -20,13 +20,15 @@ class Order extends Mailable
     public $information;
     public $total;
     public $type;
+    public $note;
 
-    public function __construct($products,$information,$total,$type)
+    public function __construct($products,$information,$total,$type,$note)
     {
         $this->products = $products;
         $this->information = $information;
         $this->total = $total;
         $this->type = $type;
+        $this->note = $note;
     }
 
     /**

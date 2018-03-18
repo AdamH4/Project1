@@ -33,4 +33,8 @@ class HomeController extends Controller
     public function contacts(){
         return view('shop.contacts.index');
     }
+
+    public function information(){
+        return view('shop.information.index');
+    }
 }

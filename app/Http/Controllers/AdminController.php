@@ -108,8 +108,10 @@ class AdminController extends Controller
     }
 
     public function transactions(User $user){
+        $u = new User();
+        $completed = $u->completedTransaction($user->id);
         $transactions = $user->transactions($user->id)->groupBy('transactionid');
-        return view('shop.admin.user-transactions',compact('transactions','user'));
+        return view('shop.admin.user-transactions',compact('transactions','user','completed'));
     }
 
     public function completeTransaction($id){

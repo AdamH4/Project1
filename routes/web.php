@@ -10,6 +10,8 @@ Route::group(
 
         Route::get('contacts','Homecontroller@contacts')->name('contacts');
 
+        Route::get('information','Homecontroller@information')->name('information');
+
         Route::get('/admin/users', 'AdminController@index')->name('admin.users');
         Route::post('/admin/user/transactions/{user}','AdminController@transactions')->name('admin.user.transactions');
         Route::post('/admin/promote/{user}', 'AdminController@promote')->name('admin.promote');

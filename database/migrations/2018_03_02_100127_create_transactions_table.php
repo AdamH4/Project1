@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('payment_type');
             $table->string('delivery_type');
             $table->boolean('status');
+            $table->string('note');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

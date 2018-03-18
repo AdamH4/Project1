@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" id="navigation-bar">
-    <div class="col-8 container">
+    <div class="col-9 container">
         <ul class="navbar-nav">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('contacts')}}">@lang('navigation.contacts')</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('information')}}">@lang('navigation.about')</a>
         </li>
         <li class="nav-item">
             <nav class="navbar navbar-expand-sm">

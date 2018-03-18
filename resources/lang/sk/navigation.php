@@ -10,5 +10,7 @@ return [
     'products'=>'Produkty',
     'contacts'=>'Kontakty',
     'search'=>'Hľadať...',
-    'find'=>'Nájsť'
+    'find'=>'Nájsť',
+    'about'=>'O nás',
+
 ];

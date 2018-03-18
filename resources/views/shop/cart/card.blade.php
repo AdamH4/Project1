@@ -25,7 +25,7 @@
             <label for="first_name">@lang('message.first_name')</label>
             <input type="text" id="first_name" name="first_name" class="form-control" required>
             <label for="second_name">@lang('message.second_name')</label>
-            <input type="text" id="second_name" name="second_name" class="form-control" required>
+            <input type="text" id="second_name" name="last_name" class="form-control" required>
             <input type="hidden"  id="name_on_card" name="name_on_card" value="{{auth()->user()->name}}" required>
             <label for="city">@lang('message.city')</label>
             <input type="text" id="city" name="city" class="form-control" required>
@@ -98,11 +98,11 @@
                     <td></td>
                     <td></td>
                     <td>@lang('message.total') {{$total}} €</td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-    </div>
 </div>
 
         <script>

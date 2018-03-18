@@ -8,11 +8,9 @@ use DB;
 class Transaction extends Model
 {
     protected $fillable = [
-        'id', 'user_id', 'payment_type', 'total',
+        'id', 'user_id', 'payment_type', 'total','note'
     ];
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|Product[]
-     */
+
     public function products() {
         $this->hasMany(TransactionProducts::class);
     }
@@ -31,13 +29,14 @@ class Transaction extends Model
             ->get();
     }
 
-    public function addProduct($products, $userId, $total, $payment,$type){
+    public function addProduct($products, $userId, $total, $payment,$type,$note){
         $id = DB::table('transactions')->insertGetId([
             'user_id'=>$userId,
             'total'=>$total,
             'payment_type'=>$payment,
             'status'=>0,
             'delivery_type'=>$type,
+            'note'=>$note,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);

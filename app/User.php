@@ -54,10 +54,18 @@ class User extends Authenticatable
 
     public function transactions($id){
         return \DB::table('transactions')
-            ->selectRaw('products.picture as picture, products.name as name, transaction_products.quantity as quantity, products.category as category, transactions.id as transactionid, transactions.status as status, transactions.payment_type as payment_type, transactions.delivery_type as delivery_type')
+            ->selectRaw('products.picture as picture, products.name as name, transaction_products.quantity as quantity, products.category as category, transactions.id as transactionid, transactions.status as status, transactions.payment_type as payment_type, transactions.delivery_type as delivery_type,transactions.note as note')
             ->where('user_id','=',$id)
             ->join('transaction_products','transactions.id','=','transaction_products.transaction_id')
             ->join('products','transaction_products.product_id','=','products.id')
+            ->get();
+    }
+
+    public function completedTransaction($id){
+        return \DB::table('transactions')
+            ->select('*')
+            ->where('user_id',$id)
+            ->where('status','=','0')
             ->get();
     }
 

@@ -1,9 +1,12 @@
 @component('mail::message')
-# Dobry den posielame Vam tento email ako fakturu k Vasej objednavke ku ktorej platbu evidujeme
+# Dobrý deň posielame Vám tento email ako faktúru k Vašej objednávke ku ktorej platbu evidujeme
+#(Good day we sent you this email as bill for your order to which we make the payment)
 
-Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a href="{{route('contacts')}}">nasej adrese</a>.
+Veríme že všetko prebehlo v poriadku no ak nie neváhajte a kontaktujte nás na <a href="{{route('contacts')}}">našej adrese</a>.
+(We believe that everything went ok, but if not just contact us on our <a href="{{route('contacts')}}">contact address</a>)
 
-#Dorucovacia a fakturacna adresa:
+#Doručovacia a fakturačná adresa:
+#(Delivery and invoice address:)
 <li>{{$information['first_name']}}</li>
 <li>{{$information['second_name']}}</li>
 <li>{{$information['city']}}</li>
@@ -11,14 +14,17 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a
 <li>{{$information['postcode']}}</li>
 <li>{{$information['country']}}</li>
 <li>{{$information['phone_number']}}</li>
-@if($information['note'])
-    #Poznamka:
-    <li>{{$information['note']}}</li>
+@if($note)
+# Poznámka:
+# (Note:)
+{{$note}}
 @endif
 
-#Vasa objednávka vám bude odoslaná službou akú ste si vybrali({{$type}})
+#Vaša objednávka vám bude odoslaná službou akú ste si vybrali({{$type}})
+#(Your order will be dispatched by service you have chosen({{$type}}))
 
-#Vas objednany tovar
+#Váš objednaný tovar:
+#(Your ordering goods)
 @component('mail::table')
     <table class="table">
         <thead class="thead-dark">
@@ -53,7 +59,9 @@ Verime ze vsetko prebehlo v poriadku no ak nie nevahajte a kontaktujte nas na <a
     </table>
 @endcomponent
 <hr>
-<h4>Suma celkom: {{$total}}</h4>
+<h4>Suma k zaplateniu: {{$total}}</h4>
+<h4>(Sum to pay: {{$total}})</h4>
 
-<h4>Dakujeme Vam za nakup.</h4>
+<h4>Ďakujeme Vám za nákup.</h4>
+<h4>(We appreciate your order)</h4>
 @endcomponent

@@ -1,8 +1,21 @@
 @extends('master')
 @section('body')
     <div class="container col-7">
-        <h5>Konatel firmy : Adam Harnúšek</h5>
-        <h5>Obec : Trstín</h5>
-        <h5>Ulica : Hlavná 144</h5>
+        <h3>@lang('contacts.article1')</h3>
+        <hr>
+        <h6>@lang('contacts.email')</h6>
+        <h6>@lang('contacts.phone_number')</h6>
+        <br>
+        <h3>@lang('contacts.article2')</h3>
+        <hr>
+        <h6>@lang('contacts.address')</h6>
+        <h6>@lang('contacts.ico')</h6>
+        <h6>@lang('contacts.dic')</h6>
+        <br>
+        <h3>@lang('contacts.article3')</h3>
+        <hr>
+        <h6>@lang('contacts.contact_person')</h6>
+        <h6>@lang('contacts.email')</h6>
+        <h6></h6>
     </div>
 @endsection

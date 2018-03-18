@@ -103,6 +103,7 @@ class CartController extends Controller
         $total = $cart->instance($user->id)->subtotal();
         $products = $cart->instance($user->id)->content();
         $information = request()->all();
+        $note = $information['note'];
         try {
             Stripe::charges()->create([
                 'amount' => $total,
@@ -116,9 +117,16 @@ class CartController extends Controller
                     'data3' => 'metadata 3',
                 ],
             ]);
-            \Mail::to($user)->send(new cardorder($products,$information,$total,$type));
+            $has = User::hasInformation($user->id);
+            if (! $has->isEmpty()){
+                $info = User::find($user->id);
+                \Mail::to($user)->send(new cardorder($products,$info,$total,$type,$note));
+            }
+            else{
+                \Mail::to($user)->send(new cardorder($products,$information,$total,$type,$note));
+            }
             $transaction = new Transaction();
-            $transaction->addProduct($products, $user->id, $total,'card',$type);
+            $transaction->addProduct($products, $user->id, $total,'card',$type,$note);
             $cart->instance($user->id)->destroy();
             return view('shop.cart.success', compact('total'));
             } catch(\CardErrorException $e){
@@ -147,14 +155,22 @@ class CartController extends Controller
            'phone'=>'required|numeric',
         ]);*/
         $information = request()->all();
-        $userId = auth()->user()->id;
+        $note = $information['note'];
+        $user = auth()->user();
         $cart = app(Cart::class);
-        $total = $cart->instance($userId)->subtotal();
-        $products = $cart->instance($userId)->content();
-        \Mail::to(auth()->user())->send(new Order($products,$information,$total,$type));
+        $total = $cart->instance($user->id)->subtotal();
+        $products = $cart->instance($user->id)->content();
+        $has = User::hasInformation($user->id);
+        if (! $has->isEmpty()){
+            $info = User::find($user->id);
+            \Mail::to($user)->send(new Order($products,$info,$total,$type,$note));
+        }
+        else{
+            \Mail::to($user)->send(new Order($products,$information,$total,$type,$note));
+        }
         $transaction = new Transaction();
-        $transaction->addProduct($products, $userId, $total,'cash',$type);
-        $cart->instance($userId)->destroy();
+        $transaction->addProduct($products, $user->id, $total,'cash',$type,$note);
+        $cart->instance($user->id)->destroy();
         return view('shop.cart.success',compact('total'));
     }
 }

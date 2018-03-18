@@ -11,5 +11,6 @@ return [
     'contacts'=>'Contacts',
     'search'=>'Search...',
     'find'=>'Search',
+    'about'=>'About us',
 
 ];
