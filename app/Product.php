@@ -44,16 +44,22 @@ class Product extends Model
 
     }
 
-    public static function filterByType($category){
-        return static::select(['id', 'name', 'category', 'picture', 'price'])
-            ->where('category','LIKE', $category)
-            ->orderBy('name')
-            ->paginate(12);
+    public static function filter($category, $orderByPrice = false){
+        $query = static::select(['id', 'name', 'category', 'picture', 'price'])
+            ->where('category','LIKE', $category);
+
+        if ($orderByPrice) {
+            $query->orderBy('price', $orderByPrice == 'asc' ? 'ASC' : 'DESC');
+        }
+
+        return $query->paginate(12);
     }
 
     public static function filterByVisit(){
         return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
             ->orderByRaw('visit desc')
+            ->limit(3)
+            ->offset(3)
             ->paginate(12);
     }
 

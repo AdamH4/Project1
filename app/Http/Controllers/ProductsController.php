@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rating;
 use App\Product;
 use App\User;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -23,6 +24,14 @@ class ProductsController extends Controller
         $rating = $product->ratings()->avg('rating');
         $product->increment('visit');
         return view('shop.products.show-product', compact('product','rated','rating','user'));
+    }
+
+    public function filter(string $category, Request $request){
+        $orderByPrice = $request->query('orderByPrice', false);
+
+        $categories = Product::typeofProducts();
+        $products = Product::filter($category, $orderByPrice);
+        return view('shop.products.products', compact('products','categories'));
     }
 
     public function filterByType($category){

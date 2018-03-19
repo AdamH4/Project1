@@ -1,12 +1,13 @@
 @component('mail::message')
 # Dobrý deň posielame Vám tento email ako faktúru k Vašej objednávke.
-# (Good morning we sent you this email as invoice for your order)
+ (Good morning we sent you this email as invoice for your order)
 
 Veríme že všetko prebehlo v poriadku no ak nie neváhajte a kontaktujte nás na <a href="{{route('contacts')}}">našej adrese</a>.
+
 (We believe that everything went ok, but if not just contact us on our <a href="{{route('contacts')}}">contact address</a>)
 
 #Doručovacia a fakturačná adresa:
-#(Delivery and invoice address:)
+(Delivery and invoice address:)
 <li>{{$information['first_name']}}</li>
 <li>{{$information['last_name']}}</li>
 <li>{{$information['city']}}</li>
@@ -16,22 +17,22 @@ Veríme že všetko prebehlo v poriadku no ak nie neváhajte a kontaktujte nás 
 <li>{{$information['phone_number']}}</li>
 @if($note)
 # Poznámka:
-# (Note:)
+ (Note:)
 {{$note}}
 @endif
 
 #Vaša objednávka vám bude odoslaná službou akú ste si vybrali({{$type}})
-#(Your order will be dispatched by service you have chosen({{$type}}))
+(Your order will be dispatched by service you have chosen({{$type}}))
 
 #Váš objednaný tovar:
-#(Your ordering goods)
+(Your ordering goods)
 @component('mail::table')
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th>Produkt</th>
-            <th>Množstvo</th>
-            <th>Cena</th>
+            <th>Produkt(Product)</th>
+            <th>Množstvo(Quantity)</th>
+            <th>Cena(Price)</th>
         </tr>
         </thead>
         <tbody>

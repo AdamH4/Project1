@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" id="navigation-bar">
-    <div class="col-9 container">
+    <div class="col-10 offset-1">
         <ul class="navbar-nav">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
             <nav class="navbar navbar-expand-sm">
                 <form class="form-inline" action="{{route('search')}}" method="GET">
                     <input class="form-control" type="text" placeholder="@lang('navigation.search')" id="search-bar" name="search">
-                    <button class="btn btn-dark" type="submit" id="search-button">@lang('navigation.find')</button>
+                    <button class="btn btn-dark" type="submit" id="search-button">@lang('navigation.find')  <i class="fas fa-search"></i></button>
                 </form>
             </nav>
         </li>
