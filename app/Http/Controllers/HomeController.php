@@ -35,6 +35,28 @@ class HomeController extends Controller
     }
 
     public function information(){
-        return view('shop.information.index');
+        $comments = \DB::table('global_comments')->select('*')->get();
+        return view('shop.about-us.index',compact('comments'));
     }
+
+    public function globalComment(){
+        $this->validate(request(),['body'=>'required']);
+        if (auth()->check()){
+            \DB::table('global_comments')->insert([
+                'body'=>\request('body'),
+                'author'=>auth()->user()->name,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ]);
+        }else{
+            \DB::table('global_comments')->insert([
+                'body'=>\request('body'),
+                'author'=>'Anonyme',
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ]);
+        }
+        return redirect()->back();
+    }
+
 }

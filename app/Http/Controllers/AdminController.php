@@ -128,4 +128,14 @@ class AdminController extends Controller
         $transactions = $user->transactions($user->id)->groupBy('transactionid')->sortBy('created_at');
         return view('shop.admin.user-transactions',compact('transactions','user'));
     }
+
+    public function deleteGlobalComment($id){
+        \DB::table('global_comments')->where('id','=',$id)->delete();
+        return redirect()->back();
+    }
+
+    public function information(){
+        $comments = \DB::table('global_comments')->select('*')->get();
+        return view('shop.admin.about-us',compact('comments'));
+    }
 }

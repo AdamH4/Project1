@@ -73,4 +73,8 @@
             'it'=>'it',
             'free_delivery'=>'Each delivery type is for free so it is up to you which you will chose',
             'delete_information'=>'Delele my information',
+            'order_price'=>'Order by price',
+            'asc'=>'Ascending',
+            'desc'=>'Descending',
+
         ];

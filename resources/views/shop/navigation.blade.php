@@ -23,7 +23,7 @@
             <a class="nav-link" href="{{route('contacts')}}">@lang('navigation.contacts')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('information')}}">@lang('navigation.about')</a>
+            <a class="nav-link" href="{{route('about.us')}}">@lang('navigation.about')</a>
         </li>
         <li class="nav-item">
             <nav class="navbar navbar-expand-sm">

@@ -21,7 +21,8 @@ class Product extends Model
     public function addComment(){
         return $this->comments()->create([
             'body'=>request('body'),
-            'user_id'=>auth()->user()->id
+            'user_id'=>auth()->user()->id,
+            'global'=>'0',
         ]);
     }
 
@@ -44,6 +45,14 @@ class Product extends Model
 
     }
 
+    public static function selectAll($orderByPrice = false){
+        $query = static::select('*');
+        if ($orderByPrice){
+            $query->orderBy('price',$orderByPrice == 'asc' ? 'ASC' : 'DESC');
+        }
+        return $query->paginate(12);
+    }
+
     public static function filter($category, $orderByPrice = false){
         $query = static::select(['id', 'name', 'category', 'picture', 'price'])
             ->where('category','LIKE', $category);
@@ -58,8 +67,6 @@ class Product extends Model
     public static function filterByVisit(){
         return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
             ->orderByRaw('visit desc')
-            ->limit(3)
-            ->offset(3)
             ->paginate(12);
     }
 

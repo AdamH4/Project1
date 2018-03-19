@@ -34,9 +34,10 @@ class User extends Authenticatable
         return !is_null(DB::table('admins')->find($this->id));
     }
 
-    public function ratings(){
-        return $this->hasMany(Rating::class);
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
+
 
     public function sendPasswordResetNotification($token)
     {

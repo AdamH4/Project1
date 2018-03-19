@@ -65,7 +65,7 @@
     @foreach($product->comments as $comment)
         <div class="comments">
             <li class="list-group-item">
-                <b>{{ $comment->user->name }} on </b>
+                <b>{{ $comment->user->name }}, </b>
                 <b>{{ $comment->created_at->toDayDateTimeString() }} :</b>
                 {{ $comment->body }}
                 @if(! auth()->check())

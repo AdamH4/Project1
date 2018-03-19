@@ -73,4 +73,7 @@
             'it'=>'zmeniť',
             'free_delivery'=>'Každý druh doručenia je zadarmo, je na vás, ktorý si vyberiete',
             'delete_information'=>'Vymazať moje informácie',
+            'order_price'=>'Zoradiť podľa ceny',
+            'asc'=>'Vzostupne',
+            'desc'=>'Zostupne',
         ];

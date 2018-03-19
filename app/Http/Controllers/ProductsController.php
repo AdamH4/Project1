@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     public function index(){
+        $orderByPrice = request()->query('orderByPrice', false);
         $categories = Product::typeofProducts();
-        $products = Product::paginate(12);
+        $products = Product::selectAll($orderByPrice);
         return view('shop.products.products',compact('categories','products'));
     }
 
@@ -28,16 +29,9 @@ class ProductsController extends Controller
 
     public function filter(string $category, Request $request){
         $orderByPrice = $request->query('orderByPrice', false);
-
         $categories = Product::typeofProducts();
         $products = Product::filter($category, $orderByPrice);
         return view('shop.products.products', compact('products','categories'));
-    }
-
-    public function filterByType($category){
-        $categories = Product::typeofProducts();
-        $products = Product::filterByType($category);
-        return view('shop.products.products',compact('products','categories'));
     }
 
     public function filterByVisit(){
@@ -53,13 +47,4 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function priceUp(){
-        $products = Product::priceUp();
-        return view('shop.products.products',compact('products'));
-    }
-
-    public function priceDown(){
-        $products = Product::priceDown();
-        return view('shop.products.products',compact('products'));
-    }
 }
