@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" id="navigation-bar">
-    <div class="col-10 offset-1">
+    <div class="col-8" id="nav-text">
         <ul class="navbar-nav">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
             <a class="nav-link" href="{{route('contacts')}}">@lang('navigation.contacts')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('about.us')}}">@lang('navigation.about')</a>
+            <a class="nav-link" id="nav-about-us" href="{{route('about.us')}}">@lang('navigation.about')</a>
         </li>
         <li class="nav-item">
             <nav class="navbar navbar-expand-sm">

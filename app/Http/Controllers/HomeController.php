@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
+use FarhanWazir\GoogleMaps\GMaps;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,8 +36,15 @@ class HomeController extends Controller
     }
 
     public function information(){
+        $config['center']= 'Trstín';
+        $config['zoom']= '14';
+        $config['map_height']= '300px';
+        $config['scrollwheel']= false;
+        $gmap = app(GMaps::class);
+        $gmap->initialize($config);
+        $map = $gmap->create_map();
         $comments = \DB::table('global_comments')->select('*')->get();
-        return view('shop.about-us.index',compact('comments'));
+        return view('shop.about-us.index',compact('comments','map'));
     }
 
     public function globalComment(){

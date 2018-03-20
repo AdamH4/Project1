@@ -24,5 +24,7 @@
             <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>
     @endif
+    {!! $map['html'] !!}
+    {!! $map['js'] !!}
 </div>
 @endsection

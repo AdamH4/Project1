@@ -22,7 +22,6 @@ class Product extends Model
         return $this->comments()->create([
             'body'=>request('body'),
             'user_id'=>auth()->user()->id,
-            'global'=>'0',
         ]);
     }
 
