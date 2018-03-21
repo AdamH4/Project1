@@ -32,17 +32,20 @@ class HomeController extends Controller
     }
 
     public function contacts(){
-        return view('shop.contacts.index');
+        $config['center']= 'Trstín';
+        $config['zoom']= '13';
+        $config['map_height']= '300px';
+        $config['map_width']= '600px';
+        $config['scrollwheel']= false;
+        $marker['position']='48.521223, 17.469482';
+        $gmap = app(GMaps::class);
+        $gmap->initialize($config);
+        $gmap->add_marker($marker);
+        $map = $gmap->create_map();
+        return view('shop.contacts.index',compact('map'));
     }
 
     public function information(){
-        $config['center']= 'Trstín';
-        $config['zoom']= '14';
-        $config['map_height']= '300px';
-        $config['scrollwheel']= false;
-        $gmap = app(GMaps::class);
-        $gmap->initialize($config);
-        $map = $gmap->create_map();
         $comments = \DB::table('global_comments')->select('*')->get();
         return view('shop.about-us.index',compact('comments','map'));
     }

@@ -17,5 +17,13 @@
         <h6>@lang('contacts.contact_person')</h6>
         <h6>@lang('contacts.email')</h6>
         <h6></h6>
+        <br>
+        <br>
+        {!! $map['html'] !!}
+        {!! $map['js'] !!}
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 @endsection

@@ -25,16 +25,16 @@
         <li class="nav-item">
             <a class="nav-link" id="nav-about-us" href="{{route('about.us')}}">@lang('navigation.about')</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="nav-search">
             <nav class="navbar navbar-expand-sm">
                 <form class="form-inline" action="{{route('search')}}" method="GET">
                     <input class="form-control" type="text" placeholder="@lang('navigation.search')" id="search-bar" name="search">
-                    <button class="btn btn-dark" type="submit" id="search-button">@lang('navigation.find')  <i class="fas fa-search"></i></button>
+                    <button class="btn btn-dark" type="submit" id="search-button"><i class="fas fa-search"></i></button>
                 </form>
             </nav>
         </li>
     @foreach(\LaravelLocalization::getSupportedLocales() as $locale => $properties)
-            <li class="nav-item">
+            <li class="nav-item" id="nav-language">
                 <a class="nav-link" rel="alternate" hreflang="{{ $locale }}" href="{{ \LaravelLocalization::getLocalizedURL($locale, null, [], true) }}">
                     {{ $properties['name'] }}
                 </a>
@@ -43,7 +43,11 @@
         @if(auth()->check())
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
-                    {{ucfirst(auth()->user()->name)}}
+                    @if(strlen(auth()->user()->name) > 6)
+                        {{ucfirst(substr(auth()->user()->name,0,5))}}...
+                    @else
+                        {{ucfirst(auth()->user()->name)}}
+                    @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav-dropdown">
                     <a class="dropdown-item" href="{{route('user.change')}}">@lang('navigation.change_password')</a>
