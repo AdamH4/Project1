@@ -50,13 +50,13 @@
 
 #search-bar{
   margin-top: 20px;
-  width: 72%;
+  width: 76%;
   height: 40px;
 }
 
 #search-button{
   height: 40px;
-  width: 28%;
+  width: 20%;
   margin-top: 20px;
 }
 
@@ -79,10 +79,6 @@
 
 #registration-form{
   margin-top: 100px;
-}
-
-#footer{
-  bottom: 0;
 }
 
 #card-payment{
@@ -283,16 +279,9 @@
   margin-left: auto !important;
 }
 
-#nav-search{
-  width: 210px;
-}
 
-#nav-language{
-  width: 90px;
-}
-
-#nav-language a{
-  float: right;
+#flash-message{
+  text-align: center;
 }
 
 

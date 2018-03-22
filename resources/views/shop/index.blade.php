@@ -1,6 +1,41 @@
 @extends('master')
 @section('body')
 <div class="container col-7">
+    @if(session()->has('success_login'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.success_login')
+        </div>
+    @endif
+    @if(session()->has('success_logout'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.success_logout')
+        </div>
+    @endif
+    @if(session()->has('success_registration'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.success_registration')
+        </div>
+    @endif
+    @if(session()->has('success_verify'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.success_verify')
+        </div>
+    @endif
+    @if(session()->has('added_information'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.added_information')
+        </div>
+    @endif
+    @if(session()->has('change_password'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.change_password')
+        </div>
+    @endif
+    @if(session()->has('delete_information'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.delete_information')
+        </div>
+    @endif
 </div>
 <div class="text-center">
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -44,6 +79,6 @@
 <script>
     setTimeout(function() {
         $('#flash-message').fadeOut(1000);
-    }, 5000); // <-- time in milliseconds
+    }, 3000); // <-- time in milliseconds
 </script>
 @endsection

@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" id="navigation-bar">
-    <div class="col-8" id="nav-text">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mx-auto text-center">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="collapse navbar-collapse">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('home')}}">@lang('navigation.home')</a>
             </li>
@@ -63,7 +62,6 @@
         @endif
             </div>
         </ul>
-    </div>
 </nav>
 
 

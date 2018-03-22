@@ -29,6 +29,7 @@ class RegistrationController extends Controller
             $result = json_decode($response->GetBody()->getContents());
             if ($result->success){
                 $form->persist();
+                session()->flash('success_registration');
                 return redirect()->home();
             }
             else{
@@ -43,6 +44,7 @@ class RegistrationController extends Controller
         $user->update([
             'token'=> null,
         ]);
-        return redirect()->home()->with('success_verify','You have successfully verified your email! ');
+        session()->flash('success_verify');
+        return redirect()->home();
     }
 }

@@ -3,7 +3,7 @@
 <div class="container col-8">
     @if(session()->has('add_comment'))
         <div class="alert alert-success" id="flash-message">
-            {{session()->get('add_comment')}}
+            @lang('success.add_comment')
         </div>
     @endif
     <h3>O nas</h3>
@@ -14,8 +14,7 @@
     @foreach($comments as $comment)
         <div class="comments">
             <li class="list-group-item">
-                <b>{{$comment->author}}</b>
-                <b>{{$comment->created_at}}</b>
+                <b>{{$comment->author}} :</b>
                 {{ $comment->body }}
             </li>
         </div>
@@ -31,6 +30,6 @@
 <script>
     setTimeout(function() {
         $('#flash-message').fadeOut(1000);
-    }, 4000); // <-- time in milliseconds
+    }, 3000); // milliseconds
 </script>
 @endsection

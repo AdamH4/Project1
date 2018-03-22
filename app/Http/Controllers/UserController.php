@@ -15,10 +15,12 @@ class UserController extends Controller
     public function reset(Request $request){
 
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+            session()->flash('wrong_password');
+            return redirect()->back();
         }
         if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
-            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+            session()->flash('same_password');
+            return redirect()->back();
         }
         $this->validate(request(),[
             'current-password' => 'required',
@@ -27,7 +29,8 @@ class UserController extends Controller
         $user = Auth::user();
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
-        return redirect()->home()->with("success","Password changed successfully !");
+        session()->flash('change_password');
+        return redirect()->home();
     }
 
     public function indexInformation(){
@@ -48,12 +51,14 @@ class UserController extends Controller
             'phone_number'=>'required|numeric',
         ]);
         User::addInformation($id);
-        return redirect()->home()->with('added_information');
+        session()->flash('added_information');
+        return redirect()->home();
     }
 
     public function delete(){
         $id = auth()->user()->id;
         User::deleteInformation($id);
+        session()->flash('delete_information');
         return redirect()->home();
     }
 }

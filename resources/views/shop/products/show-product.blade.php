@@ -16,6 +16,16 @@
             @lang('success.create_rating')
         </div>
     @endif
+    @if(session()->has('add_comment'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.add_comment')
+        </div>
+    @endif
+    @if(session()->has('delete_comment'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.delete_comment')
+        </div>
+    @endif
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('products')}}" id="purple-tag">@lang('navigation.products')</a></li>
         <li class="breadcrumb-item active">{{ucfirst($product->name)}}</li>
@@ -71,7 +81,7 @@
         <div class="comments">
             <li class="list-group-item">
                 <b>{{ $comment->user->name }}, </b>
-                <b>{{ $comment->created_at->toDayDateTimeString() }} :</b>
+                <b>{{ $comment->created_at->toFormattedDateString() }} :</b>
                 {{ $comment->body }}
                 @if(! auth()->check())
                 @elseif($comment->user_id == auth()->user()->id)
@@ -83,6 +93,7 @@
             </li>
         </div>
     @endforeach
+    @if(auth()->check())
         <form method="POST" action="{{route('comment.create', $product->id)}}">
             {{ csrf_field() }}
             <div class="form-group">
@@ -91,8 +102,8 @@
             <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>
     </div>
+    @endif
 </div>
-
 <script>
     setTimeout(function() {
         $('#flash-message').fadeOut(1000);

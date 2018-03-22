@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function find(Request $request){
         $query = $request->get('search');
         $categories = Product::typeofProducts();
-        if (isset($query)) {
+        if (isset($query)){
             $products = Product::search($query);
             if (! count($products) == 0) {
                 return view('shop.products.products',compact('categories','products'));
@@ -67,7 +67,7 @@ class HomeController extends Controller
                 'updated_at'=>now(),
             ]);
         }
-        session()->flash('add_comment','bla bla');
+        session()->flash('add_comment');
         return redirect()->back();
     }
 

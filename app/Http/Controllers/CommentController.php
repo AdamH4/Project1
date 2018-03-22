@@ -11,13 +11,15 @@ class CommentController extends Controller
     public function store(Product $id){
         $this->validate(request(),['body'=>'required']);
         $id->addComment();
+        session()->flash('add_comment');
         return back();
     }
 
     public function delete(Comment $id){
         try{
             $id->delete();
-            return back()->with('success_delete','Your comment was deleted');
+            session()->flash('delete_comment');
+            return back();
         }catch(\Exception $e){
             return back()->withErrors('Error:'.$e->getMessage());
         }

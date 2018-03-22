@@ -17,11 +17,13 @@ class LoginController extends Controller
         if(! auth()->attempt(request(['email' ,'password']))) {
             return redirect()->back()->with('unsuccess_message','Wrong password or email');
         }
+        session()->flash('success_login');
         return redirect()->home();
     }
 
     public function logout(){
         auth()->logout();
+        session()->flash('success_logout');
         return redirect()->home();
     }
 }
