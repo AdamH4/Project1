@@ -11,14 +11,16 @@ class RatingController extends Controller
 {
     public function store(Product $id,$rating){
         $id->addRating($rating);
-        return back()->with('success_rate');
+        session()->flash('success_rate');
+        return back();
     }
 
     public function delete(Product $product){
         $user = auth()->user()->id;
         try{
             $product->ratings()->where('user_id',$user)->delete();
-            return back()->with('success_delete','You successfully deleted your rating');
+            session()->flash('success_delete');
+            return back();
         }catch(\Exception $e){
             return back()->withErrors('Error:'.$e->getMessage());
         }

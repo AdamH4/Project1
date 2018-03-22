@@ -38,6 +38,7 @@ class CartController extends Controller
                'picture'=>$p->picture,
             ],
         ]);
+        session()->flash('add_cart');
         return back();
     }
 
@@ -112,9 +113,8 @@ class CartController extends Controller
                 'description' => 'Payment from your customer',
                 'receipt_email' => 'adam.harnusek@gmail.com',
                 'metadata' => [
-                    'data1' => 'metadata 1',
-                    'data2' => 'metadata 2',
-                    'data3' => 'metadata 3',
+                    'user_name' => $user->name,
+                    'user_email' => $user->email,
                 ],
             ]);
             $has = User::hasInformation($user->id);

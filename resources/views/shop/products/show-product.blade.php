@@ -2,13 +2,18 @@
 @section('body')
 <div class="container">
     @if(session()->has('success_delete'))
-        <div class="alert alert-success">
-            {{ session()->get('success_delete') }}
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.delete_rating')
+        </div>
+    @endif
+    @if(session()->has('add_cart'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.add_cart')
         </div>
     @endif
     @if(session()->has('success_rate'))
-        <div class="alert alert-success">
-
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.create_rating')
         </div>
     @endif
     <ul class="breadcrumb">
@@ -88,4 +93,9 @@
     </div>
 </div>
 
+<script>
+    setTimeout(function() {
+        $('#flash-message').fadeOut(1000);
+    }, 3000); // <-- time in milliseconds
+</script>
 @endsection

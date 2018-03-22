@@ -67,6 +67,7 @@ class HomeController extends Controller
                 'updated_at'=>now(),
             ]);
         }
+        session()->flash('add_comment','bla bla');
         return redirect()->back();
     }
 
