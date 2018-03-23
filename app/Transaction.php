@@ -29,7 +29,7 @@ class Transaction extends Model
             ->get();
     }
 
-    public function addProduct($products, $userId, $total, $payment,$type,$note){
+    public function addProduct($products, $userId, $total, $payment,$type,$note,$info){
         $id = DB::table('transactions')->insertGetId([
             'user_id'=>$userId,
             'total'=>$total,
@@ -48,5 +48,16 @@ class Transaction extends Model
                 'quantity' => $product->qty,
             ]);
         }
+
+        \DB::table('transaction_information')->insert([
+            'transaction_id'=>$id,
+            'first_name'=>$info['first_name'],
+            'last_name'=>$info['last_name'],
+            'city'=>$info['city'],
+            'street'=>$info['street'],
+            'postcode'=>$info['postcode'],
+            'country'=>$info['country'],
+            'phone_number'=>$info['phone_number'],
+        ]);
     }
 }

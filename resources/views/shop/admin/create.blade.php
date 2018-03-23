@@ -27,5 +27,9 @@
             </div>
         </form>
     </div>
-
+<script>
+    setTimeout(function() {
+        $('#flash-message').fadeOut(1000);
+    }, 3000); // <-- time in milliseconds
+</script>
 @endsection

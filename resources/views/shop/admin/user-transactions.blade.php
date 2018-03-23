@@ -15,13 +15,22 @@
                     <h4>Product name: {{$product->name}}</h4>
                     <p>Category: {{$product->category}}</p>
                     <p>Quantity: {{$product->quantity}}</p>
-                    <p>Type: {{$product->payment_type}}</p>
-                    <p>Delivery type: {{$product->delivery_type}}</p>
-                    <p>Transaction ID {{$product->transactionid}}</p>
-                    <p>Note: {{$product->note}}</p>
                 </div>
                 @endforeach
             </div>
+                <br>
+                <p>Type: {{$product->payment_type}}</p>
+                <p>Delivery type: {{$product->delivery_type}}</p>
+                <p>Transaction ID {{$product->transactionid}}</p>
+                <p>Note: {{$product->note}}</p>
+                <p>Total: {{$product->total}}</p>
+                <p>Name: {{$product->first_name}}</p>
+                <p>Last name: {{$product->last_name}}</p>
+                <p>City: {{$product->city}}</p>
+                <p>Street: {{$product->street}}</p>
+                <p>Postcode: {{$product->postcode}}</p>
+                <p>Country: {{$product->country}}</p>
+                <p>Phone: {{$product->phone_number}}</p>
                 @if($product->status == 0)
                     <form action="{{route('admin.transaction.complete',$product->transactionid)}}" method="POST">
                         {{csrf_field()}}

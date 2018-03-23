@@ -61,9 +61,9 @@ Veríme že všetko prebehlo v poriadku no ak nie neváhajte a kontaktujte nás 
 @endcomponent
 <hr>
 <h4>Suma k zaplateniu: {{$total}}</h4>
-<h4>(Sum to pay: {{$total}})</h4>
+(Sum to pay: {{$total}})
 
 
 <h4>Ďakujeme za Váš nákup.</h4>
-<h4>(We appreciate your order)</h4>
+(We appreciate your order)
 @endcomponent

@@ -121,12 +121,14 @@ class CartController extends Controller
             if (! $has->isEmpty()){
                 $info = User::find($user->id);
                 \Mail::to($user)->send(new cardorder($products,$info,$total,$type,$note));
+                $transaction = new Transaction();
+                $transaction->addProduct($products, $user->id, $total,'card',$type,$note,$info);
             }
             else{
                 \Mail::to($user)->send(new cardorder($products,$information,$total,$type,$note));
+                $transaction = new Transaction();
+                $transaction->addProduct($products, $user->id, $total,'card',$type,$note,$information);
             }
-            $transaction = new Transaction();
-            $transaction->addProduct($products, $user->id, $total,'card',$type,$note);
             $cart->instance($user->id)->destroy();
             return view('shop.cart.success', compact('total'));
             } catch(\CardErrorException $e){
@@ -144,16 +146,6 @@ class CartController extends Controller
     }
 
     public function cashOnDeliveryCheckout($type){
-        /*$this->validate(request(),[
-           'first_name'=>'required',
-           'second_name'=>'required',
-           'city'=>'required',
-           'street'=>'required',
-           'address'=>'required',
-           'second_address'=>'required',
-           'postcode'=>'required|numeric',
-           'phone'=>'required|numeric',
-        ]);*/
         $information = request()->all();
         $note = $information['note'];
         $user = auth()->user();
@@ -164,12 +156,14 @@ class CartController extends Controller
         if (! $has->isEmpty()){
             $info = User::find($user->id);
             \Mail::to($user)->send(new Order($products,$info,$total,$type,$note));
+            $transaction = new Transaction();
+            $transaction->addProduct($products, $user->id, $total,'payondelivery',$type,$note,$info);
         }
         else{
             \Mail::to($user)->send(new Order($products,$information,$total,$type,$note));
+            $transaction = new Transaction();
+            $transaction->addProduct($products, $user->id, $total,'payondelivery',$type,$note,$information);
         }
-        $transaction = new Transaction();
-        $transaction->addProduct($products, $user->id, $total,'cash',$type,$note);
         $cart->instance($user->id)->destroy();
         return view('shop.cart.success',compact('total'));
     }
