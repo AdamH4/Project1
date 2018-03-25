@@ -76,5 +76,14 @@
             'order_price'=>'Order by price',
             'asc'=>'Ascending',
             'desc'=>'Descending',
-
+            'sk'=>'Slovakia',
+            'au'=>'Austria',
+            'hu'=>'Hungary',
+            'cz'=>'Czech',
+            'uk'=>'Ukraine',
+            'pl'=>'Poland',
+            'about_welcome'=>'We are a young, rapidly growing company that is only local type.',
+            'about_core'=>'We appreciate our clients and we are very happy that they have just given us confidence. That is why we are still trying to improve our services or add new ones',
+            'about_comments'=>'Do not hesitate and share your views, depending on them:',
+            'about_us'=>'About us'
         ];

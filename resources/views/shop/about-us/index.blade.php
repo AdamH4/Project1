@@ -6,10 +6,12 @@
             @lang('success.add_comment')
         </div>
     @endif
-    <h3>O nas</h3>
+    <h3>@lang('message.about_us')</h3>
     <hr>
-    <h6>Sme internetovy obchod ktory nema kamennu predajnu, ponukane produkty su len ilustracne a cela tato stranka je len pre studijne ucely</h6>
+    <h6>@lang('message.about_welcome')</h6>
+    <h6>@lang('message.about_core')</h6>
     <br>
+    <h6>@lang('message.about_comments')</h6>
     <br>
     @foreach($comments as $comment)
         <div class="comments">
@@ -22,7 +24,7 @@
     <form method="POST" action="{{route('about.us.add.comment')}}">
         {{ csrf_field() }}
         <div class="form-group">
-            <textarea name="body" placeholder="Add Comment." class="form-control" required ></textarea>
+            <textarea name="body" placeholder="" class="form-control" required ></textarea>
         </div>
         <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
     </form>

@@ -23,11 +23,19 @@
             <label for="postcode">@lang('message.postcode')</label>
             <input type="text" id="postcode" name="postcode" class="form-control" required>
             <label for="country">@lang('message.country')</label>
-            <input type="text" id="country" name="country" class="form-control" required>
+            <select id="country" name="country" class="form-control" required>
+                <option value="slovakia">@lang('message.sk')</option>
+                <option value="austria">@lang('message.au')</option>
+                <option value="hungary">@lang('message.hu')</option>
+                <option value="czech">@lang('message.cz')</option>
+                <option value="poland">@lang('message.pl')</option>
+                <option value="ukraine">@lang('message.uk')</option>
+            </select>
             <label for="phone_number">@lang('message.phone_number')</label>
             <input type="text" name="phone_number" id="phone_number" class="form-control" >
             <br>
             <button type="submit" class="btn btn-dark form-control" id="payment">@lang('message.add_information')</button>
         </div>
     </form>
+</div>
 @endsection()

@@ -110,7 +110,6 @@ class CartController extends Controller
                 'amount' => $total,
                 'currency' => 'EUR',
                 'source' => $information['stripeToken'],
-                'description' => 'Payment from your customer',
                 'receipt_email' => 'adam.harnusek@gmail.com',
                 'metadata' => [
                     'user_name' => $user->name,

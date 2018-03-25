@@ -51,6 +51,7 @@
     @else
         <p><a href="{{route('login')}}">@lang('message.product_sign_in')</a>@lang('message.product_sign_in_for_payment')</p>
     @endif
+    <br>
     @if(! $rating == 0)
         <h4>
             @lang('message.average_rating'){{number_format($rating,2)/0.04 }}%
@@ -97,7 +98,7 @@
         <form method="POST" action="{{route('comment.create', $product->id)}}">
             {{ csrf_field() }}
             <div class="form-group">
-                <textarea name="body" placeholder="Add Comment." class="form-control" required ></textarea>
+                <textarea name="body" placeholder="" class="form-control" required ></textarea>
             </div>
             <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>

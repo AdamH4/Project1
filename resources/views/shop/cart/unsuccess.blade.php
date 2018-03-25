@@ -2,7 +2,7 @@
 @section('body')
     <div class="container col-6">
         @if (session()->has('error'))
-        <div class="alert alert-success">
+        <div class="alert alert-danger">
             {{ session()->get('error') }}
         </div>
         @endif

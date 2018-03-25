@@ -9,7 +9,7 @@ return[
     'success_logout'=>'Ste úspešne odhlásený',
     'success_registration'=>'Ste úspešne registrovaný',
     'success_verify'=>'Váš email bol verifikovaný',
-    'added_information'=>'Pridali ste infrmácie k vášmu účtu',
+    'added_information'=>'Pridali ste informácie k vášmu účtu',
     'change_password'=>'Vaše heslo bolo zmenené',
     'wrong_password'=>'Vaše súčasné heslo sa nezhoduje',
     'same_password'=>'Vaše nové heslo nemôže byť rovnaké ako vaše súčasné',
