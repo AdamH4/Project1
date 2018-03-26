@@ -86,4 +86,6 @@
             'about_core'=>'Našich klientov si velmi vážime a sme veľmi radi, že práve nám prejavili dôveru. Aj preto sa snažíme stále zlepšovať naše ponúkané služby alebo pridávať nové',
             'about_comments'=>'Neváhajte a podeľte sa s vašími postrehmi , záleží na nich:',
             'about_us'=>'O nás',
+            'success_payment'=>'Vašu objednávku evidujeme, poslali sme Vám email, ktorý je zároveň aj faktúrou k tejto objednávke',
+            'success_payment_article'=>'Objednávka prebehla úspešne',
         ];

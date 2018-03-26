@@ -6,6 +6,7 @@ use App\Product;
 use App\User;
 use FarhanWazir\GoogleMaps\GMaps;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -47,7 +48,7 @@ class HomeController extends Controller
 
     public function information(){
         $comments = \DB::table('global_comments')->select('*')->get();
-        return view('shop.about-us.index',compact('comments','map'));
+        return view('shop.about-us.index',compact('comments','date'));
     }
 
     public function globalComment(){

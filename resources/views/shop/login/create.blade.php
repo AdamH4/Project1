@@ -3,7 +3,7 @@
 <div class="container col-4" id="login-form">
 @if(session()->has('unsuccess_message'))
     <div class="alert alert-danger" id="flash-message">
-    {{session()->get('unsuccess_message')}}
+        @lang('errors.login_crash')
     </div>
 @endif
 <h3>@lang('message.sign_in')</h3>

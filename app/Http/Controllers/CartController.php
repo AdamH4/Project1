@@ -12,6 +12,10 @@ use Gloudemans\Shoppingcart\Cart;
 
 class CartController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
         if (auth()->check()){
             $userId = auth()->user()->id;

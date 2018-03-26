@@ -85,5 +85,7 @@
             'about_welcome'=>'We are a young, rapidly growing company that is only local type.',
             'about_core'=>'We appreciate our clients and we are very happy that they have just given us confidence. That is why we are still trying to improve our services or add new ones',
             'about_comments'=>'Do not hesitate and share your views, depending on them:',
-            'about_us'=>'About us'
+            'about_us'=>'About us',
+            'success_payment'=>'We record your order, we have sent you an email, which is also an invoice for this order',
+            'success_payment_article'=>'Success payment',
         ];

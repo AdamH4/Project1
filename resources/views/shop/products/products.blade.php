@@ -5,13 +5,13 @@
         <a href="{{route('product.favourite')}}" id="purple-tag">
             <p>@lang('message.favourite_products')</p>
         </a>
-        <h6>@lang('message.categories'):</h6>
+        <h5>@lang('message.categories'):</h5>
         @foreach($categories as $category)
             <a href="{{ route('product.category', $category->category) }}" id="purple-tag">
                 <p>{{ ucfirst($category->category) }}</p>
             </a>
         @endforeach
-        <h6>@lang('message.order_price')</h6>
+        <h5>@lang('message.order_price')</h5>
             <a href="?orderByPrice=asc" id="purple-tag"><i class="fas fa-angle-up"></i>@lang('message.asc')</a>
             <br>
             <br>
