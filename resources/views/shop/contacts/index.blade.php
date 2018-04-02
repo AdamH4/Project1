@@ -1,7 +1,6 @@
 @extends('master')
 @section('body')
-
-<div class="container col-5">
+<div class="container col-6">
     <h3>@lang('contacts.article1')</h3>
     <hr>
     <h6>@lang('contacts.email')</h6>
@@ -20,7 +19,9 @@
     <h6></h6>
     <br>
     <br>
-    {!! $map['html'] !!}
+    <div class="map">
+        {!! $map['html'] !!}
+    </div>
     {!! $map['js'] !!}
     <br>
     <br>

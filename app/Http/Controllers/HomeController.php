@@ -36,9 +36,7 @@ class HomeController extends Controller
     public function contacts(){
         $config['center']= 'Trstín';
         $config['zoom']= '13';
-        $config['map_height']= '300px';
-        $config['map_width']= '600px';
-        $config['scrollwheel']= false;
+        $config['scrollwheel']= true;
         $marker['position']='48.521223, 17.469482';
         $gmap = app(GMaps::class);
         $gmap->initialize($config);

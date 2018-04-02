@@ -69,7 +69,7 @@
   margin-top: 200px;
 }
 
-.nav-products{
+#nav-products{
   float: left;
 }
 
@@ -245,7 +245,6 @@
 }
 
 #product{
-  font-size: medium !important;
   padding-bottom: 10px;
 }
 
@@ -264,10 +263,6 @@
   margin-right: auto;
 }
 
-#nav-about-us{
-  width: 110%;
-}
-
 #success-message{
   border: 4px solid #FFFFFF;
   border-radius: 5px;
@@ -281,6 +276,9 @@
   text-align: center;
 }
 
+.map{
+  border: 2px solid #FFFFFF;
+}
 
 
 

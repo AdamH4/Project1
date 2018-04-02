@@ -1,6 +1,6 @@
 @extends('master')
 @section('body')
-<div class="container col-4 form-group">
+<div class="container col-6 offset-3 form-group">
     @if(session()->has('status'))
         <div class="alert alert-success" id="flash-message">
             @lang('success.password_reset')

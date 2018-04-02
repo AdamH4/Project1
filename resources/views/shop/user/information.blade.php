@@ -1,6 +1,6 @@
 @extends('master')
 @section('body')
-<div class="container col-4">
+<div class="container col-6 offset-3">
     @if($add->isEmpty())
     <h2>@lang('message.insert_information')</h2>
     @else()

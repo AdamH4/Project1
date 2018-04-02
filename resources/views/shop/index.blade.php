@@ -46,21 +46,21 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="img-fluid img-rounded" src="{{asset('images/slider.jpg')}}" alt="Los Angeles" width="1100" height="500">
+            <img class="img-responsive img-rounded" src="{{asset('images/slider.jpg')}}" alt="Los Angeles" width="1100" height="500">
             <div class="carousel-caption">
                 <h3></h3>
                 <p></p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid " src="{{asset('images/biocrem.jpg')}}" alt="Chicago" width="1100" height="500">
+            <img class="img-responsive " src="{{asset('images/biocrem.jpg')}}" alt="Chicago" width="1100" height="500">
             <div class="carousel-caption">
                 <h3></h3>
                 <p></p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid img-rounded" src="{{asset('images/biocrem1.jpg')}}" alt="New York" width="1100" height="500">
+            <img class="img-responsive img-rounded" src="{{asset('images/biocrem1.jpg')}}" alt="New York" width="1100" height="500">
             <div class="carousel-caption">
                 <h3></h3>
                 <p></p>

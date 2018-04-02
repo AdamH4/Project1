@@ -1,7 +1,7 @@
 @extends('master')
 @section('body')
     <div class="container">
-        <div class="nav-products">
+        <div class="col-" id="nav-products">
             <a href="{{route('product.favourite')}}" id="purple-tag">
                 <p>@lang('message.favourite_products')</p>
             </a>
@@ -12,6 +12,8 @@
                 </a>
             @endforeach
         </div>
-        <h4 id="no_results">@lang('errors.no_results'){{$query}}".</h4>
+        <div class="col-">
+            <h4 id="no_results">@lang('errors.no_results'){{$query}}".</h4>
+        </div>
     </div>
 @endsection

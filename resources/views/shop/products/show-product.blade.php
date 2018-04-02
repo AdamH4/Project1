@@ -52,7 +52,7 @@
             <button type="submit" id="add-button" class="btn btn-dark"><i class="fas fa-cart-plus"></i></button>
         </form>
     @else
-        <p><a href="{{route('login')}}">@lang('message.product_sign_in')</a>@lang('message.product_sign_in_for_payment')</p>
+        <p><a id="purple-tag" href="{{route('login')}}">@lang('message.product_sign_in') </a>@lang('message.product_sign_in_for_payment')</p>
     @endif
     <br>
     @if(! $rating == 0)

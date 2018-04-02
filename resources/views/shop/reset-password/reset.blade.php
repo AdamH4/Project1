@@ -1,7 +1,6 @@
 @extends('master')
-
 @section('body')
-<div class="container col-4 form-group">
+<div class="container col-6 offset-3 form-group">
     <h2>@lang('message.reset_password')</h2>
     <hr>
     <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
@@ -15,7 +14,6 @@
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
         <br>
         <button type="submit" class="btn btn-dark form-control">@lang('message.reset')</button>
-        </div>
     </form>
 </div>
 @endsection

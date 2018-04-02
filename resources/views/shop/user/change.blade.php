@@ -1,6 +1,6 @@
 @extends('master')
 @section('body')
-<div class="container col-4">
+<div class="container col-6 offset-3">
     @if(session()->has('wrong_password'))
         <div class="alert alert-danger" id="flash-message">
             @lang('success.wrong_password')
