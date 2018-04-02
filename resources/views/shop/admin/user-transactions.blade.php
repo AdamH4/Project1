@@ -13,7 +13,6 @@
                 <div class="col-3">
                     <img src="{{ asset('images/'. $product->picture) }}" height="50" width="50">
                     <h4>Product name: {{$product->name}}</h4>
-                    <p>Category: {{$product->category}}</p>
                     <p>Quantity: {{$product->quantity}}</p>
                 </div>
                 @endforeach
@@ -23,7 +22,7 @@
                 <p>Delivery type: {{$product->delivery_type}}</p>
                 <p>Transaction ID {{$product->transactionid}}</p>
                 <p>Note: {{$product->note}}</p>
-                <p>Total: {{$product->total}}</p>
+                <p>Total: {{$product->total}}€</p>
                 <p>Name: {{$product->first_name}}</p>
                 <p>Last name: {{$product->last_name}}</p>
                 <p>City: {{$product->city}}</p>

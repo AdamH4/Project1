@@ -194,10 +194,6 @@
   color: #ff80b3;
 }
 
-.select-payment{
-  float: left;
-}
-
 .pagination{
   float: right;
 }
@@ -241,6 +237,7 @@
 
 .add-button{
   margin-left: 10px;
+  min-width: 55px !important;
 }
 
 .add-text{
@@ -248,6 +245,7 @@
 }
 
 #product{
+  font-size: medium !important;
   padding-bottom: 10px;
 }
 
@@ -278,7 +276,6 @@
 .form-inline input{
   margin-left: auto !important;
 }
-
 
 #flash-message{
   text-align: center;

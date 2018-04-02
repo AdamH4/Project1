@@ -14,4 +14,5 @@ return[
     'wrong_password'=>'Your current password does not match',
     'same_password'=>'You new password can not be your current password',
     'delete_information'=>'Your account information were deleted',
+    'password_reset'=>'Reset link was sent to your email',
 ];

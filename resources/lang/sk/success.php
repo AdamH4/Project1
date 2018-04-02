@@ -14,4 +14,5 @@ return[
     'wrong_password'=>'Vaše súčasné heslo sa nezhoduje',
     'same_password'=>'Vaše nové heslo nemôže byť rovnaké ako vaše súčasné',
     'delete_information'=>'Informácie o vašom úšte boli úspešne vymazané',
+    'password_reset'=>'Obnovovací link pre heslo vám bol odoslaný',
 ];

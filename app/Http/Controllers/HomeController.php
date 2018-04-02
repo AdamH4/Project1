@@ -19,11 +19,12 @@ class HomeController extends Controller
         return view('shop.index',compact('u'));
     }
 
-    public function find(Request $request){
-        $query = $request->get('search');
+    public function find(){
+        $orderByPrice = request()->query('orderByPrice', false);
+        $query = request()->get('search');
         $categories = Product::typeofProducts();
         if (isset($query)){
-            $products = Product::search($query);
+            $products = Product::search($query, $orderByPrice);
             if (! count($products) == 0) {
                 return view('shop.products.products',compact('categories','products'));
             }
@@ -47,7 +48,7 @@ class HomeController extends Controller
     }
 
     public function information(){
-        $comments = \DB::table('global_comments')->select('*')->get();
+        $comments = \DB::table('global_comments')->select('*')->paginate(10);
         return view('shop.about-us.index',compact('comments','date'));
     }
 

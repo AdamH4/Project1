@@ -1,10 +1,17 @@
 @extends('master')
 @section('body')
-<div class="container col-8">
-    <h3>O nas</h3>
+<div class="container col-6">
+    @if(session()->has('add_comment'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.add_comment')
+        </div>
+    @endif
+    <h3>@lang('message.about_us')</h3>
     <hr>
-    <h6>Sme internetovy obchod ktory nema kamennu predajnu, ponukane produkty su len ilustracne a cela tato stranka je len pre studijne ucely</h6>
+    <h6>@lang('message.about_welcome')</h6>
+    <h6>@lang('message.about_core')</h6>
     <br>
+    <h6>@lang('message.about_comments')</h6>
     <br>
     @foreach($comments as $comment)
         <div class="comments">

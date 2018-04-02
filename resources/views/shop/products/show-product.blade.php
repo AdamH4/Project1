@@ -31,16 +31,19 @@
         <li class="breadcrumb-item active">{{ucfirst($product->name)}}</li>
     </ul>
     <hr>
-    <img id="product-image" class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="400" width="400">
-    <div class="select-payment col-7">
-    <h3>{{ ucfirst($product->name) }}</h3>
-    <p>@lang('message.category'){{$product->category}}</p>
-    <p>@lang('message.product_price'){{ $product->price }} €</p>
-    <p>{{ $product->text }}</p>
-    <h5>@lang('message.description'):</h5>
-    <p>{{$product->description}}</p>
-    <br>
-    <br>
+    <div class="row">
+        <div class="col-5">
+            <h3>{{ ucfirst($product->name) }}</h3>
+            <p>@lang('message.category'){{$product->category}}</p>
+            <p>@lang('message.product_price')<b>{{ $product->price }} €</b></p>
+            <p>{{ $product->text }}</p>
+            <h5>@lang('message.description'):</h5>
+            <p>{{$product->description}}</p>
+        </div>
+        <div class="col-5 offset-2">
+            <img class="img-responsive img-thumbnail" src="{{ asset('images/'. $product->picture) }}">
+        </div>
+    </div>
     @if(auth()->check())
         <form action="{{route('cart.add', $product->id) }}" method="POST">
             {{ csrf_field() }}
@@ -96,13 +99,12 @@
     @endforeach
     @if(auth()->check())
         <form method="POST" action="{{route('comment.create', $product->id)}}">
-            {{ csrf_field() }}
+            {{csrf_field()}}
             <div class="form-group">
                 <textarea name="body" placeholder="" class="form-control" required ></textarea>
             </div>
             <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>
-    </div>
     @endif
 </div>
 <script>

@@ -55,11 +55,9 @@ class Product extends Model
     public static function filter($category, $orderByPrice = false){
         $query = static::select(['id', 'name', 'category', 'picture', 'price'])
             ->where('category','LIKE', $category);
-
         if ($orderByPrice) {
             $query->orderBy('price', $orderByPrice == 'asc' ? 'ASC' : 'DESC');
         }
-
         return $query->paginate(12);
     }
 
@@ -69,12 +67,14 @@ class Product extends Model
             ->paginate(12);
     }
 
-    public static function search($query){
-        return static::selectRaw('id, name, category, description, text, picture, price, visit, quantity')
+    public static function search($query, $orderByPrice = false){
+        $query = static::select('*')
             ->where('name', 'LIKE', '%' . $query . '%')
-            ->orwhere('category','LIKE','%'.$query.'%')
-            ->orderByRaw('name asc')
-            ->paginate(12);
+            ->orwhere('category','LIKE','%'.$query.'%');
+        if ($orderByPrice) {
+            $query->orderBy('price', $orderByPrice == 'asc' ? 'ASC' : 'DESC');
+        }
+        return $query->paginate(12);
     }
 
     public static function priceUp(){

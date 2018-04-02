@@ -1,6 +1,6 @@
 @extends('master')
 @section('body')
-<div class="container col-8">
+<div class="container col-6">
     @if(session()->has('add_comment'))
         <div class="alert alert-success" id="flash-message">
             @lang('success.add_comment')
@@ -28,6 +28,9 @@
         </div>
         <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
     </form>
+    <div class="pagination">
+        {{$comments->links()}}
+    </div>
 </div>
 <script>
     setTimeout(function() {

@@ -59,7 +59,7 @@
             'add_information'=>'Pridať informácie',
             'insert_information'=>'Pridajte informácie o Vás pre jednoduchší nákup',
             'update_information'=>'Zmeňte svoje kontaktné informácie',
-            'change_password'=>'Zmenia hesla',
+            'change_password'=>'Zmena hesla',
             'current_password'=>'Aktuálne heslo',
             'new_password'=>'Nové heslo',
             'reset_link'=>'Prosím zadajte email svojho účtu aby sme vám poslali obnovovací link',

@@ -22,7 +22,7 @@
         <label for="password_confirmation">@lang('message.password_confirmation')</label>
         <input type="password" id="password_confirmation" class="form-control" name="new-password_confirmation">
         <br>
-        <button type="submit" class="btn btn-dark">@lang('message.change_password')</button>
+        <button class="form-control btn btn-dark" type="submit">@lang('message.change_password')</button>
     </form>
 </div>
 

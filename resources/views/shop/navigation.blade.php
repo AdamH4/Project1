@@ -3,7 +3,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('home')}}">@lang('navigation.home')</a>
             </li>

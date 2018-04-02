@@ -13,8 +13,6 @@
     <div class="form-group">
         <label for="email">@lang('message.e-mail'):</label>
         <input class="form-control" type="email" name="email" id="email" value="{{old('mame')}}" required>
-    </div>
-    <div class="form-group">
         <label for="password">@lang('message.password'):</label>
         <input class="form-control" type="password" name="password" id="password" required>
         <br>

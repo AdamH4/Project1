@@ -19,9 +19,9 @@
         </div>
         <div class="row">
         @foreach($products as $product)
-            <div class="col-3" id="product">
+            <div class="col-4" id="product">
                 <a href="{{route('product.show' ,$product->id) }}" id="none-underline">
-                    <img class="img-fluid img-thumbnail" src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
+                    <img class="img-responsive img-thumbnail" id="picture" src="{{ asset('images/'. $product->picture) }}">
                     <h4 >{{ ucfirst($product->name) }}</h4>
                     <h3>{{$product->price}},- €</h3>
                 </a>
