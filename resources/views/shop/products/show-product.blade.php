@@ -54,7 +54,6 @@
     @else
         <p><a id="purple-tag" href="{{route('login')}}">@lang('message.product_sign_in') </a>@lang('message.product_sign_in_for_payment')</p>
     @endif
-    <br>
     @if(! $rating == 0)
         <h4>
             @lang('message.average_rating'){{number_format($rating,2)/0.04 }}%
@@ -79,6 +78,7 @@
             </form>
         @endif
     @endif
+    <br>
     <h4>@lang('message.comments')</h4>
     <hr>
     @foreach($product->comments as $comment)
@@ -106,6 +106,8 @@
             <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
         </form>
     @endif
+    <br>
+    <br>
 </div>
 <script>
     setTimeout(function() {

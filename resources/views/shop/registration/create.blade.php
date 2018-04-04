@@ -1,6 +1,7 @@
 @extends('master')
 @section('body')
 <div class="container col-6 offset-3" id="registration-form">
+    @include('shop.errors.error')
     <h3>@lang('message.register')</h3>
     <hr>
     <form method="post" action="{{ route('registration.store') }}">
@@ -21,6 +22,5 @@
         <br>
         <button class="btn btn-dark form-control" type="submit" name="submit">@lang('message.registration')</button>
     </form>
-    @include('shop.errors.error')
 </div>
 @endsection()

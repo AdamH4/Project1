@@ -12,10 +12,10 @@
             </a>
         @endforeach
         <h5>@lang('message.order_price')</h5>
-            <a href="?orderByPrice=asc" id="purple-tag"><i class="fas fa-angle-up"></i>@lang('message.asc')</a>
+            <a href="{{ request()->is('search') ? '?search=' . request()->query('search') . '&orderByPrice=asc' : '?orderByPrice=asc' }}" id="purple-tag"><i class="fas fa-angle-up"></i>@lang('message.asc')</a>
             <br>
             <br>
-            <a href="?orderByPrice=desc" id="purple-tag"><i class="fas fa-angle-down"></i>@lang('message.desc')</a>
+            <a href="{{ request()->is('search') ? '?search=' . request()->query('search') . '&orderByPrice=desc' : '?orderByPrice=desc' }}" id="purple-tag"><i class="fas fa-angle-down"></i>@lang('message.desc')</a>
         </div>
         <div class="row">
             @foreach($products as $product)

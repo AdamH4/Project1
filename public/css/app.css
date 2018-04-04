@@ -45,7 +45,6 @@
 
 #main-body {
   background-color: #e6e6e6;
-  font-size: 16px;
 }
 
 #navigation-bar {
@@ -255,6 +254,7 @@
 }
 
 #product:hover {
+  background-color: #cccece;
   border: 1px solid #000000;
   border-radius: 20px;
 }

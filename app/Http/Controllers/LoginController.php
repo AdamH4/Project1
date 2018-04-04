@@ -15,7 +15,8 @@ class LoginController extends Controller
 
     public function create(){
         if(! auth()->attempt(request(['email' ,'password']))) {
-            return redirect()->back()->with('unsuccess_message','Wrong password or email');
+            session()->flash('unsuccess_message');
+            return redirect()->back();
         }
         session()->flash('success_login');
         return redirect()->home();
