@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegistrationForm;
 use App\User;
 use GuzzleHttp\Client;
 use App\Notifications\Verify;
