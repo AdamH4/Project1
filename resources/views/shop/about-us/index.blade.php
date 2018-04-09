@@ -13,23 +13,28 @@
     <br>
     <h6>@lang('message.about_comments')</h6>
     <br>
-    @foreach($comments as $comment)
-        <div class="comments">
-            <li class="list-group-item">
-                <b>{{$comment->author}} :</b>
-                {{ $comment->body }}
-            </li>
+    <button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#comments"><i class="fas fa-arrow-circle-down"></i>  @lang('message.show_comments')</button>
+    <div id="comments" class="collapse">
+        <br>
+        @foreach($comments as $comment)
+            <div class="comments">
+                <li class="list-group-item">
+                    <b>{{$comment->author}} :</b>
+                    {{ $comment->body }}
+                </li>
+            </div>
+        @endforeach
+        <br>
+        <form method="POST" action="{{route('about.us.add.comment')}}">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <textarea name="body" placeholder="" class="form-control" required ></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
+        </form>
+        <div class="pagination">
+            {{$comments->links()}}
         </div>
-    @endforeach
-    <form method="POST" action="{{route('about.us.add.comment')}}">
-        {{ csrf_field() }}
-        <div class="form-group">
-            <textarea name="body" placeholder="" class="form-control" required ></textarea>
-        </div>
-        <button type="submit" class="btn btn-dark">@lang('message.add_comment')</button>
-    </form>
-    <div class="pagination">
-        {{$comments->links()}}
     </div>
 </div>
 <script>

@@ -43,9 +43,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
                     @if(strlen(auth()->user()->name) > 6)
-                        {{ucfirst(substr(auth()->user()->name,0,5))}}...
+                        {{substr(auth()->user()->name,0,5)}}...
                     @else
-                        {{ucfirst(auth()->user()->name)}}
+                        {{auth()->user()->name}}
                     @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="nav-dropdown">

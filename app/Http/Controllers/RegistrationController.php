@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegistrationForm;
 use App\User;
 use GuzzleHttp\Client;
+use App\Notifications\Verify;
 
 class RegistrationController extends Controller
 {
@@ -16,7 +17,7 @@ class RegistrationController extends Controller
         return view('shop.registration.create');
     }
 
-    public function store(RegistrationForm $form){
+    public function store(){
         $token = request('g-recaptcha-response');
         if ($token){
             $client = new Client();
@@ -28,15 +29,26 @@ class RegistrationController extends Controller
             ]);
             $result = json_decode($response->GetBody()->getContents());
             if ($result->success){
-                $form->persist();
+                $this->validate(request(),[
+                    'name'=>'required',
+                    'email'=>'required|email',
+                    'password'=>'required|confirmed|min:5',
+                    'check'=>'required',
+                ]);
+                $user = User::create([
+                    'token'=>str_random(40),
+                    'name'=>request('name'),
+                    'email'=>request('email'),
+                    'password'=>bcrypt(request('password')),
+                ]);
+                $user->notify(new Verify($user));
+                \Auth::login($user);
                 session()->flash('success_registration');
                 return redirect()->home();
             }
-            else{
-                return redirect('/registration');
-            }
         }
-        return redirect('/registration');
+        session()->flash('no_recaptcha');
+        return view('shop.registration.create');
     }
 
     public function verify($token){

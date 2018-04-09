@@ -2,6 +2,11 @@
 @section('body')
 <div class="container col-6 offset-3" id="registration-form">
     @include('shop.errors.error')
+    @if(session()->has('no_recaptcha'))
+        <div class="alert alert-danger" id="flash-message">
+            @lang('errors.no_recaptcha')
+        </div>
+    @endif
     <h3>@lang('message.register')</h3>
     <hr>
     <form method="post" action="{{ route('registration.store') }}">

@@ -88,4 +88,5 @@
             'about_us'=>'About us',
             'success_payment'=>'We record your order, we have sent you an email, which is also an invoice for this order',
             'success_payment_article'=>'Success payment',
+            'show_comments'=>'Show comments',
         ];

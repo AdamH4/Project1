@@ -7,7 +7,7 @@ return[
     'delete_comment'=>'Váš komentár bol úspešne vymazaný',
     'success_login'=>'Ste úspešne prilásený',
     'success_logout'=>'Ste úspešne odhlásený',
-    'success_registration'=>'Ste úspešne registrovaný',
+    'success_registration'=>'Ste úspešne registrovaný, prosím verifikujete si svoj email',
     'success_verify'=>'Váš email bol verifikovaný',
     'added_information'=>'Pridali ste informácie k vášmu účtu',
     'change_password'=>'Vaše heslo bolo zmenené',

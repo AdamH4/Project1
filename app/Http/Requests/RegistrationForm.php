@@ -26,21 +26,10 @@ class RegistrationForm extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|',
+            'name'=>'required',
             'email'=>'required|email',
             'password'=>'required|confirmed|min:5',
             'check'=>'required',
         ];
-    }
-
-    public function persist(){
-        $user = User::create([
-            'token'=>str_random(40),
-            'name'=>request('name'),
-            'email'=>request('email'),
-            'password'=>bcrypt(request('password')),
-        ]);
-        $user->notify(new Verify($user));
-        \Auth::login($user);
     }
 }

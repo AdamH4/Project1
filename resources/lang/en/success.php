@@ -7,7 +7,7 @@ return[
     'delete_comment'=>'Your comment was deleted successfully',
     'success_login'=>'You are successfully signed in',
     'success_logout'=>'You were successfully logged out',
-    'success_registration'=>'You successfully registered your account',
+    'success_registration'=>'You successfully registered your account, please verify your email',
     'success_verify'=>'Your email was verified',
     'added_information'=>'You added you account information',
     'change_password'=>'Your password was changed',

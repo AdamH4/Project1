@@ -88,4 +88,5 @@
             'about_us'=>'O nás',
             'success_payment'=>'Vašu objednávku evidujeme, poslali sme Vám email, ktorý je zároveň aj faktúrou k tejto objednávke',
             'success_payment_article'=>'Objednávka prebehla úspešne',
+            'show_comments'=>'Ukázať komentáre',
         ];
