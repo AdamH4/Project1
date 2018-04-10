@@ -11,7 +11,7 @@
     <hr>
     <form method="post" action="{{ route('registration.store') }}">
         {{ csrf_field() }}
-        <label for="name">@lang('message.name'):</label>
+        <label for="name">@lang('message.name')</label>
         <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" required>
         <label for="email">@lang('message.e-mail'):</label>
         <input type="email" class="form-control" id="email" name="email" required value="{{old('email')}}">

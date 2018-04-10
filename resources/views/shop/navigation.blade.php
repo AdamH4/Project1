@@ -42,8 +42,8 @@
         @if(auth()->check())
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown">
-                    @if(strlen(auth()->user()->name) > 6)
-                        {{substr(auth()->user()->name,0,5)}}...
+                    @if(strlen(auth()->user()->name) > 10)
+                        {{substr(auth()->user()->name,0,10)}}...
                     @else
                         {{auth()->user()->name}}
                     @endif

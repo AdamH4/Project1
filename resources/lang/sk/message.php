@@ -48,7 +48,7 @@
             'password'=>'Heslo',
             'forgot_password'=>'Zabudnuté heslo',
             'register'=>'Registrácia',
-            'name'=>'Meno',
+            'name'=>'Meno:',
             'password_confirmation'=>'Potvrdenie hesla',
             'licence'=>'Licenčné podmienky',
             'registration'=>'Registruj',
