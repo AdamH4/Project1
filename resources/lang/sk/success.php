@@ -15,4 +15,5 @@ return[
     'same_password'=>'Vaše nové heslo nemôže byť rovnaké ako vaše súčasné',
     'delete_information'=>'Informácie o vašom úšte boli úspešne vymazané',
     'password_reset'=>'Obnovovací link pre heslo vám bol odoslaný',
+    'not_admin'=>'Ľutujeme ale nie ste administrátor',
 ];

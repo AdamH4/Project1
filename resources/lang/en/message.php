@@ -56,7 +56,7 @@
             'product_price'=>'Product price: ',
             'description'=>'Product description: ',
             'note'=>'Note',
-            'add_information'=>'Add information',
+            'add_information'=>'Update information',
             'insert_information'=>'Add your information for easier purchase',
             'update_information'=>'Update your contact information',
             'change_password'=>'Change password',

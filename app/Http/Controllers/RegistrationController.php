@@ -35,10 +35,10 @@ class RegistrationController extends Controller
                     'check'=>'required',
                 ]);
                 $user = User::create([
-                    'token'=>str_random(40),
                     'name'=>request('name'),
                     'email'=>request('email'),
                     'password'=>bcrypt(request('password')),
+                    'token'=>str_random(40),
                 ]);
                 $user->notify(new Verify($user));
                 \Auth::login($user);

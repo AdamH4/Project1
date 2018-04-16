@@ -56,7 +56,7 @@
             'category'=>'Kategória: ',
             'product_price'=>'Cena produktu: ',
             'note'=>'Poznámka',
-            'add_information'=>'Pridať informácie',
+            'add_information'=>'Aktualizovať informácie',
             'insert_information'=>'Pridajte informácie o Vás pre jednoduchší nákup',
             'update_information'=>'Zmeňte svoje kontaktné informácie',
             'change_password'=>'Zmena hesla',

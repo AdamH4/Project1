@@ -62,7 +62,7 @@ class HomeController extends Controller
         }else{
             \DB::table('global_comments')->insert([
                 'body'=>\request('body'),
-                'author'=>'Anonyme',
+                'author'=>'Anonym',
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ]);

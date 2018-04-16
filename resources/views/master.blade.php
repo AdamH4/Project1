@@ -1,7 +1,8 @@
+<!DOCTYPE>
 <html>
 <head>
     <title>Kozmetika-trstín</title>
-    <link rel="shortcut icon" href="{{asset('images/biocrem.jpg')}}">
+    <link rel="shortcut icon" href="{{asset('images/logo.png')}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

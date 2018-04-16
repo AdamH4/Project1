@@ -11,19 +11,15 @@
         </form>
         <h3>{{ ucfirst($product->name) }}</h3>
         <img src="{{ asset('images/'. $product->picture) }}" height="200" width="200">
-        <p>{{ $product->text }}</p>
-        <p>{{ $product->price  }} E</p>
-
-        @if(! auth()->check())
-            <p>Prihlas sa aby si nakupil !</p>
-        @endif
+        <p>Text: {{ $product->text }}</p>
+        <p>Description: {{ $product->description }}</p>
+        <p>Price: {{ $product->price}}€</p>
+        <h5>All ratings:</h5>
         @foreach($product->ratings as $rating)
-            <li>
-                {{$rating->user->name}} rated:
-                {{$rating->rating}}
-            </li>
+            {{$rating->user->name}} rated:
+            {{$rating->rating}}
         @endforeach
-
+        <br>
         @if(! $rate == 0)
             <h4>
                 @lang('message.average_rating'){{number_format($rate,2)/0.04 }}%

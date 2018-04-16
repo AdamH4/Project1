@@ -22,7 +22,7 @@
         <br>
         <div class="g-recaptcha" data-sitekey="6LcFekYUAAAAANeBHkA4ardK8unmIpIV69RMbRuW"></div>
         <br>
-        <label for="check"><a href="#">@lang('message.licence')</a></label>
+        <label for="check"><a id="purple-tag" href="#">@lang('message.licence')</a></label>
         <input type="checkbox" name="check" id="check">
         <br>
         <button class="btn btn-dark form-control" type="submit" name="submit">@lang('message.registration')</button>

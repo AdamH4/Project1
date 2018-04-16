@@ -36,6 +36,11 @@
             @lang('success.delete_information')
         </div>
     @endif
+    @if(session()->has('not_admin'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.not_admin')
+        </div>
+    @endif
 </div>
 <div class="text-center">
 <div id="demo" class="carousel slide" data-ride="carousel">
