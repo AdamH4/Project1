@@ -1,12 +1,13 @@
 @extends('master')
 @section('body')
-    <div class="container col-9">
+    <div class="container col-8">
         <form action="{{route('cart')}}" method="GET">
             <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left"></i></button>
         </form>
         <h2>@lang('message.select_delivery')</h2>
         <hr>
-        <div class="select-payment col-6">
+        <div class="row">
+        <div class="col-4">
             <h5>@lang('message.free_delivery')</h5>
             <br>
             <form action="{{route('cart.select.payment','slovenska posta')}}" method="POST">
@@ -22,8 +23,8 @@
                 <button class="btn btn-dark" id="card-button">@lang('message.dhl')</button>
             </form>
         </div>
-        <div id="cashondelivery-table">
-            <table class="table table-striped col-3">
+            <div class="col-7 offset-1">
+            <table class="table table-striped">
                 <thead class="thead-dark">
                 <tr>
                     <th>@lang('message.product')</th>
@@ -66,6 +67,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 @endsection

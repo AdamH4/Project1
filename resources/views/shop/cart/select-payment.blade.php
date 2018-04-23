@@ -1,13 +1,14 @@
 @extends('master')
 @section('body')
-<div class="container col-9">
+<div class="container col-8">
     <form action="{{route('cart.select.delivery')}}" method="POST">
         {{csrf_field()}}
         <button class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left"></i></button>
     </form>
     <h2>@lang('message.select_payment')</h2>
     <hr>
-    <div class="select-payment col-6">
+    <div class="row">
+    <div class="col-4">
         <form action="{{route('cart.card', $type)}}" method="POST">
             {{csrf_field()}}
             <button type="submit" class="btn btn-dark" id="card-button">@lang('message.card')  <i class="fab fa-cc-stripe"></i></button>
@@ -17,8 +18,8 @@
             <button type="submit" class="btn btn-dark" id="card-button">@lang('message.cash') <i class="far fa-money-bill-alt"></i></button>
         </form>
     </div>
-    <div id="cashondelivery-table">
-        <table class="table table-striped col-3">
+    <div class="col-7 offset-1">
+        <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
                 <th>@lang('message.product')</th>
@@ -61,6 +62,7 @@
             </tr>
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 

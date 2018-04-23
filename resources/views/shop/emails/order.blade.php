@@ -8,16 +8,17 @@ Veríme že všetko prebehlo v poriadku no ak nie neváhajte a kontaktujte nás 
 
 #Doručovacia a fakturačná adresa:
 (Delivery and invoice address:)
+<br>
 <li>{{$information['first_name']}}</li>
 <li>{{$information['last_name']}}</li>
 <li>{{$information['city']}}</li>
 <li>{{$information['street']}}</li>
 <li>{{$information['postcode']}}</li>
-<li>{{$information['country']}}</li>
+<li>{{ucfirst($information['country'])}}</li>
 <li>{{$information['phone_number']}}</li>
 @if($note)
 # Poznámka:
- (Note:)
+ (Note:)<br>
 {{$note}}
 @endif
 

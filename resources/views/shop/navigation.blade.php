@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-header">
             <a href="{{route('home')}}">
-                <img class="navbar-brand" src="{{asset('images/logo_mini.png')}}">
+                <img class="navbar-brand" src="{{asset('images/logo_mini_mini.png')}}">
             </a>
         </div>
     @if(! auth()->check())

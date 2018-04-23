@@ -23,7 +23,7 @@
             'next'=>'Ďalej',
             'total_without'=>'Celkom bez DPH:',
             'total'=>'Celkom: ',
-            'delete_all'=>'Vyzmazať všetky produkty',
+            'delete_all'=>'Vymazať všetky produkty',
             'product'=>'Produkt',
             'quantity'=>'Množstvo',
             'price'=>'Cena bez DPH',
