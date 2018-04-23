@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         @foreach($products as $product)
-            <div class="col-4" id="product">
+            <div class="col-sm-4" id="product">
                 <a href="{{route('product.show' ,$product->id) }}" id="none-underline">
                     <img class="img-responsive img-thumbnail" id="picture" src="{{ asset('images/'. $product->picture) }}">
                     <h4 >{{ ucfirst($product->name) }}</h4>
