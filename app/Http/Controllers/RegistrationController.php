@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use GuzzleHttp\Client;
-use App\Notifications\Verify;
+use App\Mail\Verify;
 
 class RegistrationController extends Controller
 {
@@ -30,7 +30,7 @@ class RegistrationController extends Controller
             if ($result->success){
                 $this->validate(request(),[
                     'name'=>'required',
-                    'email'=>'required|email',
+                    'email'=>'required|email|unique:users',
                     'password'=>'required|confirmed|min:5',
                     'check'=>'required',
                 ]);
@@ -40,7 +40,7 @@ class RegistrationController extends Controller
                     'password'=>bcrypt(request('password')),
                     'token'=>str_random(40),
                 ]);
-                $user->notify(new Verify($user));
+                \Mail::to($user)->send(new Verify($user));
                 \Auth::login($user);
                 session()->flash('success_registration');
                 return redirect()->home();

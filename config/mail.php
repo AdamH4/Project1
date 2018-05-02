@@ -16,8 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mailgun'),
-
+    'driver' => env('MAIL_DRIVER', 'smtp'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -29,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'stmp.mailgun.io'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +55,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'kozmetika@kozmetika-trstin.sk'),
-        'name' => env('MAIL_FROM_NAME', 'Kozmetika-trstín'),
+        'address' => env('MAIL_FROM_ADDRESS','noreply@kozmetika-trstin.sk'),
+        'name' => env('MAIL_FROM_NAME','Kozmetika-trstin'),
     ],
 
     /*

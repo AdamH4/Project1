@@ -52,7 +52,7 @@
             'password_confirmation'=>'Potvrdenie hesla',
             'licence'=>'Licenčné podmienky',
             'registration'=>'Registruj',
-            'description'=>'Popis produktu',
+            'description'=>'Popis produktu:',
             'category'=>'Kategória: ',
             'product_price'=>'Cena produktu: ',
             'note'=>'Poznámka',

@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('MAILGUN_DOMAIN','noreply.kozmetika-trstin.sk'),
+        'secret' => env('MAILGUN_SECRET','key-8addbbe21989c37f2658c880279d9eb7'),
     ],
 
     'ses' => [

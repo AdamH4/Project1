@@ -37,7 +37,7 @@
             <p>@lang('message.category'){{$product->category}}</p>
             <p>@lang('message.product_price')<b>{{ $product->price }} €</b></p>
             <p>{{ $product->text }}</p>
-            <h5>@lang('message.description'):</h5>
+            <h5>@lang('message.description')</h5>
             <p>{{$product->description}}</p>
         </div>
         <div class="col-5 offset-2">
