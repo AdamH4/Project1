@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
 
         App\User::create([
             'name' => 'adam',
-            'email' => 'adam@example.com',
+            'email' => 'adam.harnusek@gmail.com',
             'password' => bcrypt('adamko'),
        ]);
     }

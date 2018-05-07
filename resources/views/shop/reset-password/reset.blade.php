@@ -7,7 +7,7 @@
         {{ csrf_field() }}
         <input type="hidden" name="token" value="{{ $token }}">
         <label for="email">@lang('message.e-mail')</label>
-        <input id="email" type="email" class="form-control" name="email" value="">
+        <input id="email" type="email" class="form-control" name="email" required>
         <label for="password" class="control-label">@lang('message.new_password')</label>
         <input id="password" type="password" class="form-control" name="password" required>
         <label for="password-confirm" class="control-label">@lang('message.password_confirmation')</label>

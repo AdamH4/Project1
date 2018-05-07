@@ -52,7 +52,7 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request, $token = null)
     {
         return view('shop.reset-password.reset')->with(
-            ['token' => $token, 'email' => $request->email]
+            ['token' => $token, 'email' => $request->only('email')]
         );
     }
 

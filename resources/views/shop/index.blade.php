@@ -41,6 +41,11 @@
             @lang('success.not_admin')
         </div>
     @endif
+    @if(session()->has('success_reset'))
+        <div class="alert alert-success" id="flash-message">
+            @lang('success.success_reset')
+        </div>
+    @endif
 </div>
 <div class="text-center">
 <div id="demo" class="carousel slide" data-ride="carousel">

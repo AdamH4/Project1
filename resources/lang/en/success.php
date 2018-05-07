@@ -16,4 +16,5 @@ return[
     'delete_information'=>'Your account information were deleted',
     'password_reset'=>'Reset link was sent to your email',
     'not_admin'=>'Sorry, but you are not admin',
+    'success_reset'=>'Your password was successfully changed',
 ];
